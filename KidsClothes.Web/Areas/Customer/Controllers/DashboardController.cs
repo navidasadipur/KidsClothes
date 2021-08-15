@@ -5,12 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Web.ViewModels;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Web.ViewModels;
 
-namespace drugStore7.Web.Areas.Customer.Controllers
+namespace KidsClothes.Web.Areas.Customer.Controllers
 {
     [Authorize(Roles = "Customer")]
     public class DashboardController : Controller

@@ -4,13 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infrastructure;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Infratructure.Dtos.Product;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infrastructure;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Infratructure.Dtos.Product;
 
-namespace drugStore7.Infratructure.Services
+namespace KidsClothes.Infratructure.Services
 {
     public class ProductService
     {

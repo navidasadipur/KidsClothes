@@ -1,12 +1,12 @@
-﻿using drugStore7.Core.Models;
-using drugStore7.Infrastructure;
-using drugStore7.Infrastructure.Repositories;
+﻿using KidsClothes.Core.Models;
+using KidsClothes.Infrastructure;
+using KidsClothes.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class OurTeamRepository : BaseRepository<OurTeam, MyDbContext>
     {

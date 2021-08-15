@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace drugStore7.Infrastructure.Filters
+namespace KidsClothes.Infrastructure.Filters
 {
     public class PaginationFilter
     {

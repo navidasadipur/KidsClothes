@@ -1,7 +1,7 @@
-﻿using drugStore7.Core;
-using drugStore7.Core.Models;
-using drugStore7.Infrastructure.Filters;
-using drugStore7.Infrastructure.Repositories;
+﻿using KidsClothes.Core;
+using KidsClothes.Core.Models;
+using KidsClothes.Infrastructure.Filters;
+using KidsClothes.Infrastructure.Repositories;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace drugStore7.Infrastructure
+namespace KidsClothes.Infrastructure
 {
     public interface IBaseRepository<T> where T : class, IBaseEntity
     {

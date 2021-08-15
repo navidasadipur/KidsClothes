@@ -5,8 +5,8 @@
 }
 
 .header-left {
-  flex: 0 0 calc(15% + 10px);
-  max-width: calc(15% + 10px);
+  flex: 0 0 calc(25% + 10px);
+  max-width: calc(25% + 10px);
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -18,8 +18,8 @@
 
 .header-center {
   margin: 0;
-  /* flex: 0 0 50%;
-  max-width: 50%; */
+  flex: 0 0 50%;
+  max-width: 50%;
 }
 
 .category-dropdown.show .dropdown-toggle {
@@ -29,7 +29,7 @@
 
 .category-dropdown .dropdown-toggle:hover,
 .category-dropdown .dropdown-toggle:focus {
-  color: #b07a09;
+  color: #fcb941;
   background-color: #333333;
   outline: none !important;
 }
@@ -45,7 +45,7 @@
 
   text-transform: uppercase;
   min-width: 270px;
-  transition: background 0.4s, color 0.1s;
+  transition: background .4s, color .1s;
 }
 
 .category-dropdown .dropdown-toggle:before {
@@ -61,12 +61,12 @@
 }
 
 .header-bottom .container .header-left::after {
-  content: "";
+  content: '';
   position: absolute;
-  top: -0.5rem;
+  top: -.5rem;
   left: 2rem;
-  bottom: -0.4rem;
-  width: 0.1rem;
+  bottom: -.4rem;
+  width: .1rem;
   background-color: #444;
 }
 
@@ -76,13 +76,13 @@
   color: #ebebeb;
 }
 
-.header-bottom .menu > li + li {
-  margin-left: 0.8rem;
+.header-bottom .menu>li+li {
+  margin-left: .8rem;
 }
 
 .header-bottom .container .header-center {
-  /* flex: 0 0 58.33%;
-  max-width: 58.33%; */
+  flex: 0 0 58.33%;
+  max-width: 58.33%;
   margin: 0;
   padding-right: 2rem;
 }
@@ -94,44 +94,45 @@
 }
 
 .header-bottom .container .header-right i {
-  padding-left: 0.8rem;
-  color: #b07a09;
+  padding-left: .8rem;
+  color: #fcb941;
 }
 
 .header-bottom .container .header-right a {
   text-transform: none;
 
   color: #fff;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .header-bottom .container .header-right a:hover,
 .header-bottom .container .header-right a:focus {
-  color: #b07a09;
+  color: #fcb941;
 }
 
 .header-bottom .container .header-right::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   right: -3rem;
-  width: 0.1rem;
+  width: .1rem;
   background-color: #444;
 }
 
-.header-bottom .menu > li > .sf-with-ul {
+.header-bottom .menu>li>.sf-with-ul {
   padding-left: 3rem;
   font-size: 1.4rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
+
 }
 
-.header-bottom .menu > li > a {
+.header-bottom .menu>li>a {
   padding: 1.6rem 1rem;
 }
 
-.header-bottom .menu > li > a:before {
+.header-bottom .menu>li>a:before {
   height: 0;
 }
 
@@ -143,7 +144,7 @@
 span.wishlist-count,
 span.cart-count {
   font-size: 1.2rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 400;
   color: #333;
 }
@@ -161,14 +162,14 @@ span.cart-count {
 .category-dropdown .dropdown-toggle {
   font-size: 1.4rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
 
   color: #fff;
 }
 
 .category-dropdown .dropdown-toggle:before {
-  content: "\f131";
-  font-family: "molla";
+  content: '\f131';
+  font-family: 'molla';
   border: none;
   font-size: 2.3rem;
   line-height: 0;
@@ -177,29 +178,40 @@ span.cart-count {
   align-items: center;
   font-weight: 500;
   position: initial;
-  color: #b07a09;
+  color: #fcb941;
   transition: all 0s;
 }
 
 .category-dropdown .dropdown-toggle:after {
-  content: "\f110";
-  font-family: "molla";
+  content: '\f110';
+  font-family: 'molla';
   border: none;
   font-size: 1rem;
   line-height: 0;
   margin-right: 3.8rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: .2rem;
   font-weight: 300;
 }
 
 .category-dropdown.show .dropdown-toggle:before {
-  content: "\f191";
+  content: '\f191';
 }
 
 .category-dropdown.show .dropdown-toggle:after {
-  content: "\f110";
+  content: '\f110';
 }
 
+.menu.sf-arrows li:last-child .sf-with-ul::after {
+  font-family: 'molla';
+  content: '\f110';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: none;
+  font-size: 1rem;
+  line-height: 1;
+  margin-top: -.5rem;
+}
 
 .sticky-header.fixed {
   position: fixed;
@@ -208,7 +220,7 @@ span.cart-count {
   top: 0;
   z-index: 1040;
   animation-name: fixedHeader;
-  animation-duration: 0.4s;
+  animation-duration: .4s;
   background-color: #333333;
   box-shadow: 0 3px 6px rgba(51, 51, 51, 0.05);
 }
@@ -232,7 +244,7 @@ span.cart-count {
 .top-menu a {
   font-size: 1.4rem;
   font-weight: 400;
-  font-family: "iransans";
+  font-family: 'iransans';
 
   color: #fff;
 }
@@ -242,7 +254,7 @@ span.cart-count {
 }
 
 .header-middle {
-  border-bottom: 0.1rem solid #444444;
+  border-bottom: .1rem solid #444444;
 }
 
 .header-middle .container {
@@ -275,7 +287,7 @@ span.cart-count {
   line-height: 1.3;
   color: #666;
   text-align: left;
-  margin-bottom: 0.4rem;
+  margin-bottom: .4rem;
 }
 
 .compare-dropdown .compare-product-title a {
@@ -284,7 +296,7 @@ span.cart-count {
 
 .compare-dropdown .compare-product-title a:hover,
 .compare-dropdown .compare-product-title a:focus {
-  color: #b07a09;
+  color: #fcb941;
 }
 
 .compare-products {
@@ -295,7 +307,7 @@ span.cart-count {
 
 .compare-product {
   position: relative;
-  padding: 0.5rem 0;
+  padding: .5rem 0;
   margin: 0;
   box-shadow: none !important;
 }
@@ -344,7 +356,7 @@ span.cart-count {
 .header-search-extended select {
   font-size: 1.4rem;
   font-weight: 400;
-  font-family: "iransans";
+  font-family: 'iransans';
   color: #777;
 }
 
@@ -361,7 +373,7 @@ span.cart-count {
 
 .mobile-menu-toggler {
   color: #fff;
-  padding-top: 0.5rem;
+  padding-top: .5rem;
 }
 
 .header-bottom .container {
@@ -388,7 +400,7 @@ span.cart-count {
   }
 }
 
-.menu > li > a {
+.menu>li>a {
   color: #fff;
   font-size: 1.4rem;
 
@@ -399,8 +411,8 @@ span.cart-count {
 .btn-primary {
   color: #fff;
   font-size: 1.4rem;
-  background-color: #b07a09;
-  border-color: #b07a09;
+  background-color: #fcb941;
+  border-color: #fcb941;
   box-shadow: none;
 }
 
@@ -413,10 +425,10 @@ span.cart-count {
   margin-left: auto;
 }
 
-.menu li:hover > a,
-.menu li.show > a,
-.menu li.active > a {
-  color: #b07a09;
+.menu li:hover>a,
+.menu li.show>a,
+.menu li.active>a {
+  color: #fcb941;
 }
 
 .intro-slider-container,
@@ -447,15 +459,15 @@ span.cart-count {
 }
 
 .intro-slide.banner-lg .title a {
-  padding: 0.8rem 1.4rem 0.7rem 1.4rem;
+  padding: .8rem 1.4rem .7rem 1.4rem;
 }
 
 .intro-slide.banner-lg .content {
-  margin-left: -0.2rem;
+  margin-left: -.2rem;
 }
 
 .intro-slide.banner-lg .content h4 {
-  margin-top: 0.3rem;
+  margin-top: .3rem;
 }
 
 .intro-slide.banner-lg .action {
@@ -474,30 +486,30 @@ span.cart-count {
 
 .banner-lg .title {
   transform: skewX(-11deg);
-  margin-right: 0.3rem;
+  margin-right: .3rem;
 }
 
 .banner-lg .title a {
   margin-bottom: 0rem;
-  font-family: "iransans";
-  background-color: #b07a09;
+  font-family: 'iransans';
+  background-color: #fcb941;
   color: #333333;
   font-size: 1.4rem;
 
   text-transform: uppercase;
-  border-radius: 0.4rem;
+  border-radius: .4rem;
   font-weight: 700;
-  padding: 0.8rem 1.5rem;
+  padding: .8rem 1.5rem;
 }
 
 .banner-lg .content {
   text-transform: uppercase;
-  font-family: "iransans";
+  font-family: 'iransans';
   margin-bottom: 3rem;
 }
 
 .banner-lg .content span {
-  color: #b07a09;
+  color: #fcb941;
 }
 
 .banner-lg .content h3 {
@@ -519,12 +531,12 @@ span.cart-count {
 .banner-lg .action a {
   font-size: 1.4rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
   color: #fff;
-  border: 0.2rem solid #b07a09;
+  border: 0.2rem solid #fcb941;
   padding: 1rem 1.8rem;
   text-transform: uppercase;
-  border-radius: 0.3rem;
+  border-radius: .3rem;
   font-weight: 700;
   transition: all 0.3s;
 }
@@ -532,55 +544,55 @@ span.cart-count {
 .banner-lg .action a:hover,
 .banner-lg .action a:focus {
   color: #333;
-  background-color: #b07a09;
+  background-color: #fcb941;
 }
 
 .highlight {
-  color: #b07a09 !important;
+  color: #fcb941 !important;
 }
 
 .banner {
   background-color: white;
 }
 
-.banner > div {
+.banner>div {
   margin-top: 2rem;
   padding: 3.25rem 4rem 3.25rem 0;
   background-size: cover;
 }
 
-.banner .intro > div {
+.banner .intro>div {
   display: flex;
 }
 
 .banner .title h3 {
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
   color: #fff;
   font-size: 1.6rem;
 
   text-transform: uppercase;
-  margin-bottom: 0.3rem;
+  margin-bottom: .3rem;
 }
 
 .banner .title h2 {
   font-size: 2rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
 
   color: #fff;
   text-transform: uppercase;
-  margin-bottom: 0.3rem;
-  margin-left: -0.2rem;
+  margin-bottom: .3rem;
+  margin-left: -.2rem;
 }
 
 .banner .content {
-  margin-left: -0.1rem;
+  margin-left: -.1rem;
 }
 
 .banner .content h3 {
   font-size: 2rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   text-transform: uppercase;
@@ -591,7 +603,7 @@ span.cart-count {
 .banner .content h4 {
   font-size: 1.6rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
 
   color: #fff;
   text-transform: uppercase;
@@ -599,22 +611,22 @@ span.cart-count {
 }
 
 .banner .action a {
-  color: #b07a09;
+  color: #fcb941;
   font-size: 1.4rem;
   text-transform: uppercase;
   font-weight: 700;
 
-  font-family: "iransans";
+  font-family: 'iransans';
 }
 
-.owl-theme .owl-nav [class*="owl-"] {
+.owl-theme .owl-nav [class*='owl-'] {
   width: 3.2rem;
   height: 3.2rem;
   font-size: 2rem;
   margin-top: -1.6rem;
 }
 
-.owl-theme.owl-light .owl-nav [class*="owl-"] {
+.owl-theme.owl-light .owl-nav [class*='owl-'] {
   border: none;
   color: #ccc;
 }
@@ -638,10 +650,10 @@ span.cart-count {
   background: #f8f8f8;
 }
 
-.owl-theme .owl-nav [class*="owl-"]:not(.disabled):hover {
+.owl-theme .owl-nav [class*='owl-']:not(.disabled):hover {
   color: #fff;
-  border-color: #b07a09;
-  background: #b07a09;
+  border-color: #fcb941;
+  background: #fcb941;
   text-decoration: none;
 }
 
@@ -649,7 +661,8 @@ h2.title {
   color: #333333;
   font-size: 2rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
+
 }
 
 .featured-back {
@@ -682,21 +695,21 @@ h2.title {
   margin-right: 0;
 }
 
-.featured-back .container > .row > div {
+.featured-back .container>.row>div {
   padding: 0;
 }
 
-.featured-back .container > .row > div:first-child {
+.featured-back .container>.row>div:first-child {
   margin-top: 2rem;
-  border-bottom: 0.1rem solid #eee;
+  border-bottom: .1rem solid #eee;
 }
 
 .featured-back .product.product-3 .btn-product:not(:hover):not(:focus) span {
-  color: #b07a09;
+  color: #fcb941;
 }
 
 .featured-back .btn-product span {
-  color: #b07a09;
+  color: #fcb941;
 }
 
 .featured-back .product-lg {
@@ -723,7 +736,7 @@ h2.title {
 
 .featured-back .product-lg .save-price span {
   font-size: 1.5rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   color: #ef837b;
@@ -733,7 +746,7 @@ h2.title {
 
 .featured-back .product-lg .product-title {
   font-size: 2.6rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   color: #333;
@@ -741,7 +754,7 @@ h2.title {
 }
 
 .featured-back .product-lg .product-price {
-  font-family: "iransans";
+  font-family: 'iransans';
 }
 
 .featured-back .product-lg .action {
@@ -749,23 +762,23 @@ h2.title {
 }
 
 .featured-back .product-lg .action a {
-  padding: 0.6rem 1.5rem;
+  padding: .6rem 1.5rem;
   background-color: transparent;
-  border: 0.1rem solid #b07a09;
-  color: #b07a09;
+  border: 0.1rem solid #fcb941;
+  color: #fcb941;
   text-transform: uppercase;
   font-size: 1.4rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
-  border-radius: 0.3rem;
-  transition: all 0.3s;
+  border-radius: .3rem;
+  transition: all .3s;
 }
 
 .featured-back .product-lg .action a:hover,
 .featured-back .product-lg .action a:focus {
   color: #fff;
-  background-color: #b07a09;
+  background-color: #fcb941;
 }
 
 .featured-back .product-lg .new-price {
@@ -781,19 +794,19 @@ h2.title {
   padding-bottom: 0;
 }
 
-.featured-back #tab-featured .row > div:nth-child(2) .product-body {
+.featured-back #tab-featured .row>div:nth-child(2) .product-body {
   margin-bottom: 0;
 }
 
 .featured-back .product.product-3 .product-cat {
-  font-family: "iransans";
+  font-family: 'iransans';
 
   font-size: 1.3rem;
 }
 
 .featured-back .product.product-3 .product-title {
-  margin-top: 0.5rem;
-  font-family: "iransans";
+  margin-top: .5rem;
+  font-family: 'iransans';
 
   font-weight: 700;
   font-size: 1.5rem;
@@ -810,32 +823,32 @@ h2.title {
 }
 
 .featured-back .product.product-3 .product-price {
-  font-family: "iransans";
+  font-family: 'iransans';
 
   font-weight: 700;
   font-size: 1.5rem;
-  color: #b07a09;
+  color: #fcb941;
   margin-bottom: 0;
   padding-bottom: 1.1rem;
 }
 
-.featured-back .products .products > div:nth-child(2) .product-body {
+.featured-back .products .products>div:nth-child(2) .product-body {
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
 .featured-back .btn-product:before {
-  margin-right: 0.5rem;
+  margin-right: .5rem;
 }
 
 .nav.nav-border-anim .nav-link {
   position: relative;
   border-bottom: none;
   font-size: 1.3rem;
-  font-family: "iransans";
+  font-family: 'iransans';
 
   font-weight: 700;
-  color: #b07a09;
+  color: #fcb941;
   text-transform: none;
 }
 
@@ -844,7 +857,7 @@ h2.title {
   transition: none;
 }
 
-.nav.nav-pills .nav-item + .nav-item {
+.nav.nav-pills .nav-item+.nav-item {
   margin-right: 0;
 }
 
@@ -859,7 +872,7 @@ h2.title {
 
 .featured-back .nav.nav-pills .nav-item.show .nav-link::before,
 .featured-back .nav.nav-pills .nav-item .nav-link::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: 0;
@@ -881,13 +894,13 @@ h2.title {
 
 .featured-back .nav.nav-pills .nav-item.show .nav-link.active::before,
 .featured-back .nav.nav-pills .nav-item .nav-link.active::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #b07a09;
+  background-color: #fcb941;
   transform: skewX(15deg);
 }
 
@@ -915,14 +928,14 @@ h2.title {
 }
 
 .newsletter .intro:before {
-  content: "\f1c6";
-  font-family: "molla";
+  content: '\f1c6';
+  font-family: 'molla';
   font-size: 5rem;
   color: #fff;
 }
 
 .newsletter h3.title {
-  font-family: "iransans";
+  font-family: 'iransans';
   font-size: 2rem;
   font-weight: 700;
   color: #fff;
@@ -932,7 +945,7 @@ h2.title {
 }
 
 .newsletter h4.content {
-  font-family: "iransans";
+  font-family: 'iransans';
   font-size: 1.6rem;
   font-weight: 400;
   color: #fff;
@@ -949,27 +962,27 @@ h2.title {
 .newsletter input {
   font-size: 1.4rem;
   font-weight: 400;
-  font-family: "iransans";
+  font-family: 'iransans';
 
-  padding: 0.7rem 2rem 0.6rem 2rem;
+  padding: .7rem 2rem .6rem 2rem;
   border: 3px solid white;
   flex: 1 1 auto;
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
+  border-top-right-radius: .3rem;
+  border-bottom-right-radius: .3rem;
 }
 
 .newsletter .btn-subscribe {
-  background-color: #b07a09;
+  background-color: #fcb941;
   color: white;
-  border-color: #b07a09;
-  padding: 0.6rem 1rem 0.6rem 1rem;
+  border-color: #fcb941;
+  padding: .6rem 1rem .6rem 1rem;
   text-transform: uppercase;
   font-size: 1.4rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+  border-top-left-radius: .3rem;
+  border-bottom-left-radius: .3rem;
   min-width: 15rem;
 }
 
@@ -999,7 +1012,7 @@ h2.title {
 .banner-container .banner-lg:hover .action a,
 .banner-container .banner-lg:focus .action a {
   color: #333;
-  background-color: #b07a09;
+  background-color: #fcb941;
 }
 
 .banner-container .banner-content {
@@ -1021,7 +1034,7 @@ h2.title {
 }
 
 .banner-container .title a {
-  padding: 0.8rem 1.3rem;
+  padding: .8rem 1.3rem;
 }
 
 .banner-container .content {
@@ -1030,6 +1043,7 @@ h2.title {
 
 .banner-container .content h3 {
   font-size: 2.6rem;
+
 }
 
 .banner-container .content h4 {
@@ -1037,55 +1051,56 @@ h2.title {
 }
 
 .banner-container .action a {
-  padding: 0.5rem 1.3rem;
+
+  padding: .5rem 1.3rem;
 }
 
 .banner-container .highlight {
-  color: #b07a09;
+  color: #fcb941;
 }
 
 .icon-box {
-  font-family: "iransans";
+  font-family: 'iransans';
 }
 
 .service {
   padding-top: 2.5rem;
 }
 
-.service .row > div {
+.service .row>div {
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
 .service .icon-box-content h3 {
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 }
 
 .service .icon-box-content p {
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 400;
 }
 
 .service .icon-box-content {
-  padding-left: 0.5rem;
+  padding-left: .5rem;
 }
 
-.service .row > div:not(:first-child) {
+.service .row>div:not(:first-child) {
   padding-left: 2rem;
 }
 
-.service .row > div:not(:first-child) .icon-box-icon {
+.service .row>div:not(:first-child) .icon-box-icon {
   position: relative;
 }
 
-.service .row > div:not(:first-child) .icon-box-icon::before {
-  content: "";
+.service .row>div:not(:first-child) .icon-box-icon::before {
+  content: '';
   position: absolute;
   left: -2rem;
-  top: -0.7rem;
-  bottom: -0.7rem;
-  width: 0.1rem;
+  top: -.7rem;
+  bottom: -.7rem;
+  width: .1rem;
   background-color: #e9e9e9;
 }
 
@@ -1096,8 +1111,8 @@ h2.title {
   background-color: #fff;
 }
 
-.product.product-3 figure > a::before {
-  content: "";
+.product.product-3 figure>a::before {
+  content: '';
   width: 100%;
   height: 100%;
   position: absolute;
@@ -1106,12 +1121,12 @@ h2.title {
   left: 0;
   top: 0;
   z-index: 1;
-  transition: all 0.35s;
+  transition: all .35s;
 }
 
-.product.product-3:hover figure > a::before,
-.product.product-3:focus figure > a::before {
-  opacity: 0.3;
+.product.product-3:hover figure>a::before,
+.product.product-3:focus figure>a::before {
+  opacity: .3;
 }
 
 .product.product-3 .product-media {
@@ -1125,7 +1140,7 @@ h2.title {
 .product.product-3 .product-cat {
   font-weight: 400;
   font-size: 1.3rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   color: #ccc;
   text-transform: uppercase;
   margin-top: 1rem;
@@ -1133,7 +1148,7 @@ h2.title {
 }
 
 .product.product-3 .product-cat a {
-  transition: all 0.35s ease;
+  transition: all .35s ease;
 }
 
 .product.product-3 .product-cat a:hover,
@@ -1149,14 +1164,14 @@ h2.title {
 }
 
 .product.product-3 .product-price {
-  color: #b07a09;
+  color: #fcb941;
   font-weight: 500;
   margin-bottom: 2rem;
 }
 
 .product.product-3 .product-body {
   padding-bottom: 1.8rem;
-  transition: transform 0.35s ease;
+  transition: transform .35s ease;
   z-index: 2;
 }
 
@@ -1169,7 +1184,7 @@ h2.title {
   background-color: #fff;
   transform: translateY(100%);
   visibility: hidden;
-  transition: all 0.35s ease;
+  transition: all .35s ease;
   padding-top: 0;
   z-index: 2;
 }
@@ -1185,21 +1200,21 @@ h2.title {
   background-color: transparent;
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-  border-top: 0.1rem solid #ebebeb;
+  border-top: .1rem solid #ebebeb;
   border-bottom: none;
   margin-top: 2rem;
   z-index: 2;
 }
 
 .product.product-3 .btn-product {
-  color: #b07a09;
+  color: #fcb941;
   font-weight: 400;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem;
   text-transform: uppercase;
 }
 
-.product.product-3 .btn-product + .btn-product {
+.product.product-3 .btn-product+.btn-product {
   border-right-style: solid;
 }
 
@@ -1217,20 +1232,20 @@ h2.title {
 
 .product-lg .label-limited,
 .product.product-3 .label-limited {
-  background-color: #b07a09;
+  background-color: #fcb941;
   text-transform: uppercase;
   margin: 2rem 2rem;
-  padding: 0.8rem 1.5rem;
+  padding: .8rem 1.5rem;
 }
 
 .product-lg .product-label,
 .product.product-3 .product-label {
   transform: skewX(-10deg);
-  border-radius: 0.3rem;
+  border-radius: .3rem;
   color: #fff;
   margin-bottom: 1rem;
   font-size: 1.4rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 }
 
@@ -1238,8 +1253,8 @@ h2.title {
   padding: 1rem;
 }
 
-.products > div {
-  border-bottom: 0.1rem solid #eee;
+.products>div {
+  border-bottom: .1rem solid #eee;
   padding: 0;
 }
 
@@ -1260,23 +1275,23 @@ h2.title {
 .section-title .title {
   margin-bottom: 0;
   margin-right: -1.4rem;
-  padding: 0.8rem 3.5rem;
+  padding: .8rem 3.5rem;
   position: relative;
   font-size: 2rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   color: #333;
 }
 
 .section-title .title::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: #b07a09;
+  background-color: #fcb941;
   transform: skewX(16deg);
 }
 
@@ -1287,19 +1302,19 @@ h2.title {
 .section-title .link {
   padding: 1.1rem 4rem 1.1rem 3.5rem;
   font-size: 1.4rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
-  color: #b07a09;
+  color: #fcb941;
   text-transform: uppercase;
 }
 
 .section-title .link::after {
-  content: "\f111";
-  font-family: "molla";
+  content: '\f111';
+  font-family: 'molla';
   border: none;
   line-height: 1;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
   font-weight: 300;
 }
 
@@ -1312,10 +1327,10 @@ h2.title {
 }
 
 .popular .product-label {
-  margin-left: 0.3rem;
+  margin-left: .3rem;
 }
 
-.popular .products > div:nth-child(8) .product-body {
+.popular .products>div:nth-child(8) .product-body {
   padding-bottom: 0;
 }
 
@@ -1326,103 +1341,106 @@ h2.title {
 .popular .product-cat {
   font-size: 1.3rem;
   font-weight: 400;
-  font-family: "iransans";
+  font-family: 'iransans';
   color: #ccc;
   text-transform: uppercase;
+
 }
 
 .popular .product-title {
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
   text-transform: uppercase;
 
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
 .popular .product-price {
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
 
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
 .popular .new-price {
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
   color: #ef837b;
   text-transform: uppercase;
+
 }
 
 .popular .old-price {
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
   color: #ccc;
   text-transform: uppercase;
+
 }
 
 @media screen and (min-width: 576px) {
-  .popular .products [class*="col-"] {
-    border-right: 0.1rem solid #eee;
+  .popular .products [class*=col-] {
+    border-right: .1rem solid #eee;
   }
 
-  .popular .products [class*="col-"]:nth-child(2n) {
+  .popular .products [class*=col-]:nth-child(2n) {
     border-right-width: 0;
   }
 
-  .featured-back .tab-content [class*="col-"] {
-    border-right: 0.1rem solid #eee;
+  .featured-back .tab-content [class*=col-] {
+    border-right: .1rem solid #eee;
   }
 
-  .featured-back .tab-content [class*="col-"]:nth-child(2n) {
+  .featured-back .tab-content [class*=col-]:nth-child(2n) {
     border-right-width: 0;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .popular .products [class*="col-"]:nth-child(2n) {
-    border-right-width: 0.1rem;
+  .popular .products [class*=col-]:nth-child(2n) {
+    border-right-width: .1rem;
   }
 
-  .popular .products [class*="col-"]:nth-child(3n) {
+  .popular .products [class*=col-]:nth-child(3n) {
     border-right-width: 0;
   }
 
   .featured-back .product-lg {
-    border-right: 0.1rem solid #eee;
+    border-right: .1rem solid #eee;
   }
 }
 
 @media screen and (min-width: 992px) {
-  .popular .products [class*="col-"]:nth-child(3n) {
-    border-right-width: 0.1rem;
+  .popular .products [class*=col-]:nth-child(3n) {
+    border-right-width: .1rem;
   }
 
-  .popular .products [class*="col-"]:nth-child(4n) {
+  .popular .products [class*=col-]:nth-child(4n) {
     border-right-width: 0;
   }
 
-  .featured-back .tab-content [class*="col-"] {
-    border-right: 0.1rem solid #eee;
+  .featured-back .tab-content [class*=col-] {
+    border-right: .1rem solid #eee;
   }
 
-  .featured-back .tab-content [class*="col-"]:nth-child(2n) {
-    border-right-width: 0.1rem;
+  .featured-back .tab-content [class*=col-]:nth-child(2n) {
+    border-right-width: .1rem;
   }
 
-  .featured-back .tab-content [class*="col-"]:nth-child(3n) {
+  .featured-back .tab-content [class*=col-]:nth-child(3n) {
     border-right-width: 0;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .popular .products [class*="col-"]:nth-child(4n) {
-    border-right-width: 0.1rem;
+  .popular .products [class*=col-]:nth-child(4n) {
+    border-right-width: .1rem;
   }
 
-  .popular .products [class*="col-"]:nth-child(5n) {
+  .popular .products [class*=col-]:nth-child(5n) {
     border-right-width: 0;
   }
 }
@@ -1451,12 +1469,12 @@ h2.title {
   align-items: center;
   font-size: 2.4rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
 }
 
 .bannerad .price h3 {
   font-size: 5.4rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   color: #fff;
@@ -1466,20 +1484,20 @@ h2.title {
 
 .bannerad .price sup {
   font-size: 1.6rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   margin-top: 2rem;
 }
 
 .bannerad .price::after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: 0;
-  bottom: 0.3rem;
+  bottom: .3rem;
   background-color: #666;
-  width: 0.1rem;
+  width: .1rem;
 }
 
 .bannerad .content {
@@ -1494,7 +1512,7 @@ h2.title {
 .bannerad .content h3 {
   font-size: 2.4rem;
 
-  margin-top: 0.2rem;
+  margin-top: .2rem;
 }
 
 .bannerad .action {
@@ -1502,14 +1520,15 @@ h2.title {
 }
 
 .bannerad .action a {
-  color: #b07a09;
+  color: #fcb941;
   border: none;
   padding: 0;
+
 }
 
 .bannerad .action a:hover,
 .bannerad .action a:focus {
-  color: #b07a09;
+  color: #fcb941;
   background-color: transparent;
 }
 
@@ -1528,7 +1547,7 @@ h2.title {
 
 .post.container .entry-meta {
   font-size: 1.3rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 400;
 
   color: #ccc;
@@ -1538,13 +1557,13 @@ h2.title {
 
 .post.container .entry-meta a:hover,
 .post.container .entry-meta a:focus {
-  color: #b07a09;
-  box-shadow: 0 1px 0 #b07a09;
+  color: #fcb941;
+  box-shadow: 0 1px 0 #fcb941;
 }
 
 .post.container .entry-title {
   font-size: 2rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   color: #333;
@@ -1552,19 +1571,19 @@ h2.title {
 
 .post.container .entry-title a:hover,
 .post.container .entry-title a:focus {
-  color: #b07a09;
+  color: #fcb941;
 }
 
 .post.container .entry-content a {
-  color: #b07a09;
+  color: #fcb941;
   font-size: 1.4rem;
-  font-family: "iransans";
+  font-family: 'iransans';
   font-weight: 700;
 
   text-transform: uppercase;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .post.container .entry-content a::after {
@@ -1596,7 +1615,7 @@ h2.title {
 
 .social-icon:hover,
 .social-icon:focus {
-  border-color: #b07a09;
+  border-color: #fcb941;
   background-color: transparent;
 }
 
@@ -1611,14 +1630,15 @@ footer .footer-middle {
 footer .widget-title {
   font-size: 1.6rem;
   font-weight: 700;
-  font-family: "iransans";
+  font-family: 'iransans';
   text-transform: uppercase;
+
 }
 
 footer .widget-list li a {
   font-size: 1.4rem;
   font-weight: 400;
-  font-family: "iransans";
+  font-family: 'iransans';
 
   color: #777;
 }
@@ -1626,7 +1646,7 @@ footer .widget-list li a {
 footer .widget-about p {
   font-size: 1.4rem;
   font-weight: 400;
-  font-family: "iransans";
+  font-family: 'iransans';
 
   color: #777;
   max-width: none;
@@ -1635,7 +1655,8 @@ footer .widget-about p {
 footer .footer-copyright {
   font-size: 1.4rem;
   font-weight: 400;
-  font-family: "iransans";
+  font-family: 'iransans';
+
 }
 
 .footer-bottom .container:before,
@@ -1659,7 +1680,7 @@ footer .footer-copyright {
     visibility: hidden;
   }
 
-  .header-bottom .menu > li + li {
+  .header-bottom .menu>li+li {
     margin: 0;
   }
 
@@ -1742,7 +1763,7 @@ footer .footer-copyright {
     right: unset;
     bottom: 1.5rem;
     width: 19rem;
-    height: 0.1rem;
+    height: .1rem;
   }
 
   .bannerad .content {
@@ -1751,7 +1772,7 @@ footer .footer-copyright {
 }
 
 @media screen and (max-width: 575px) {
-  .products > div {
+  .products>div {
     border: none;
   }
 
@@ -1761,13 +1782,14 @@ footer .footer-copyright {
 }
 
 @media screen and (max-width: 500px) {
+
   .popular .section-title,
   .post .section-title {
     flex-wrap: wrap;
   }
 
-  .popular .section-title > div,
-  .post .section-title > div {
+  .popular .section-title>div,
+  .post .section-title>div {
     width: 100%;
     text-align: center;
   }
@@ -1794,15 +1816,15 @@ footer .footer-copyright {
   }
 
   .newsletter input {
-    border-radius: 0.5rem;
+    border-radius: .5rem;
   }
 
   .newsletter .input-group-append {
     margin-top: 1rem;
   }
 
-  .newsletter .input-group > .input-group-append > .btn {
-    border-radius: 0.5rem;
+  .newsletter .input-group>.input-group-append>.btn {
+    border-radius: .5rem;
   }
 }
 

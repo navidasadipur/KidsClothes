@@ -1,4 +1,4 @@
-﻿using drugStore7.Core.Models;
+﻿using KidsClothes.Core.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class LogsRepository
     {

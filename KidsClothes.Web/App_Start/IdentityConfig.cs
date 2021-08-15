@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using drugStore7.Web.Models;
+using KidsClothes.Web.Models;
 
-namespace drugStore7.Web
+namespace KidsClothes.Web
 {
     public class EmailService : IIdentityMessageService
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infratructure.Dtos.Product;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infratructure.Dtos.Product;
 
-namespace drugStore7.Web.ViewModels
+namespace KidsClothes.Web.ViewModels
 {
     public class NewProductViewModel
     {

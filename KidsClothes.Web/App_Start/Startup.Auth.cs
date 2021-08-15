@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using drugStore7.Web.Models;
+using KidsClothes.Web.Models;
 
-namespace drugStore7.Web
+namespace KidsClothes.Web
 {
     public partial class Startup
     {

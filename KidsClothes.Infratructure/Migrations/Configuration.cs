@@ -1,18 +1,18 @@
-namespace drugStore7.Infratructure.Migrations
+namespace KidsClothes.Infratructure.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<drugStore7.Infrastructure.MyDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<KidsClothes.Infrastructure.MyDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(drugStore7.Infrastructure.MyDbContext context)
+        protected override void Seed(KidsClothes.Infrastructure.MyDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

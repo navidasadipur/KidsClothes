@@ -1,9 +1,9 @@
-﻿using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Infratructure.Services;
-using drugStore7.Web.Providers;
-using drugStore7.Web.ViewModels;
+﻿using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Infratructure.Services;
+using KidsClothes.Web.Providers;
+using KidsClothes.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace drugStore7.Web.Controllers
+namespace KidsClothes.Web.Controllers
 {
     public class PaymentController : Controller
     {

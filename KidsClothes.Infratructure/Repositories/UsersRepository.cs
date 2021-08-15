@@ -1,4 +1,4 @@
-﻿using drugStore7.Core.Models;
+﻿using KidsClothes.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNet.Identity;
-using drugStore7.Infrastructure.Filters;
+using KidsClothes.Infrastructure.Filters;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Net.Mail;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class UsersRepository : IDisposable
     {

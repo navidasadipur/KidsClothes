@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace drugStore7.Web.ViewModels
+namespace KidsClothes.Web.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

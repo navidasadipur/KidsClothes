@@ -1,4 +1,4 @@
-﻿using drugStore7.Core.Models;
+﻿using KidsClothes.Core.Models;
 using SmsIrRestful;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace drugStore7.Web.Providers
+namespace KidsClothes.Web.Providers
 {
     public class SMSDotIrProvider:ISMSProvider
     {

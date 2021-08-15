@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
-using drugStore7.Core.Models;
+using KidsClothes.Core.Models;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class InvoicesRepository : BaseRepository<Invoice, MyDbContext>
     {

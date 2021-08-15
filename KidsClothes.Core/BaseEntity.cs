@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace drugStore7.Core
+namespace KidsClothes.Core
 {
     public interface IBaseEntity
     {

@@ -4,10 +4,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class ProductsRepository : BaseRepository<Product, MyDbContext>
     {

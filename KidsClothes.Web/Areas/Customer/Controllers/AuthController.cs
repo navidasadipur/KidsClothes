@@ -7,13 +7,13 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Web.Controllers;
-using drugStore7.Web.ViewModels;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Web.Controllers;
+using KidsClothes.Web.ViewModels;
 
-namespace drugStore7.Web.Areas.Customer.Controllers
+namespace KidsClothes.Web.Areas.Customer.Controllers
 {
     [Authorize]
     public class AuthController : Controller

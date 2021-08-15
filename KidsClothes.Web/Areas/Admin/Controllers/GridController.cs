@@ -8,10 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using drugStore7.Core.Models;
-using drugStore7.Infrastructure;
+using KidsClothes.Core.Models;
+using KidsClothes.Infrastructure;
 
-namespace drugStore7.Web.Areas.Admin.Controllers
+namespace KidsClothes.Web.Areas.Admin.Controllers
 {
     [Authorize]
     public class GridController : Controller

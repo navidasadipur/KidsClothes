@@ -1,5 +1,5 @@
-﻿using drugStore7.Infrastructure;
-using drugStore7.Infrastructure.Repositories;
+﻿using KidsClothes.Infrastructure;
+using KidsClothes.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace drugStore7.Web
+namespace KidsClothes.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {

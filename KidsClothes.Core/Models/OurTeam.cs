@@ -1,10 +1,10 @@
-﻿using drugStore7.Core;
+﻿using KidsClothes.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace drugStore7.Core.Models
+namespace KidsClothes.Core.Models
 {
     public class OurTeam : IBaseEntity
     {

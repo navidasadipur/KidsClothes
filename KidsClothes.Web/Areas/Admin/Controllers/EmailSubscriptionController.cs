@@ -1,11 +1,11 @@
-﻿using drugStore7.Infratructure.Repositories;
+﻿using KidsClothes.Infratructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace drugStore7.Web.Areas.Admin.Controllers
+namespace KidsClothes.Web.Areas.Admin.Controllers
 {
     public class EmailSubscriptionController : Controller
     {

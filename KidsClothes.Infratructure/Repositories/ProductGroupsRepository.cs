@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using drugStore7.Core.Models;
+using KidsClothes.Core.Models;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class ProductGroupsRepository : BaseRepository<ProductGroup, MyDbContext>
     {

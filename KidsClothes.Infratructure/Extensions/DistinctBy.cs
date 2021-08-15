@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drugStore7.Infrastructure.Extensions
+namespace KidsClothes.Infrastructure.Extensions
 {
     public static class DistinctByExtension
     {

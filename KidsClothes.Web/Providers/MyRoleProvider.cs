@@ -1,11 +1,11 @@
-﻿using drugStore7.Infrastructure;
+﻿using KidsClothes.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace drugStore7.Web.Providers
+namespace KidsClothes.Web.Providers
 {
     public class MyRoleProvider : RoleProvider
     {

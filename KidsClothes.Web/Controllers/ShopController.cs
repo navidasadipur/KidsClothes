@@ -6,16 +6,16 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json.Linq;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Infratructure.Dtos.Product;
-using drugStore7.Infratructure.Repositories;
-using drugStore7.Infratructure.Services;
-using drugStore7.Web.Providers;
-using drugStore7.Web.ViewModels;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Infratructure.Dtos.Product;
+using KidsClothes.Infratructure.Repositories;
+using KidsClothes.Infratructure.Services;
+using KidsClothes.Web.Providers;
+using KidsClothes.Web.ViewModels;
 
-namespace drugStore7.Web.Controllers
+namespace KidsClothes.Web.Controllers
 {
     public class ShopController : Controller
     {

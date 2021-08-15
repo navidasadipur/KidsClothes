@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using drugStore7.Infrastructure;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Core.Models;
+using KidsClothes.Infrastructure;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Core.Models;
 
-namespace drugStore7.Infratructure.Repositories
+namespace KidsClothes.Infratructure.Repositories
 {
     public class ShoppingRepository
     {

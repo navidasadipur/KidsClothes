@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Text;
-using drugStore7.Core.Models;
+using KidsClothes.Core.Models;
 
-namespace drugStore7.Infrastructure
+namespace KidsClothes.Infrastructure
 {
     public class MyDbContext : IdentityDbContext<User>
     {

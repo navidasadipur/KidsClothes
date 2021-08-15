@@ -4,14 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Infratructure.Repositories;
-using drugStore7.Infratructure.Services;
-using drugStore7.Web.ViewModels;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Infratructure.Repositories;
+using KidsClothes.Infratructure.Services;
+using KidsClothes.Web.ViewModels;
 
-namespace drugStore7.Web.Controllers
+namespace KidsClothes.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -105,6 +105,45 @@ namespace drugStore7.Web.Controllers
             }
 
             return PartialView(allMainGroups);
+        }
+
+        public ActionResult SharedHeaderSection()
+        {
+            var allMainGroups = _productGroupRepo.GetMainProductGroups();
+
+            foreach (var group in allMainGroups)
+            {
+                group.Children = _productGroupRepo.GetChildrenProductGroups(group.Id);
+            }
+
+            ViewBag.LogoImage = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Logo).Image;
+
+            var wishListModel = new WishListModel();
+
+            HttpCookie cartCookie = Request.Cookies["wishList"] ?? new HttpCookie("wishList");
+
+            if (!string.IsNullOrEmpty(cartCookie.Values["wishList"]))
+            {
+                string cartJsonStr = cartCookie.Values["wishList"];
+                wishListModel = new WishListModel(cartJsonStr);
+            }
+
+            if (wishListModel.WishListItems != null)
+            {
+                ViewBag.WishListCount = wishListModel.WishListItems.Count();
+            }
+
+            return PartialView(allMainGroups);
+        }
+
+        public ActionResult MobileMenuSection()
+        {
+            return PartialView();
+        }
+
+        public ActionResult NewsLetterPopupSection()
+        {
+            return PartialView();
         }
 
         public ActionResult MobileHeaderSection()

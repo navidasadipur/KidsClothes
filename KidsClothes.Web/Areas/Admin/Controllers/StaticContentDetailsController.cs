@@ -7,14 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using drugStore7.Core.Models;
-using drugStore7.Core.Utility;
-using drugStore7.Infrastructure;
-using drugStore7.Infrastructure.Helpers;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Web.ViewModels;
+using KidsClothes.Core.Models;
+using KidsClothes.Core.Utility;
+using KidsClothes.Infrastructure;
+using KidsClothes.Infrastructure.Helpers;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Web.ViewModels;
 
-namespace drugStore7.Web.Areas.Admin.Controllers
+namespace KidsClothes.Web.Areas.Admin.Controllers
 {
     [Authorize]
     public class StaticContentDetailsController : Controller

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace drugStore7.Infrastructure.Helpers
+namespace KidsClothes.Infrastructure.Helpers
 {
     public class ImageResizer
     {

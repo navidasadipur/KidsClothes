@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json.Linq;
-using drugStore7.Core.Models;
+using KidsClothes.Core.Models;
 
-namespace drugStore7.Web.ViewModels
+namespace KidsClothes.Web.ViewModels
 {
     public class DiscountFormViewModel
     {

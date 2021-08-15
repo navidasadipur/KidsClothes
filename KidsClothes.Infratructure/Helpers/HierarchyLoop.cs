@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using drugStore7.Core.Models;
+using KidsClothes.Core.Models;
 
-namespace drugStore7.Infrastructure.Helpers
+namespace KidsClothes.Infrastructure.Helpers
 {
     public static class HierarchyLoop
     {

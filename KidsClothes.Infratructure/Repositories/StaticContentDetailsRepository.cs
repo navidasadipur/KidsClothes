@@ -1,5 +1,5 @@
-﻿using drugStore7.Core.Models;
-using drugStore7.Infrastructure.Filters;
+﻿using KidsClothes.Core.Models;
+using KidsClothes.Infrastructure.Filters;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class StaticContentDetailsRepository : BaseRepository<StaticContentDetail, MyDbContext>
     {

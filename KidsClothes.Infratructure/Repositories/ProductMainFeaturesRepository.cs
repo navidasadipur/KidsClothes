@@ -1,4 +1,4 @@
-﻿using drugStore7.Core.Models;
+﻿using KidsClothes.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drugStore7.Infrastructure.Repositories
+namespace KidsClothes.Infrastructure.Repositories
 {
     public class ProductMainFeaturesRepository : BaseRepository<ProductMainFeature, MyDbContext>
     {

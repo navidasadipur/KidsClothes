@@ -1,4 +1,4 @@
-namespace drugStore7.Infratructure.Migrations
+namespace KidsClothes.Infratructure.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

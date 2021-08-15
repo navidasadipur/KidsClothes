@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace drugStore7.Core.Models
+namespace KidsClothes.Core.Models
 {
     public class FaqGroup : IBaseEntity
     {

@@ -1,4 +1,4 @@
-﻿using drugStore7.Core.Models;
+﻿using KidsClothes.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace drugStore7.Web.ViewModels
+namespace KidsClothes.Web.ViewModels
 {
     public class ArticleFormViewModel
     {

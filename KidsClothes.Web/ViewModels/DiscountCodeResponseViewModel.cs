@@ -1,11 +1,11 @@
-﻿using drugStore7.Core.Models;
-using drugStore7.Infrastructure.Repositories;
+﻿using KidsClothes.Core.Models;
+using KidsClothes.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace drugStore7.Web.ViewModels
+namespace KidsClothes.Web.ViewModels
 {
     public class DiscountCodeResponseViewModel
     {

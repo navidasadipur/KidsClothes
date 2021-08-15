@@ -1,10 +1,10 @@
-﻿using drugStore7.Core.Models;
+﻿using KidsClothes.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace drugStore7.Web.Providers
+namespace KidsClothes.Web.Providers
 {
     public interface ISMSProvider
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Core.Models;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Core.Models;
 using System.Net;
 using System.IO;
-using drugStore7.Infrastructure.Helpers;
+using KidsClothes.Infrastructure.Helpers;
 
-namespace drugStore7.Web.Areas.Admin.Controllers
+namespace KidsClothes.Web.Areas.Admin.Controllers
 {
     [Authorize]
     public class ProductGalleriesController : Controller

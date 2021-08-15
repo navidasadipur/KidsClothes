@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace drugStore7.Web.Areas.Customer
+namespace KidsClothes.Web.Areas.Customer
 {
     public class CustomerAreaRegistration : AreaRegistration 
     {

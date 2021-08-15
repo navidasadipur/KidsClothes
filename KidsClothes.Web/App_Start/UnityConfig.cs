@@ -1,12 +1,12 @@
 using System.Web.Mvc;
-using drugStore7.Infrastructure.Repositories;
-using drugStore7.Web.Areas.Customer.Controllers;
-using drugStore7.Web.Controllers;
+using KidsClothes.Infrastructure.Repositories;
+using KidsClothes.Web.Areas.Customer.Controllers;
+using KidsClothes.Web.Controllers;
 using Unity;
 using Unity.Injection;
 using Unity.Mvc5;
 
-namespace drugStore7.Web
+namespace KidsClothes.Web
 {
     public static class UnityConfig
     {

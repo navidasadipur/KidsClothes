@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Web.Mvc;
 
-namespace drugStore7.Core.Models
+namespace KidsClothes.Core.Models
 {
     public class Article : IBaseEntity
     {

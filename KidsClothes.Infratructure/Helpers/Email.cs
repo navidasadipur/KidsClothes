@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 
 
-namespace drugStore7.Infrastructure.Helpers
+namespace KidsClothes.Infrastructure.Helpers
 {
     public class Email
     {

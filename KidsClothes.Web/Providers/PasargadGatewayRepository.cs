@@ -1,6 +1,6 @@
-﻿using drugStore7.Core.Models;
-using drugStore7.Infrastructure;
-using drugStore7.Infrastructure.Repositories;
+﻿using KidsClothes.Core.Models;
+using KidsClothes.Infrastructure;
+using KidsClothes.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace drugStore7.Web.Providers
+namespace KidsClothes.Web.Providers
 {
     public class PasargadGatewayRepository : IBankGatewayRepository
     {

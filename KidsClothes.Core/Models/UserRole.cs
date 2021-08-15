@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace drugStore7.Core.Models
+namespace KidsClothes.Core.Models
 {
     public class UserRole : IdentityUserRole
     {

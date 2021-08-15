@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Routing;
 
 
-namespace drugStore7.Infrastructure.Helpers
+namespace KidsClothes.Infrastructure.Helpers
 {
     public class CheckPermission
     {
