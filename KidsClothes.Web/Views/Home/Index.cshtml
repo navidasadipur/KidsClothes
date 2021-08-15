@@ -4,133 +4,13 @@
     ViewBag.Title = "خانه";
 }
 
-<header class="header header-5">
-    <div class="header-middle sticky-header">
-        <div class="container-fluid">
-            <div class="header-left">
-                <button class="mobile-menu-toggler">
-                    <span class="sr-only">فهرست</span>
-                    <i class="icon-bars"></i>
-                </button>
-
-                <a href="index.html" class="logo">
-                    <img src="assets/images/demos/demo-15/logo.png" alt="Molla Logo" width="105" height="25">
-                </a>
-
-                <nav class="main-nav">
-                    <ul class="menu sf-arrows">
-                        <li>
-                            <a href="index.html">خانه</a>
-                        </li>
-                        <li>
-                            <a href="category.html" class="sf-with-ul">محصولات</a>
-
-                            <div class="megamenu megamenu-md">
-                                <div class="row no-gutters">
-                                    <div class="col-md-8">
-                                        <div class="menu-col">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">لباس دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="category.html">هودی</a></li>
-                                                        <li><a href="category.html">پیراهن</a></li>
-                                                        <li><a href="category.html">ست 3 تکه</a></li>
-                                                    </ul>
-
-
-                                                </div><!-- End .col-md-6 -->
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">کفش دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="category.html">کفش پیاده روی</a></li>
-                                                        <li><a href="category.html">صندل</a></li>
-                                                        <li><a href="category.html">کفش راحتی</a></li>
-                                                    </ul>
-
-
-                                                </div><!-- End .col-md-6 -->
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">کیف دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="category.html">کیف دوشی</a></li>
-                                                        <li><a href="category.html">کوله پشتی</a></li>
-                                                        <li><a href="category.html">کیف دستی</a></li>
-                                                    </ul>
-
-
-                                                </div><!-- End .col-md-6 -->
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">اکسسوری دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="category.html">گردنبند</a></li>
-                                                        <li><a href="category.html">دستبند</a></li>
-                                                        <li><a href="category.html">کش مو</a></li>
-                                                    </ul>
-
-
-                                                </div><!-- End .col-md-6 -->
-                                            </div><!-- End .row -->
-                                        </div><!-- End .menu-col -->
-                                    </div><!-- End .col-md-8 -->
-
-                                    <div class="col-md-4">
-                                        <div class="banner banner-overlay">
-                                            <a href="category.html" class="banner banner-menu">
-                                                <img src="my-img/43.jpg" alt="Banner">
-
-                                                <div class="banner-content banner-content-top">
-                                                    <div class="banner-title text-white">
-                                                        آخرین
-                                                        <br>شانس<br><span><strong>فروش</strong></span>
-                                                    </div>
-                                                    <!-- End .banner-title -->
-                                                </div><!-- End .banner-content -->
-                                            </a>
-                                        </div><!-- End .banner banner-overlay -->
-                                    </div><!-- End .col-md-4 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .megamenu megamenu-md -->
-                        </li>
-                        <li>
-                            <a href="blog.html">اخبار </a>
-                        </li>
-                        <li>
-                            <a href="about.html">درباره ما</a>
-                        </li>
-                        <li>
-                            <a href="contact.html">تماس با ما</a>
-                        </li>
-                    </ul><!-- End .menu -->
-                </nav><!-- End .main-nav -->
-            </div><!-- End .header-left -->
-
-            <div class="header-right">
-                <div class="header-search header-search-extended header-search-visible">
-                    <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                    <form action="#" method="get">
-                        <div class="header-search-wrapper">
-                            <label for="q" class="sr-only">جستجو</label>
-                            <input type="search" class="form-control" name="q" id="q"
-                                   placeholder="جستجوی محصول ..." required>
-                            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                        </div><!-- End .header-search-wrapper -->
-                    </form>
-                </div><!-- End .header-search -->
-            </div><!-- End .header-right -->
-        </div><!-- End .container-fluid -->
-    </div><!-- End .header-middle -->
-</header><!-- End .header -->
+@Html.Action("HeaderSection", "Home")
 
 <main class="main">
     <div class="intro-slider-container">
         <div class="intro-slider owl-carousel owl-simple owl-nav-inside owl-light" data-toggle="owl"
              data-owl-options='{"nav":false, "dots": false, "loop": false}'>
-            <div class="intro-slide" style="background-image: url(my-img/35.jpg);">
+            <div class="intro-slide" style="background-image: url(/Content/client/my-img/35.jpg);">
                 <div class="container intro-content text-center">
                     <h3 class="intro-subtitle">پیشنهاد های جدید</h3><!-- End .h3 intro-subtitle -->
                     <h1 class="intro-title text-white">کالکشن بهار 1399</h1><!-- End .intro-title -->
@@ -153,7 +33,7 @@
             <div class="col-6 col-lg-4">
                 <div class="banner banner-display banner-link-anim">
                     <a href="#">
-                        <img src="my-img/44.jpg" alt="بنر">
+                        <img src="/Content/client/my-img/44.jpg" alt="بنر">
                     </a>
 
                     <div class="banner-content banner-content-center">
@@ -168,7 +48,7 @@
             <div class="col-6 col-lg-4 order-lg-last">
                 <div class="banner banner-display banner-link-anim">
                     <a href="#">
-                        <img src="my-img/56.jpg" alt="بنر">
+                        <img src="/Content/client/my-img/56.jpg" alt="بنر">
                     </a>
 
                     <div class="banner-content banner-content-center">
@@ -184,7 +64,7 @@
                 <div class="row">
                     <div class="banner banner-display banner-link-anim col-lg-12 col-6">
                         <a href="#">
-                            <img src="my-img/58.jpg" alt="بنر">
+                            <img src="/Content/client/my-img/58.jpg" alt="بنر">
                         </a>
 
                         <div class="banner-content banner-content-center">
@@ -198,7 +78,7 @@
 
                     <div class="banner banner-display banner-link-anim col-lg-12 col-6">
                         <a href="#">
-                            <img src="my-img/54.jpg" alt="بنر">
+                            <img src="/Content/client/my-img/54.jpg" alt="بنر">
                         </a>
 
                         <div class="banner-content banner-content-center">
@@ -215,7 +95,7 @@
     </div><!-- End .container -->
 
     <div class="video-banner video-banner-bg video-fullheight bg-image text-center"
-         style="background-image: url(my-img/2.jpg)">
+         style="background-image: url(/Content/client/my-img/2.jpg)">
         <div class="container">
             <h3 class="video-banner-title h1 text-white">
                 <span>بهار / تابستان</span>کاکشن جدید رمانتیک
@@ -263,9 +143,9 @@
             <div class="product product-11 text-center">
                 <figure class="product-media">
                     <a href="product.html">
-                        <img src="my-img/16.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/16.png" alt="تصویر محصول"
                              class="product-image">
-                        <img src="my-img/16-2.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/16-2.png" alt="تصویر محصول"
                              class="product-image-hover">
                     </a>
 
@@ -297,9 +177,9 @@
             <div class="product product-11 text-center">
                 <figure class="product-media">
                     <a href="product.html">
-                        <img src="my-img/17.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/17.png" alt="تصویر محصول"
                              class="product-image">
-                        <img src="my-img/17-2.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/17-2.png" alt="تصویر محصول"
                              class="product-image-hover">
                     </a>
 
@@ -332,9 +212,9 @@
             <div class="product product-11 text-center">
                 <figure class="product-media">
                     <a href="product.html">
-                        <img src="my-img/18.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/18.png" alt="تصویر محصول"
                              class="product-image">
-                        <img src="my-img/18-2.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/18-2.png" alt="تصویر محصول"
                              class="product-image-hover">
                     </a>
 
@@ -367,9 +247,9 @@
             <div class="product product-11 text-center">
                 <figure class="product-media">
                     <a href="product.html">
-                        <img src="my-img/20.jpg" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/20.jpg" alt="تصویر محصول"
                              class="product-image">
-                        <img src="my-img/20-2.jpg" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/20-2.jpg" alt="تصویر محصول"
                              class="product-image-hover">
                     </a>
 
@@ -402,9 +282,9 @@
             <div class="product product-11 text-center">
                 <figure class="product-media">
                     <a href="product.html">
-                        <img src="my-img/16.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/16.png" alt="تصویر محصول"
                              class="product-image">
-                        <img src="my-img/16-2.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/16-2.png" alt="تصویر محصول"
                              class="product-image-hover">
                     </a>
 
@@ -437,9 +317,9 @@
             <div class="product product-11 text-center">
                 <figure class="product-media">
                     <a href="product.html">
-                        <img src="my-img/17.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/17.png" alt="تصویر محصول"
                              class="product-image">
-                        <img src="my-img/17-2.png" alt="تصویر محصول"
+                        <img src="/Content/client/my-img/17-2.png" alt="تصویر محصول"
                              class="product-image-hover">
                     </a>
 
@@ -508,60 +388,53 @@
                 }'>
             <div class="d-flex justify-content-center">
                 <a href="#" class="brand d-flex justify-content-center">
-                    <img src="assets/images/brands/1.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/1.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
 
             <div>
                 <a href="#" class="brand">
-                    <img src="assets/images/brands/2.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/2.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
 
             <div>
                 <a href="#" class="brand">
-                    <img src="assets/images/brands/3.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/3.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
 
             <div>
                 <a href="#" class="brand">
-                    <img src="assets/images/brands/7.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/7.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
 
             <div>
                 <a href="#" class="brand">
-                    <img src="assets/images/brands/4.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/4.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
 
             <div>
                 <a href="#" class="brand">
-                    <img src="assets/images/brands/5.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/5.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
 
             <div>
                 <a href="#" class="brand">
-                    <img src="assets/images/brands/6.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/6.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
 
             <div>
                 <a href="#" class="brand">
-                    <img src="assets/images/brands/9.png" alt="نام برند">
+                    <img src="/Content/client/assets/images/brands/9.png" alt="نام برند">
                 </a>
             </div><!-- End .col-md-3 -->
         </div><!-- End .owl-carousel -->
     </div>
-
-
-
-
-
-
-
 
 
 
@@ -696,7 +569,7 @@
                 <article class="entry">
                     <figure class="entry-media">
                         <a href="single.html">
-                            <img src="my-img/21.jpg" alt="توضیحات عکس">
+                            <img src="/Content/client/my-img/21.jpg" alt="توضیحات عکس">
                         </a>
                     </figure><!-- End .entry-media -->
 
@@ -723,7 +596,7 @@
                 <article class="entry">
                     <figure class="entry-media">
                         <a href="single.html">
-                            <img src="my-img/25.jpg" alt="توضیحات عکس">
+                            <img src="/Content/client/my-img/25.jpg" alt="توضیحات عکس">
                         </a>
                     </figure><!-- End .entry-media -->
 
@@ -750,7 +623,7 @@
                 <article class="entry">
                     <figure class="entry-media">
                         <a href="single.html">
-                            <img src="my-img/26.jpg" alt="توضیحات عکس">
+                            <img src="/Content/client/my-img/26.jpg" alt="توضیحات عکس">
                         </a>
                     </figure><!-- End .entry-media -->
 
@@ -777,7 +650,7 @@
                 <article class="entry">
                     <figure class="entry-media">
                         <a href="single.html">
-                            <img src="my-img/27.jpg" alt="توضیحات عکس">
+                            <img src="/Content/client/my-img/27.jpg" alt="توضیحات عکس">
                         </a>
                     </figure><!-- End .entry-media -->
 
