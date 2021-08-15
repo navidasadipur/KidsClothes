@@ -11849,7 +11849,7 @@
     <Content Include="Views\Home\ServicesSection.cshtml" />
     <Content Include="Views\Shop\ProductFeaturesSection.cshtml" />
     <Content Include="Views\Home\WishListSection.cshtml" />
-    <Content Include="Views\Shared\ShareHeaderSection.cshtml" />
+    <Content Include="Views\Shared\SharedHeaderSection.cshtml" />
     <Content Include="Views\Shared\MobileMenuSection.cshtml" />
     <Content Include="Views\Shared\NewsLetterPopupSection.cshtml" />
   </ItemGroup>
