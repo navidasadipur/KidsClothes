@@ -86,8 +86,14 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (UserAvatar != null)
                 {
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(UserAvatar.FileName);
-                    UserAvatar.SaveAs(Server.MapPath("/Files/UserAvatars/" + newFileName));
+                    UserAvatar.SaveAs(Server.MapPath("/Files/UserAvatar/Temp/" + newFileName));
+
+                    // Resize Image
+                    ImageResizer image = new ImageResizer(200, 200, true);
+                    image.Resize(Server.MapPath("/Files/UserAvatars/Temp/" + newFileName),
+                        Server.MapPath("/Files/UserAvatars/" + newFileName));
 
                     form.User.Avatar = newFileName;
                 }
@@ -141,9 +147,20 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                 {
                     if (System.IO.File.Exists(Server.MapPath("/Files/UserAvatars/" + users.Avatar)))
                         System.IO.File.Delete(Server.MapPath("/Files/UserAvatars/" + users.Avatar));
+                    if (System.IO.File.Exists(Server.MapPath("/Files/UserAvatars/Temp/" + users.Avatar)))
+                        System.IO.File.Delete(Server.MapPath("/Files/UserAvatars/Temp/" + users.Avatar));
 
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(UserAvatar.FileName);
-                    UserAvatar.SaveAs(Server.MapPath("/Files/UserAvatars/" + newFileName));
+                    UserAvatar.SaveAs(Server.MapPath("/Files/UserAvatars/Temp/" + newFileName));
+
+                    // Resize Image
+                    ImageResizer image = new ImageResizer(200, 200, true);
+                    image.Resize(Server.MapPath("/Files/UserAvatars/Temp/" + newFileName),
+                        Server.MapPath("/Files/UserAvatars/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/UserAvatars/Temp/" + newFileName));
 
                     users.Avatar = newFileName;
                 }
@@ -197,9 +214,20 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                 {
                     if (System.IO.File.Exists(Server.MapPath("/Files/UserAvatars/" + users.Avatar)))
                         System.IO.File.Delete(Server.MapPath("/Files/UserAvatars/" + users.Avatar));
+                    if (System.IO.File.Exists(Server.MapPath("/Files/UserAvatars/Temp/" + users.Avatar)))
+                        System.IO.File.Delete(Server.MapPath("/Files/UserAvatars/Temp/" + users.Avatar));
 
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(UserAvatar.FileName);
-                    UserAvatar.SaveAs(Server.MapPath("/Files/UserAvatars/" + newFileName));
+                    UserAvatar.SaveAs(Server.MapPath("/Files/UserAvatars/Temp/" + newFileName));
+
+                    // Resize Image
+                    ImageResizer image = new ImageResizer(200, 200, true);
+                    image.Resize(Server.MapPath("/Files/UserAvatars/Temp/" + newFileName),
+                        Server.MapPath("/Files/UserAvatars/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/UserAvatars/Temp/" + newFileName));
 
                     users.Avatar = newFileName;
                 }
