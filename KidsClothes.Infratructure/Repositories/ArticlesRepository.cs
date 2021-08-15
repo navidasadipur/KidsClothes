@@ -94,11 +94,11 @@ namespace KidsClothes.Infrastructure.Repositories
         #region Get Articles List
         public List<Article> GetArticlesList(int skip, int take)
         {
-            return _context.Articles.Where(a => a.IsDeleted == false).Include(a=>a.User).OrderByDescending(a=>a.AddedDate).Skip(skip).Take(take).ToList();
+            return _context.Articles.Where(a => a.IsDeleted == false).Include(a=>a.User).Include(a => a.ArticleCategory).OrderByDescending(a=>a.AddedDate).Skip(skip).Take(take).ToList();
         }
         public List<Article> GetArticlesList(int skip, int take, int categoryId)
         {
-            return _context.Articles.Where(a => a.IsDeleted == false && a.ArticleCategoryId == categoryId).Include(a => a.User).OrderByDescending(a => a.AddedDate).Skip(skip).Take(take).ToList();
+            return _context.Articles.Where(a => a.IsDeleted == false && a.ArticleCategoryId == categoryId).Include(a => a.ArticleCategory).Include(a => a.User).OrderByDescending(a => a.AddedDate).Skip(skip).Take(take).ToList();
         }
 
         public List<Article> GetArticlesList(int skip, int take, string searchString)
@@ -113,7 +113,7 @@ namespace KidsClothes.Infrastructure.Repositories
                         || a.ShortDescription != null && a.ShortDescription.Trim().ToLower().Contains(trimedSearchString) 
                         || a.Description != null && a.Description.Trim().ToLower().Contains(trimedSearchString)
                      ))
-                .Include(a => a.User).OrderByDescending(a => a.AddedDate).Skip(skip).Take(take).ToList();
+                .Include(a => a.User).Include(a => a.ArticleCategory).OrderByDescending(a => a.AddedDate).Skip(skip).Take(take).ToList();
 
             var tags = _context.ArticleTags
                     .Where(t => t.IsDeleted == false && (
@@ -130,6 +130,9 @@ namespace KidsClothes.Infrastructure.Repositories
             {
                 if (!searchedArticles.Contains(article))
                 {
+                    //add Article Category
+                    article.ArticleCategory = _context.ArticleCategories.Where(ac => ac.Id == article.ArticleCategoryId).FirstOrDefault();
+
                     searchedArticles.Add(article);
                 }
             }

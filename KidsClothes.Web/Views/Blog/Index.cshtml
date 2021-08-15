@@ -4,11 +4,10 @@
     ViewBag.Title = "اخبار";
 }
 
-
 @Html.Action("SharedHeaderSection", "Home")
 
 <main class="main">
-    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+    <div class="page-header text-center" style="background-image: url('/Files/StaticContentImages/Image/@ViewBag.BanerImage')">
         <div class="container">
             <h1 class="page-title">@ViewBag.Title</h1>
         </div><!-- End .container -->
@@ -26,105 +25,81 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    @foreach (var item in Model)
+                    @foreach (var article in Model)
                     {
                         <article class="entry">
                             <figure class="entry-media">
-                                <a href="single.html">
-                                    <img src="/Content/client/my-img/29.jfif" alt="توضیحات عکس">
+                                <a href="/Blog/Article/@article.Id/@article.Title.Replace(' ', '-')">
+                                    <img src="~/Files/ArticleImages/Image/@article.Image" alt="@article.Title">
                                 </a>
                             </figure><!-- End .entry-media -->
 
                             <div class="entry-body">
                                 <div class="entry-meta">
                                     <span class="entry-author">
-                                        نویسنده : <a href="#">مدیر سایت</a>
+                                        نویسنده : <a href="#">@article.Author</a>
                                     </span>
                                     <span class="meta-separator">|</span>
-                                    <a href="#">22 فروردین 1399</a>
-                                    <span class="meta-separator">|</span>
-                                    <a href="#">2 دیدگاه</a>
+                                    <a href="#">@article.PersianDate</a>
+                                    @*<span class="meta-separator">|</span>
+                                        <a href="#">2 دیدگاه</a>*@
                                 </div><!-- End .entry-meta -->
 
                                 <h2 class="entry-title">
-                                    <a href="single.html">لورم ایپسوم متن ساختگی</a>
+                                    <a href="/Blog/Article/@article.Id/@article.Title.Replace(' ', '-')">@article.Title</a>
                                 </h2><!-- End .entry-title -->
 
                                 <div class="entry-cats">
-                                    <a href="#">سلامت</a>،
-                                    <a href="#">فروشگاه</a>
+
+                                    <a href="/Blog?category=@article.Id">@article.Category.Title</a>
                                 </div><!-- End .entry-cats -->
 
                                 <div class="entry-content">
                                     <p>
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم، لورم ایپسوم متن ساختگی با
-                                        تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم
-                                        ایپسوم متن ساختگی با تولید سادگی نامفهوم
+                                        @article.ShortDescription
                                     </p>
-                                    <a href="single.html" class="read-more">ادامه خواندن</a>
+                                    <a href="/Blog/Article/@article.Id/@article.Title.Replace(' ', '-')" class="read-more">ادامه خواندن</a>
                                 </div><!-- End .entry-content -->
                             </div><!-- End .entry-body -->
                         </article><!-- End .entry -->
                     }
 
-
-                    @*<article class="entry">
-                        <figure class="entry-media entry-video">
-                            <a href="single.html">
-                                <img src="/Content/client/my-img/4.jpg" alt="توضیحات عکس">
-                            </a>
-                        </figure><!-- End .entry-media -->
-
-                        <div class="entry-body">
-                            <div class="entry-meta">
-                                <span class="entry-author">
-                                    <a href="#">مدیر سایت</a>
-                                </span>
-                                <span class="meta-separator">|</span>
-                                <a href="#">21 فروردین 1399</a>
-                                <span class="meta-separator">|</span>
-                                <a href="#">0 دیدگاه</a>
-                            </div><!-- End .entry-meta -->
-
-                            <h2 class="entry-title">
-                                <a href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی</a>
-                            </h2><!-- End .entry-title -->
-
-                            <div class="entry-cats">
-                                <a href="#">سبک زندگی</a>
-                            </div><!-- End .entry-cats -->
-
-                            <div class="entry-content">
-                                <p>
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم، لورم ایپسوم متن ساختگی با
-                                    تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم
-                                    متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم.
-                                </p>
-                                <a href="single.html" class="read-more">ادامه خواندن</a>
-                            </div><!-- End .entry-content -->
-                        </div><!-- End .entry-body -->
-                    </article><!-- End .entry -->*@
-
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1"
-                                   aria-disabled="true">
-                                    <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>قبلی
-                                </a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item">
-                                <a class="page-link page-link-next" href="#" aria-label="Next">
-                                    بعدی <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>
-                                </a>
-                            </li>
+                            @{
+                                if (ViewBag.CurrentPage > 1)
+                                {
+                                    <li class="page-item ">
+                                        <a class="page-link page-link-prev" href="/Blog?pageNumber=@(ViewBag.CurrentPage - 1)@(ViewBag.CategoryId != null ? $"&Category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)"
+                                           aria-label="Previous" tabindex="-1"
+                                           aria-disabled="true">
+                                            <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>قبلی
+                                        </a>
+                                    </li>
+                                }
+                                for (int i = 1; i <= ViewBag.PageCount; i++)
+                                {
+                                    <li class="page-item @(i == ViewBag.CurrentPage ? "active" : null)" aria-current="page">
+                                        <a class="page-link "
+                                           href="/Blog?pageNumber=@i@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+                                if (ViewBag.CurrentPage < ViewBag.PageCount)
+                                {
+                                    @*<li class="page-item"><a class="page-link" href="#">2</a></li>*@
+                                    <li class="page-item">
+                                        <a class="page-link page-link-next" href="/Blog?pageNumber=@(ViewBag.CurrentPage + 1)@(ViewBag.CategoryId != null ? $"&category={ViewBag.CategoryId}" : null)@(ViewBag.SearchString != null ? $"&searchString={ViewBag.SearchString}" : null)" 
+                                           aria-label="Next">
+                                            بعدی <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>
+                                        </a>
+                                    </li>
+                                }
+                            }
                         </ul>
                     </nav>
+
                 </div><!-- End .col-lg-9 -->
 
                 <aside class="col-lg-3">
@@ -142,17 +117,7 @@
                             </form>
                         </div><!-- End .widget -->
 
-                        <div class="widget widget-cats">
-                            <h3 class="widget-title">دسته بندی ها</h3><!-- End .widget-title -->
-
-                            <ul>
-                                <li><a href="#">سبد زندگی<span>3</span></a></li>
-                                <li><a href="#">خرید<span>3</span></a></li>
-                                <li><a href="#">مد<span>1</span></a></li>
-                                <li><a href="#">سفر<span>3</span></a></li>
-                                <li><a href="#">سرگرمی<span>2</span></a></li>
-                            </ul>
-                        </div><!-- End .widget -->
+                        @Html.Action("ArticleCategoriesSection", "Blog")
 
                         @Html.Action("TopArticlesSection", "Blog", new { take = 4 })
                         <!-- End .widget -->
@@ -165,7 +130,7 @@
 
 
 
-                        
+
 
                         <div class="widget widget-text">
                             <h3 class="widget-title">درباره بخش اخبار</h3><!-- End .widget-title -->
@@ -186,8 +151,8 @@
 </main><!-- End .main -->
 
 
-
-@*<main class="main">
+@*
+<main class="main">
     <div class="page-header text-center" style="background-image: url('/Files/StaticContentImages/Image/@ViewBag.BanerImage')">
         <div class="container">
             <h1 class="page-title">@ViewBag.Title</h1>
@@ -300,10 +265,10 @@
 
                             }
                         </ul>
-                        </nav>
-                    </div><!-- End .col-lg-9 -->
+                    </nav>
+                </div><!-- End .col-lg-9 -->
 
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-        </div><!-- End .page-content -->
-    </main><!-- End .main -->*@
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->*@
