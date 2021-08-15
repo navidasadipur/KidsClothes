@@ -2,80 +2,25 @@
 
 
     <div class="widget">
-        <h3 class="widget-title">محبوب ترین اخبار</h3><!-- End .widget-title -->
+        <h3 class="widget-title">آخرین اخبار</h3><!-- End .widget-title -->
 
         <ul class="posts-list">
-            <li>
-                <figure>
-                    <a href="#">
-                        <img src="/Content/client/my-img/21.jpg" alt="post">
-                    </a>
-                </figure>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <figure>
+                        <a href="/Blog/Article/@item.Id/@item.Title.Replace(' ', '-')">
+                            <img src="~/Files/ArticleImages/Thumb/@item.Image" alt="@item.Title">
+                        </a>
+                    </figure>
 
-                <div>
-                    <span>22 فروردین 1399</span>
-                    <h4><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی</a></h4>
-                </div>
-            </li>
-            <li>
-                <figure>
-                    <a href="#">
-                        <img src="/Content/client/my-img/25.jpg" alt="post">
-                    </a>
-                </figure>
+                    <div>
+                        <span>@item.PersianDate</span>
+                        <h4><a href="/Blog/Article/@item.Id/@item.Title.Replace(' ', '-')">@item.Title</a></h4>
+                    </div>
+                </li>
+            }
 
-                <div>
-                    <span>19 فروردین 1399</span>
-                    <h4><a href="#">لورم ایپسوم متن ساختگی</a></h4>
-                </div>
-            </li>
-            <li>
-                <figure>
-                    <a href="#">
-                        <img src="/Content/client/my-img/26.jpg" alt="post">
-                    </a>
-                </figure>
-
-                <div>
-                    <span>12 فروردین 1399</span>
-                    <h4><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a></h4>
-                </div>
-            </li>
-            <li>
-                <figure>
-                    <a href="#">
-                        <img src="/Content/client/my-img/27.jpg" alt="post">
-                    </a>
-                </figure>
-
-                <div>
-                    <span>25 فروردین 1399</span>
-                    <h4><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</a></h4>
-                </div>
-            </li>
         </ul><!-- End .posts-list -->
     </div>
 
-
-
-@*<div class="widget">
-    <h3 class="widget-title">آخرین اخبار</h3><!-- End .widget-title -->
-
-    <ul class="posts-list">
-        @foreach (var item in Model)
-        {
-            <li>
-                <figure>
-                    <a href="/Blog/Article/@item.Id/@item.Title">
-                        <img src="~/Files/ArticleImages/Thumb/@item.Image" alt="@item.Title">
-                    </a>
-                </figure>
-
-                <div>
-                    <span>@item.PersianDate</span>
-                    <h4><a href="/Blog/Article/@item.Id/@item.Title">@item.Title</a></h4>
-                </div>
-            </li>
-        }
-    </ul><!-- End .posts-list -->
-</div><!-- End .widget -->*@
