@@ -4,6 +4,98 @@
     //var mainProductGroups = ViewBag.MainProductGroups as List<ProductGroup>;
 }
 
+<div class="mobile-menu-container mobile-menu-light">
+    <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+        <form action="#" method="get" class="mobile-search">
+            <label for="mobile-search" class="sr-only">جستجو</label>
+            <input type="search" class="form-control" name="mobile-search" id="mobile-search"
+                   placeholder="جستجو در ..." required>
+            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+        </form>
+
+        <ul class="nav nav-pills-mobile nav-border-anim" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab"
+                   role="tab" aria-controls="mobile-menu-tab" aria-selected="true">منو</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel"
+                 aria-labelledby="mobile-menu-link">
+                <nav class="mobile-nav">
+                    <ul class="mobile-menu">
+                        <li>
+                            <a href="index.html">خانه</a>
+                        </li>
+                        <li>
+                            <a href="category.html">محصولات</a>
+
+                            <ul>
+                                <li>
+                                    <a class="menu-title">لباس دخترانه</a>
+
+                                    <ul>
+                                        <li><a href="category.html">هودی</a></li>
+                                        <li><a href="category.html">پیراهن</a></li>
+                                        <li><a href="category.html">ست 3 تکه</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="menu-title">کفش دخترانه</a>
+
+                                    <ul>
+                                        <li><a href="category.html">کفش پیاده روی</a></li>
+                                        <li><a href="category.html">صندل</a></li>
+                                        <li><a href="category.html">کفش راحتی</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="menu-title">کیف دخترانه</a>
+
+                                    <ul>
+                                        <li><a href="category.html">کیف دوشی</a></li>
+                                        <li><a href="category.html">کوله پشتی</a></li>
+                                        <li><a href="category.html">کیف دستی</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="menu-title">اکسسوری دخترانه</a>
+
+                                    <ul>
+                                        <li><a href="category.html">گردنبند</a></li>
+                                        <li><a href="category.html">دستبند</a></li>
+                                        <li><a href="category.html">کش مو</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="blog.html">اخبار </a>
+                        </li>
+                        <li>
+                            <a href="about.html">درباره ما</a>
+                        </li>
+                        <li>
+                            <a href="contact.html">تماس با ما</a>
+                        </li>
+                    </ul>
+                </nav><!-- End .mobile-nav -->
+            </div><!-- .End .tab-pane -->
+        </div><!-- End .tab-content -->
+
+        <div class="social-icons">
+            <a href="#" class="social-icon" target="_blank" title="فیسبوک"><i class="icon-facebook-f"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="توییتر"><i class="icon-twitter"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="اینستاگرام"><i class="icon-instagram"></i></a>
+            <a href="#" class="social-icon" target="_blank" title="یوتیوب"><i class="icon-youtube"></i></a>
+        </div><!-- End .social-icons -->
+    </div><!-- End .mobile-menu-wrapper -->
+</div><!-- End .mobile-menu-container -->
+
+
 
 @*<header id="header">
         <div class="header-top-row">
@@ -297,105 +389,105 @@
 
 
 
-                                        <header class="header header-7">
-                                            <div class="sticky-wrapper">
-                                                <div class="header-middle sticky-header">
-                                                    <div class="container">
-                                                        <div class="header-left">
-                                                            <button class="mobile-menu-toggler">
-                                                                <span class="sr-only">فهرست</span>
-                                                                <i class="icon-bars"></i>
-                                                            </button>
+@*<header class="header header-7">
+        <div class="sticky-wrapper">
+            <div class="header-middle sticky-header">
+                <div class="container">
+                    <div class="header-left">
+                        <button class="mobile-menu-toggler">
+                            <span class="sr-only">فهرست</span>
+                            <i class="icon-bars"></i>
+                        </button>
 
-                                                            <a href="/" class="logo">
-                                                                <img src="/Files/StaticContentImages/Image/@ViewBag.LogoImage" alt="Molla Logo" width="82" height="25">
-                                                            </a>
-                                                        </div><!-- End .header-left -->
+                        <a href="/" class="logo">
+                            <img src="/Files/StaticContentImages/Image/@ViewBag.LogoImage" alt="Molla Logo" width="82" height="25">
+                        </a>
+                    </div><!-- End .header-left -->
 
-                                                        <div class="header-right">
+                    <div class="header-right">
 
-                                                            <nav class="main-nav">
-                                                                <ul class="menu sf-arrows sf-js-enabled" style="touch-action: pan-y;">
-                                                                    <li>
-                                                                        <a href="/" class="p-0">خانه</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="/shop" class="sf-with-ul">فروشگاه </a>
+                        <nav class="main-nav">
+                            <ul class="menu sf-arrows sf-js-enabled" style="touch-action: pan-y;">
+                                <li>
+                                    <a href="/" class="p-0">خانه</a>
+                                </li>
+                                <li>
+                                    <a href="/shop" class="sf-with-ul">فروشگاه </a>
 
-                                                                        <ul>
-                                                                            <li>
-                                                                                <a href="/Customer/auth/login">حساب کاربری من</a>
-                                                                            </li>
-                                                                            <li><a href="/Shop/Checkout">پرداخت</a></li>
-                                                                            <li><a href="/Shop/Cart">سبد خرید</a></li>
-                                                                        </ul>
-                                                                    </li>
-                                                                    @if (Model != null)
+                                    <ul>
+                                        <li>
+                                            <a href="/Customer/auth/login">حساب کاربری من</a>
+                                        </li>
+                                        <li><a href="/Shop/Checkout">پرداخت</a></li>
+                                        <li><a href="/Shop/Cart">سبد خرید</a></li>
+                                    </ul>
+                                </li>
+                                @if (Model != null)
+                                {
+                                    foreach (var group in Model)
+                                    {
+                                        <li>
+                                            @if (group.Children != null)
+                                            {
+                                                <a href="/Shop/ProductList/@group.Id" class="sf-with-ul">@group.Title</a>
+                                                <ul>
+                                                    @foreach (var group2 in group.Children)
+                                                    {
+                                                        <li>
+                                                            @if (group2.Children != null)
+                                                            {
+                                                                <a href="/Shop/ProductList/@group2.Id" class="sf-with-ul">@group2.Title</a>
+                                                                <ul>
+
+                                                                    @foreach (var item in group2.Children)
                                                                     {
-                                                                        foreach (var group in Model)
-                                                                        {
-                                                                            <li>
-                                                                                @if (group.Children != null)
-                                                                                {
-                                                                                    <a href="/Shop/ProductList/@group.Id" class="sf-with-ul">@group.Title</a>
-                                                                                    <ul>
-                                                                                        @foreach (var group2 in group.Children)
-                                                                                        {
-                                                                                            <li>
-                                                                                                @if (group2.Children != null)
-                                                                                                {
-                                                                                                    <a href="/Shop/ProductList/@group2.Id" class="sf-with-ul">@group2.Title</a>
-                                                                                                    <ul>
-
-                                                                                                        @foreach (var item in group2.Children)
-                                                                                                        {
-                                                                                                            <li>
-                                                                                                                <a href="/Shop/ProductList/@item.Id">@item.Title</a>
-                                                                                                            </li>
-                                                                                                        }
-
-                                                                                                    </ul>
-                                                                                                }
-                                                                                                else
-                                                                                                {
-                                                                                                    <a href="/Shop/ProductList/@group2.Id">@group2.Title</a>
-                                                                                                }
-                                                                                            </li>
-                                                                                        }
-                                                                                    </ul>
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    <a href="/Shop/ProductList/@group.Id">@group.Title</a>
-                                                                                }
-                                                                            </li>
-                                                                        }
+                                                                        <li>
+                                                                            <a href="/Shop/ProductList/@item.Id">@item.Title</a>
+                                                                        </li>
                                                                     }
+
                                                                 </ul>
-                                                            </nav>
+                                                            }
+                                                            else
+                                                            {
+                                                                <a href="/Shop/ProductList/@group2.Id">@group2.Title</a>
+                                                            }
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Shop/ProductList/@group.Id">@group.Title</a>
+                                            }
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </nav>
 
-                                                            <div class="header-search">
-                                                                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                                                                <form action="/shop"  id="search-form" method="get">
-                                                                    <div class="header-search-wrapper">
-                                                                        <label for="searchString" class="sr-only">جستجو</label>
-                                                                        <input type="search" class="form-control" name="searchString" id="searchString"
-                                                                               placeholder="جستجوی محصول ..." required="">
-                                                                    </div><!-- End .header-search-wrapper -->
-                                                                </form>
-                                                            </div><!-- End .header-search -->
+                        <div class="header-search">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <form action="/shop"  id="search-form" method="get">
+                                <div class="header-search-wrapper">
+                                    <label for="searchString" class="sr-only">جستجو</label>
+                                    <input type="search" class="form-control" name="searchString" id="searchString"
+                                           placeholder="جستجوی محصول ..." required="">
+                                </div><!-- End .header-search-wrapper -->
+                            </form>
+                        </div><!-- End .header-search -->
 
-                                                            <div id="wishListSection">
-                                                                @Html.Action("wishListSection", "Home")
-                                                            </div>
+                        <div id="wishListSection">
+                            @Html.Action("wishListSection", "Home")
+                        </div>
 
 
-                                                            <div class="dropdown cart-dropdown" id="cartSection">
-                                                                @Html.Action("CartSection", "Home")
+                        <div class="dropdown cart-dropdown" id="cartSection">
+                            @Html.Action("CartSection", "Home")
 
-                                                            </div><!-- End .cart-dropdown -->
-                                                        </div><!-- End .header-right -->
-                                                    </div><!-- End .container -->
-                                                </div>
-                                            </div><!-- End .header-middle -->
-                                        </header>
+                        </div><!-- End .cart-dropdown -->
+                    </div><!-- End .header-right -->
+                </div><!-- End .container -->
+            </div>
+        </div><!-- End .header-middle -->
+    </header>*@
