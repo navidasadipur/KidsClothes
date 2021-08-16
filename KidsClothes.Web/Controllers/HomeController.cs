@@ -377,7 +377,14 @@ namespace KidsClothes.Web.Controllers
 
             return PartialView(model);
         }
-        
+
+        public ActionResult AboutCustomerCounterSection()
+        {
+            var model = _staticContentRepo.GetContentByTypeId((int)StaticContentTypes.AboutCustomerCounter);
+
+            return PartialView(model);
+        }
+
 
         public ActionResult OurTeamsSection()
         {

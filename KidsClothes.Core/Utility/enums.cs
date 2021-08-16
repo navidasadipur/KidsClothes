@@ -53,7 +53,8 @@ namespace KidsClothes.Core.Utility
     {
         HeaderFooter = 9,
         About = 13,
-        AboutProperties,
+        AboutProperties = 14,
+        AboutCustomerCounter = 5,
 
         HomeTopSlider = 17,
         Contact = 2,
