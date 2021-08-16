@@ -35,7 +35,8 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
         // GET: Admin/StaticContentDetails/Create
         public ActionResult Create()
         {
-            ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name");
+            //ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name");
+            //ViewBag.StaticContentTypeId = new SelectList(_repo.GetAll().Where(a => (a.Id == 15 || a.Id == 17)), "Id", "Name");
             return View();
         }
 
@@ -99,7 +100,9 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name", staticContentDetail.StaticContentTypeId);
+            ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes().Where(s => s.Id == staticContentDetail.StaticContentTypeId), "Id", "Name", staticContentDetail.StaticContentTypeId);
+
+            //ViewBag.StaticContentTypeId = new SelectList(_repo.GetAll().Where(a => (a.Id == 15 || a.Id == 17)), "Id", "Name");
             return View(staticContentDetail);
         }
 
