@@ -8,6 +8,12 @@ namespace KidsClothes.Web.ViewModels
 {
     public class NewProductGroupViewModel
     {
+        public NewProductGroupViewModel()
+        {
+            BrandIds = new List<int>();
+            ProductGroupFeatureIds = new List<int>();
+        }
+
         public string Title { get; set; }
         public List<int> BrandIds { get; set; }
         public int ParentGroupId { get; set; }
@@ -15,6 +21,12 @@ namespace KidsClothes.Web.ViewModels
     }
     public class UpdateProductGroupViewModel
     {
+        public UpdateProductGroupViewModel()
+        {
+            BrandIds = new List<int>();
+            ProductGroupFeatureIds = new List<int>();
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
         public List<int> BrandIds { get; set; }
@@ -39,6 +51,13 @@ namespace KidsClothes.Web.ViewModels
     }
     public class ProductListViewModel
     {
+        public ProductListViewModel()
+        {
+            ProductGroups = new List<ProductGroup>();
+            Features = new List<Feature>();
+            Brands = new List<Brand>();
+        }
+
         public int? SelectedGroupId { get; set; }
         public int ProductCount { get; set; }
         public List<ProductGroup> ProductGroups { get; set; }

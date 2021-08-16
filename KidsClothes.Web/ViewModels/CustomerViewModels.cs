@@ -9,6 +9,11 @@ namespace KidsClothes.Web.ViewModels
 {
     public class CustomerDashboardViewModel
     {
+        public CustomerDashboardViewModel()
+        {
+            Invoices = new List<CustomerInvoiceViewModel>();
+        }
+
         public Customer Customer { get; set; }
         public List<CustomerInvoiceViewModel> Invoices { get; set; }
     }

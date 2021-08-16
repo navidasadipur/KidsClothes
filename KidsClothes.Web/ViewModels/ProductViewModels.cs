@@ -11,6 +11,12 @@ namespace KidsClothes.Web.ViewModels
 {
     public class NewProductViewModel
     {
+        public NewProductViewModel()
+        {
+            ProductFeatures = new List<ProductFeaturesViewModel>();
+            SimilarIds = new List<int>();
+        }
+
         public int? ProductId { get; set; }
         public string Title { get; set; }
         public string ShortTitle { get; set; }
@@ -123,6 +129,14 @@ namespace KidsClothes.Web.ViewModels
     }
     public class ProductDetailsViewModel
     {
+        public ProductDetailsViewModel()
+        {
+            ProductGalleries = new List<ProductGallery>();
+            ProductMainFeatures = new List<ProductMainFeature>();
+            ProductFeatureValues = new List<ProductFeatureValue>();
+            ProductComments = new List<ProductCommentViewModel>();
+        }
+
         public Product Product { get; set; }
         public List<ProductGallery> ProductGalleries { get; set; }
         public List<ProductMainFeature> ProductMainFeatures { get; set; }

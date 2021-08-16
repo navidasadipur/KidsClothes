@@ -44,6 +44,11 @@ namespace KidsClothes.Web.ViewModels
 
     public class ViewInvoiceViewModel
     {
+        public ViewInvoiceViewModel()
+        {
+            InvoiceItems = new List<InvoiceItemWithMainFeatureViewModel>();
+        }
+
         public Invoice Invoice { get; set; }
         public string PersianDate { get; set; }
         public List<InvoiceItemWithMainFeatureViewModel> InvoiceItems { get; set; }

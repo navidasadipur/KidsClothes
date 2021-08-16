@@ -11,6 +11,14 @@ namespace KidsClothes.Web.ViewModels
 {
     public class DiscountFormViewModel
     {
+        public DiscountFormViewModel()
+        {
+            BrandIds = new List<int>();
+            ProductIds = new List<int>();
+            ProductGroupIds = new List<int>();
+            PreviousDiscounts = new List<Discount>();
+        }
+
         [DisplayName("عنوان تخفیف")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(500, ErrorMessage = "{0} باید کمتر از 500 کارکتر باشد")]
@@ -287,6 +295,10 @@ namespace KidsClothes.Web.ViewModels
 
     public class GalleryPageViewModel
     {
+        public GalleryPageViewModel()
+        {
+            Images = new List<ProductGallery>();
+        }
         public List<ProductGallery> Images { get; set; }
         //public List<ProductGalleryVideo> Videos { get; set; }
     }
