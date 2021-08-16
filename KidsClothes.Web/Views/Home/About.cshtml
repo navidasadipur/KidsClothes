@@ -8,7 +8,7 @@
 @Html.Action("SharedHeaderSection", "Home")
 
 
-<main class="main">
+@*<main class="main">
     <div class="page-header text-center" style="background-image: url('/Content/client/assets/images/page-header-bg.jpg')">
         <div class="container">
             <h1 class="page-title">درباره ما</h1>
@@ -424,8 +424,11 @@
             </div><!-- End .row -->
         </div><!-- End .container -->
     </div><!-- End .page-content -->
-</main><!-- End .main -->
-@*<main class="main">
+</main><!-- End .main -->*@
+
+
+
+<main class="main">
         <div class="page-header text-center" style="background-image: url('/Files/StaticContentImages/Image/@ViewBag.BanerImage')">
             <div class="container">
                 <h1 class="page-title">@ViewBag.Title</h1>
@@ -465,10 +468,12 @@
 
             <div class="mb-2"></div><!-- End .mb-2 -->
 
+            @Html.Action("AboutCustomerCounterSection", "Home")
+
             @Html.Action("OurTeamsSection", "Home")
 
             @Html.Action("PartnersSection", "Home");
 
         </div><!-- End .page-content -->
-    </main><!-- End .main -->*@
+    </main><!-- End .main -->
 

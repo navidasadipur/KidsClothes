@@ -11852,6 +11852,7 @@
     <Content Include="Views\Shared\SharedHeaderSection.cshtml" />
     <Content Include="Views\Shared\MobileMenuSection.cshtml" />
     <Content Include="Views\Shared\NewsLetterPopupSection.cshtml" />
+    <Content Include="Views\Home\AboutCustomerCounterSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
