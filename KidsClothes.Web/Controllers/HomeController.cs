@@ -406,28 +406,42 @@ namespace KidsClothes.Web.Controllers
             var phone = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Phone);
             var email = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Email);
             var address = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Address);
+            var workingHourseSaturdayWednesday = _staticContentRepo.GetStaticContentDetail((int)StaticContents.WorkingHoursSaturdayWednesday);
+            var workingHourseTuesday = _staticContentRepo.GetStaticContentDetail((int)StaticContents.WorkingHoursTuesday);
+
             var vm = new ContactUsViewModel()
             { 
                 Map = map,
                 Phone = phone,
                 Email = email,
-                Address = address
+                Address = address,
+                WorkingHoursSaturdayWednesday = workingHourseSaturdayWednesday,
+                WorkingHoursTuesday = workingHourseTuesday,
             };
 
-            var banner = "";
-            try
+            ViewBag.ContactUsDescriptionImg = _staticContentRepo.GetStaticContentDetail((int)StaticContents.ContactUsDescriptionImg);
+
+            return View(vm);
+        }
+
+        public ActionResult ContactOurStoresSection()
+        {
+            var addressPhone = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneAddressPhone);
+            var address = addressPhone.ShortDescription;
+            var phone = addressPhone.Description;
+
+            var workingHourseSaturdayWednesday = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneWorkingHours);
+            var workingHourseTuesday = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneWorkingHours);
+
+            var vm = new ContactUsViewModel()
             {
-                banner = _staticContentRepo.GetSingleContentDetailByTitle("سربرگ ارتباط با ما").Image;
-                banner = "/Files/StaticContentImages/Image/" + banner;
-            }
-            catch
-            {
+                Phone = phoneAddress,
+                Address = address,
+                WorkingHoursSaturdayWednesday = workingHourseSaturdayWednesday,
+                WorkingHoursTuesday = workingHourseTuesday,
+            };
 
-            }
-
-            ViewBag.banner = banner;
-
-            ViewBag.BanerImage = _staticContentRepo.GetStaticContentDetail(13).Image;
+            ViewBag.ContactUsDescriptionImg = _staticContentRepo.GetStaticContentDetail((int)StaticContents.ContactUsDescriptionImg);
 
             return View(vm);
         }

@@ -7,13 +7,13 @@ namespace KidsClothes.Infratructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ChangeInvoceTable : IMigrationMetadata
+    public sealed partial class removeRequiredFromPhoneInContactFormModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeInvoceTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(removeRequiredFromPhoneInContactFormModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202105310735360_ChangeInvoceTable"; }
+            get { return "202108161000444_removeRequiredFromPhoneInContactFormModel"; }
         }
         
         string IMigrationMetadata.Source

@@ -63,6 +63,13 @@ namespace KidsClothes.Web.ViewModels
         public StaticContentDetail Address { get; set; }
         public StaticContentDetail Email { get; set; }
         public StaticContentDetail Phone { get; set; }
+        public StaticContentDetail WorkingHoursSaturdayWednesday { get; set; }
+        public StaticContentDetail WorkingHoursTuesday { get; set; }
+    }
+
+    public class ContactStoreInfo
+    {
+        public string 
     }
 
     public class CartModel

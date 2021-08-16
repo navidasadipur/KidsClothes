@@ -1,9 +1,76 @@
-﻿@model KidsClothes.Web.ViewModels.ContactUsViewModel
-@{
-    ViewBag.Title = "تماس با ما";
-}
+﻿@model List<KidsClothes.Web.ViewModels.ContactUsViewModel>
 
-@Html.Action("SharedHeaderSection", "Home")
+
+<div class="stores mb-4 mb-lg-5">
+    <h2 class="title text-center mb-3">فروشگاه های ما</h2><!-- End .title text-center mb-2 -->
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="store">
+                <div class="row">
+                    <div class="col-sm-5 col-xl-6">
+                        <figure class="store-media mb-2 mb-lg-0">
+                            <img src="/Content/client/assets/images/stores/img-1.jpg" alt="image">
+                        </figure><!-- End .store-media -->
+                    </div><!-- End .col-xl-6 -->
+                    <div class="col-sm-7 col-xl-6">
+                        <div class="store-content">
+                            <h3 class="store-title">فروشگاه شماره 1</h3><!-- End .store-title -->
+                            <address>تهران، میدان تجریش</address>
+                            <div><a href="tel:#">88776655</a></div>
+
+                            <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
+                            <!-- End .store-subtitle -->
+                            <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
+                            <div>پنج شنبه 11 صبح تا 6 عصر</div>
+
+                            <a href="#" class="btn btn-link" target="_blank">
+                                <span>
+                                    مشاهده روی
+                                    نقشه
+                                </span><i class="icon-long-arrow-left"></i>
+                            </a>
+                        </div><!-- End .store-content -->
+                    </div><!-- End .col-xl-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .store -->
+        </div><!-- End .col-lg-6 -->
+
+        <div class="col-lg-6">
+            <div class="store">
+                <div class="row">
+                    <div class="col-sm-5 col-xl-6">
+                        <figure class="store-media mb-2 mb-lg-0">
+                            <img src="/Content/client/assets/images/stores/img-2.jpg" alt="image">
+                        </figure><!-- End .store-media -->
+                    </div><!-- End .col-xl-6 -->
+
+                    <div class="col-sm-7 col-xl-6">
+                        <div class="store-content">
+                            <h3 class="store-title">فروشگاه شماره 2</h3><!-- End .store-title -->
+                            <address>تهران، میدان منیریه</address>
+                            <div><a href="tel:#">77558866</a></div>
+
+                            <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
+                            <!-- End .store-subtitle -->
+                            <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
+                            <div>پنج شنبه 11 صبح تا 6 عصر</div>
+                            <div>جمعه - تعطیل</div>
+
+                            <a href="#" class="btn btn-link" target="_blank">
+                                <span>
+                                    مشاهده روی
+                                    نقشه
+                                </span><i class="icon-long-arrow-left"></i>
+                            </a>
+                        </div><!-- End .store-content -->
+                    </div><!-- End .col-xl-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .store -->
+        </div><!-- End .col-lg-6 -->
+    </div><!-- End .row -->
+</div><!-- End .stores -->
+
 
 <main class="main">
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -42,15 +109,15 @@
                                 <ul class="contact-list">
                                     <li>
                                         <i class="icon-map-marker"></i>
-                                        @Model.Address.ShortDescription
+                                        @Model.MainAddress.ShortDescription
                                     </li>
                                     <li>
                                         <i class="icon-phone"></i>
-                                        <a href="tel:@Model.Phone.ShortDescription">@Model.Phone.ShortDescription</a>
+                                        <a href="tel:@Model.MainPhone.ShortDescription">@Model.MainPhone.ShortDescription</a>
                                     </li>
                                     <li>
                                         <i class="icon-envelope"></i>
-                                        <a href="mailto:@Model.Email.ShortDescription">@Model.Email.ShortDescription</a>
+                                        <a href="mailto:@Model.MainEmail.ShortDescription">@Model.MainEmail.ShortDescription</a>
                                     </li>
                                 </ul><!-- End .contact-list -->
                             </div><!-- End .contact-info -->
@@ -64,35 +131,101 @@
                                     <li>
                                         <i class="icon-clock-o "></i>
                                         <span class="text-dark">
-                                            @Model.WorkingHoursSaturdayWednesday.ShortDescription
-                                        </span><br>@Html.Raw(Model.WorkingHoursSaturdayWednesday.Description)
-                                </li>
+                                            @Model.WorkingHourseSaturdayWednesday.ShortDescription
+                                        </span><br>@Html.Raw(Model.WorkingHourseSaturdayWednesday.Description)
+                                    </li>
                                     <li>
                                         <i class="icon-calendar"></i>
-                                        <span class="text-dark">@Model.WorkingHoursTuesday.ShortDescription</span> <br>@Html.Raw(Model.WorkingHoursTuesday.Description)
+                                        <span class="text-dark">@Model.WorkingHourseTuesday.ShortDescription</span> <br>@Html.Raw(Model.WorkingHourseTuesday.Description)
                                     </li>
-                            </ul><!-- End .contact-list -->
-                        </div><!-- End .contact-info -->
-                    </div><!-- End .col-sm-5 -->
+                                </ul><!-- End .contact-list -->
+                            </div><!-- End .contact-info -->
+                        </div><!-- End .col-sm-5 -->
+                    </div><!-- End .row -->
+                </div><!-- End .col-lg-6 -->
+
+                @Html.Action("ContactUsForm", "Home")
+
+            </div><!-- End .row -->
+
+            <hr class="mt-4 mb-5">
+
+            <div class="stores mb-4 mb-lg-5">
+                <h2 class="title text-center mb-3">فروشگاه های ما</h2><!-- End .title text-center mb-2 -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="store">
+                            <div class="row">
+                                <div class="col-sm-5 col-xl-6">
+                                    <figure class="store-media mb-2 mb-lg-0">
+                                        <img src="/Content/client/assets/images/stores/img-1.jpg" alt="image">
+                                    </figure><!-- End .store-media -->
+                                </div><!-- End .col-xl-6 -->
+                                <div class="col-sm-7 col-xl-6">
+                                    <div class="store-content">
+                                        <h3 class="store-title">فروشگاه شماره 1</h3><!-- End .store-title -->
+                                        <address>تهران، میدان تجریش</address>
+                                        <div><a href="tel:#">88776655</a></div>
+
+                                        <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
+                                        <!-- End .store-subtitle -->
+                                        <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
+                                        <div>پنج شنبه 11 صبح تا 6 عصر</div>
+
+                                        <a href="#" class="btn btn-link" target="_blank">
+                                            <span>
+                                                مشاهده روی
+                                                نقشه
+                                            </span><i class="icon-long-arrow-left"></i>
+                                        </a>
+                                    </div><!-- End .store-content -->
+                                </div><!-- End .col-xl-6 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .store -->
+                    </div><!-- End .col-lg-6 -->
+
+                    <div class="col-lg-6">
+                        <div class="store">
+                            <div class="row">
+                                <div class="col-sm-5 col-xl-6">
+                                    <figure class="store-media mb-2 mb-lg-0">
+                                        <img src="/Content/client/assets/images/stores/img-2.jpg" alt="image">
+                                    </figure><!-- End .store-media -->
+                                </div><!-- End .col-xl-6 -->
+
+                                <div class="col-sm-7 col-xl-6">
+                                    <div class="store-content">
+                                        <h3 class="store-title">فروشگاه شماره 2</h3><!-- End .store-title -->
+                                        <address>تهران، میدان منیریه</address>
+                                        <div><a href="tel:#">77558866</a></div>
+
+                                        <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
+                                        <!-- End .store-subtitle -->
+                                        <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
+                                        <div>پنج شنبه 11 صبح تا 6 عصر</div>
+                                        <div>جمعه - تعطیل</div>
+
+                                        <a href="#" class="btn btn-link" target="_blank">
+                                            <span>
+                                                مشاهده روی
+                                                نقشه
+                                            </span><i class="icon-long-arrow-left"></i>
+                                        </a>
+                                    </div><!-- End .store-content -->
+                                </div><!-- End .col-xl-6 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .store -->
+                    </div><!-- End .col-lg-6 -->
                 </div><!-- End .row -->
-            </div><!-- End .col-lg-6 -->
-
-            @Html.Action("ContactUsForm", "Home")
-
-        </div><!-- End .row -->
-
-        <hr class="mt-4 mb-5">
-
-        @Html.Action("ContactOurStoresSection", "Home")
-
-
-    </div><!-- End .container -->
-    <div class="col-12 d-flex">
-        <div class="bg-white w-100">
-            @Html.Raw(Model.Map.Description)
+            </div><!-- End .stores -->
+        </div><!-- End .container -->
+        <div class="col-12 d-flex">
+            <div class="bg-white w-100">
+                @Html.Raw(Model.Map.Description)
+            </div>
         </div>
-    </div>
-</div><!-- End .page-content -->
+    </div><!-- End .page-content -->
 </main><!-- End .main -->
 @*<div class="contant">
         <div id="banner-part" class="banner inner-banner" style="background-image:url(@ViewBag.Banner)">

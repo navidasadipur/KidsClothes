@@ -14,7 +14,6 @@ namespace KidsClothes.Core.Models
         public string Name { get; set; }
         [MaxLength(600)]
         [Display(Name = "موبایل")]
-        [Required(ErrorMessage = "لطفا شماره {0} خود را وارد کنید")]
         public string Phone { get; set; }
         [MaxLength(600)]
         [Display(Name = "ایمیل")]

@@ -111,13 +111,9 @@
     <Compile Include="Migrations\202105030548321_AllowHtmlAttributeAddedToShortDescriptionOfStatic.Designer.cs">
       <DependentUpon>202105030548321_AllowHtmlAttributeAddedToShortDescriptionOfStatic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202105310735360_ChangeInvoceTable.cs" />
-    <Compile Include="Migrations\202105310735360_ChangeInvoceTable.Designer.cs">
-      <DependentUpon>202105310735360_ChangeInvoceTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106010811559_AddDescripotionToOfferModel.cs" />
-    <Compile Include="Migrations\202106010811559_AddDescripotionToOfferModel.Designer.cs">
-      <DependentUpon>202106010811559_AddDescripotionToOfferModel.cs</DependentUpon>
+    <Compile Include="Migrations\202108161000444_removeRequiredFromPhoneInContactFormModel.cs" />
+    <Compile Include="Migrations\202108161000444_removeRequiredFromPhoneInContactFormModel.Designer.cs">
+      <DependentUpon>202108161000444_removeRequiredFromPhoneInContactFormModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
@@ -185,11 +181,8 @@
     <EmbeddedResource Include="Migrations\202105030548321_AllowHtmlAttributeAddedToShortDescriptionOfStatic.resx">
       <DependentUpon>202105030548321_AllowHtmlAttributeAddedToShortDescriptionOfStatic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105310735360_ChangeInvoceTable.resx">
-      <DependentUpon>202105310735360_ChangeInvoceTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106010811559_AddDescripotionToOfferModel.resx">
-      <DependentUpon>202106010811559_AddDescripotionToOfferModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108161000444_removeRequiredFromPhoneInContactFormModel.resx">
+      <DependentUpon>202108161000444_removeRequiredFromPhoneInContactFormModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

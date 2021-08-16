@@ -20,6 +20,7 @@ namespace KidsClothes.Core.Utility
 
     public enum StaticContents
     {
+        ContactUsDescriptionImg = 12,
         AboutDescription = 15,
         firstImageAboutPage = 16,
         WorkingHours = 1008,
@@ -34,6 +35,12 @@ namespace KidsClothes.Core.Utility
         companyServices = 3003,
         CopyRight = 3004,
         ImplementaitonService = 3005,
+        WorkingHoursSaturdayWednesday = 11,
+        WorkingHoursTuesday = 10,
+        StoreOneAddressPhone = 1044,
+        StoreTwoAddressPhone = 1046,
+        StoreOneWorkingHours = 1045,
+        StoreTwoWorkingHours = 1047,
 
         Address = 5,
         Email = 6,

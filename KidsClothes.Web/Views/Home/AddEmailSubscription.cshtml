@@ -3,10 +3,11 @@
     ViewBag.Title = "AddEmailSubscription";
 }
 
+@Html.Action("SharedHeaderSection", "Home")
 
 <div class="spacer"></div>
 
-@if(ViewBag.Added)
+@if (ViewBag.Added)
 {
     <div class="container">
         <div class="subscribe text-center">
@@ -26,18 +27,18 @@
 }
 else
 {<div class="container">
-    <div class="subscribe text-center">
-        <div class="row">
-            <div class="col-md-12 intro" style="margin: 0 auto; text-align: center; padding: 200px 0">
-                <p style="font-size: 20px;">خطا!</p>
-                <h2>اطلاعات وارد شده معتبر نمی باشد</h2>
-                <div style="font-size: 20px;">
-                    <br />
-                    <a href="/">باز گشت به صفحه اصلی</a>
+        <div class="subscribe text-center">
+            <div class="row">
+                <div class="col-md-12 intro" style="margin: 0 auto; text-align: center; padding: 200px 0">
+                    <p style="font-size: 20px;">خطا!</p>
+                    <h2>اطلاعات وارد شده معتبر نمی باشد</h2>
+                    <div style="font-size: 20px;">
+                        <br />
+                        <a href="/">باز گشت به صفحه اصلی</a>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
- </div>
- }
+    </div>
+}
 
