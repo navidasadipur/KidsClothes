@@ -71,6 +71,8 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                         image = new ImageResizer(280, 280, true);
                     if (staticContentDetail.Id == (int)StaticContents.NewsBackImage)
                         image = new ImageResizer(2000, 2500, true);
+                    if (staticContentDetail.Id == (int)StaticContents.StoreOneAddressPhone || staticContentDetail.Id == (int)StaticContents.StoreTwoAddressPhone)
+                        image = new ImageResizer(300, 300, true);
 
                     image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
                         Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
@@ -142,6 +144,8 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                         image = new ImageResizer(280, 280, true);
                     if (staticContentDetail.Id == (int)StaticContents.NewsBackImage)
                         image = new ImageResizer(2000, 2500, true);
+                    if (staticContentDetail.Id == (int)StaticContents.StoreOneAddressPhone || staticContentDetail.Id == (int)StaticContents.StoreTwoAddressPhone)
+                        image = new ImageResizer(300, 300, true);
 
                     image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
                         Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
