@@ -426,22 +426,39 @@ namespace KidsClothes.Web.Controllers
 
         public ActionResult ContactOurStoresSection()
         {
-            var addressPhone = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneAddressPhone);
-            var address = addressPhone.ShortDescription;
-            var phone = addressPhone.Description;
+            var vm = new List<ContactStoreInfo>();
 
-            var workingHourseSaturdayWednesday = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneWorkingHours);
-            var workingHourseTuesday = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneWorkingHours);
+            //get and create storeInfo of store one
+            var addressPhoneImageOne = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneAddressPhone);
 
-            var vm = new ContactUsViewModel()
+            var workingHoursOne = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreOneWorkingHours);
+
+            var storeInfoOne = new ContactStoreInfo()
             {
-                Phone = phoneAddress,
-                Address = address,
-                WorkingHoursSaturdayWednesday = workingHourseSaturdayWednesday,
-                WorkingHoursTuesday = workingHourseTuesday,
+                Address = addressPhoneImageOne.Description,
+                Phone = addressPhoneImageOne.ShortDescription,
+                Image = addressPhoneImageOne.Image,
+                WorkingHoursSaturdayWednesday = workingHoursOne.ShortDescription,
+                WorkingHoursTuesday = workingHoursOne.Description,
             };
 
-            ViewBag.ContactUsDescriptionImg = _staticContentRepo.GetStaticContentDetail((int)StaticContents.ContactUsDescriptionImg);
+            vm.Add(storeInfoOne);
+
+            //get and create storeInfo of store two
+            var addressPhoneImageTwo = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreTwoAddressPhone);
+
+            var workingHoursTwo = _staticContentRepo.GetStaticContentDetail((int)StaticContents.StoreTwoWorkingHours);
+
+            var storeInfoTwo = new ContactStoreInfo()
+            {
+                Address = addressPhoneImageTwo.Description,
+                Phone = addressPhoneImageTwo.ShortDescription,
+                Image = addressPhoneImageTwo.Image,
+                WorkingHoursSaturdayWednesday = workingHoursTwo.ShortDescription,
+                WorkingHoursTuesday = workingHoursTwo.Description,
+            };
+
+            vm.Add(storeInfoTwo);
 
             return View(vm);
         }

@@ -69,7 +69,11 @@ namespace KidsClothes.Web.ViewModels
 
     public class ContactStoreInfo
     {
-        public string 
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Image { get; set; }
+        public string WorkingHoursSaturdayWednesday { get; set; }
+        public string WorkingHoursTuesday { get; set; }
     }
 
     public class CartModel

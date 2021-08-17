@@ -1,68 +1,68 @@
-﻿@model List<KidsClothes.Web.ViewModels.ContactUsViewModel>
+﻿@model List<KidsClothes.Web.ViewModels.ContactStoreInfo>
 
 
 <div class="stores mb-4 mb-lg-5">
     <h2 class="title text-center mb-3">فروشگاه های ما</h2><!-- End .title text-center mb-2 -->
 
     <div class="row">
+            <div class="col-lg-6">
+                <div class="store">
+                    <div class="row">
+                        <div class="col-sm-5 col-xl-6">
+                            <figure class="store-media mb-2 mb-lg-0">
+                                <img src="~/Files/StaticContentImages/Image/@Model[0].Image" alt="image">
+                            </figure><!-- End .store-media -->
+                        </div><!-- End .col-xl-6 -->
+                        <div class="col-sm-7 col-xl-6">
+                            <div class="store-content">
+                                <h3 class="store-title">فروشگاه شماره 1</h3><!-- End .store-title -->
+                                <address>@Model[0].Address</address>
+                                <div><a href="tel:@Html.Raw(Model[0].Phone)">@Html.Raw(Model[0].Phone)</a></div>
+
+                                <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
+                                <!-- End .store-subtitle -->
+                                <div>@Model[0].WorkingHoursSaturdayWednesday</div>
+                                <div>@Html.Raw(Model[0].WorkingHoursTuesday)</div>
+
+                                @*<a href="#" class="btn btn-link" target="_blank">
+                                    <span>
+                                        مشاهده روی
+                                        نقشه
+                                    </span><i class="icon-long-arrow-left"></i>
+                                </a>*@
+                            </div><!-- End .store-content -->
+                        </div><!-- End .col-xl-6 -->
+                    </div><!-- End .row -->
+                </div><!-- End .store -->
+            </div><!-- End .col-lg-6 -->
+
         <div class="col-lg-6">
             <div class="store">
                 <div class="row">
                     <div class="col-sm-5 col-xl-6">
                         <figure class="store-media mb-2 mb-lg-0">
-                            <img src="/Content/client/assets/images/stores/img-1.jpg" alt="image">
-                        </figure><!-- End .store-media -->
-                    </div><!-- End .col-xl-6 -->
-                    <div class="col-sm-7 col-xl-6">
-                        <div class="store-content">
-                            <h3 class="store-title">فروشگاه شماره 1</h3><!-- End .store-title -->
-                            <address>تهران، میدان تجریش</address>
-                            <div><a href="tel:#">88776655</a></div>
-
-                            <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
-                            <!-- End .store-subtitle -->
-                            <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
-                            <div>پنج شنبه 11 صبح تا 6 عصر</div>
-
-                            <a href="#" class="btn btn-link" target="_blank">
-                                <span>
-                                    مشاهده روی
-                                    نقشه
-                                </span><i class="icon-long-arrow-left"></i>
-                            </a>
-                        </div><!-- End .store-content -->
-                    </div><!-- End .col-xl-6 -->
-                </div><!-- End .row -->
-            </div><!-- End .store -->
-        </div><!-- End .col-lg-6 -->
-
-        <div class="col-lg-6">
-            <div class="store">
-                <div class="row">
-                    <div class="col-sm-5 col-xl-6">
-                        <figure class="store-media mb-2 mb-lg-0">
-                            <img src="/Content/client/assets/images/stores/img-2.jpg" alt="image">
+                            <img src="~/Files/StaticContentImages/Image/@Model[1].Image" alt="image">
                         </figure><!-- End .store-media -->
                     </div><!-- End .col-xl-6 -->
 
                     <div class="col-sm-7 col-xl-6">
                         <div class="store-content">
                             <h3 class="store-title">فروشگاه شماره 2</h3><!-- End .store-title -->
-                            <address>تهران، میدان منیریه</address>
-                            <div><a href="tel:#">77558866</a></div>
+                            <address>@Model[1].Address</address>
+                            <div><a href="tel:@Html.Raw(Model[1].Phone)">@Html.Raw(Model[1].Phone)</a></div>
 
                             <h4 class="store-subtitle">ساعت کاری فروشگاه :</h4>
                             <!-- End .store-subtitle -->
-                            <div>شنبه-چهارشنبه 11صبح تا 7 عصر</div>
-                            <div>پنج شنبه 11 صبح تا 6 عصر</div>
-                            <div>جمعه - تعطیل</div>
+                            <div>@Model[1].WorkingHoursSaturdayWednesday</div>
+                            <div>@Html.Raw(Model[1].WorkingHoursTuesday)</div>
+                            @*<div>جمعه - تعطیل</div>
 
                             <a href="#" class="btn btn-link" target="_blank">
                                 <span>
                                     مشاهده روی
                                     نقشه
                                 </span><i class="icon-long-arrow-left"></i>
-                            </a>
+                            </a>*@
                         </div><!-- End .store-content -->
                     </div><!-- End .col-xl-6 -->
                 </div><!-- End .row -->
@@ -72,7 +72,7 @@
 </div><!-- End .stores -->
 
 
-<main class="main">
+@*<main class="main">
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
         <div class="container">
             <ol class="breadcrumb">
@@ -226,7 +226,10 @@
             </div>
         </div>
     </div><!-- End .page-content -->
-</main><!-- End .main -->
+</main><!-- End .main -->*@
+
+
+
 @*<div class="contant">
         <div id="banner-part" class="banner inner-banner" style="background-image:url(@ViewBag.Banner)">
             <div class="container">
