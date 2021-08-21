@@ -64,11 +64,11 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     ArticleImage.SaveAs(Server.MapPath("/Files/ArticleImages/Temp/" + newFileName));
 
                     // Resize Image
-                    ImageResizer image = new ImageResizer(1200, 1200,true);
+                    ImageResizer image = new ImageResizer(1200, 1200, true);
                     image.Resize(Server.MapPath("/Files/ArticleImages/Temp/" + newFileName),
                         Server.MapPath("/Files/ArticleImages/Image/" + newFileName));
 
-                    ImageResizer thumb = new ImageResizer(300,300,true);
+                    ImageResizer thumb = new ImageResizer(410, 410, true);
                     thumb.Resize(Server.MapPath("/Files/ArticleImages/Temp/" + newFileName),
                         Server.MapPath("/Files/ArticleImages/Thumb/" + newFileName));
 
@@ -132,7 +132,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     image.Resize(Server.MapPath("/Files/ArticleImages/Temp/" + newFileName),
                         Server.MapPath("/Files/ArticleImages/Image/" + newFileName));
 
-                    ImageResizer thumb = new ImageResizer(300, 300, true);
+                    ImageResizer thumb = new ImageResizer(410, 410, true);
                     thumb.Resize(Server.MapPath("/Files/ArticleImages/Temp/" + newFileName),
                         Server.MapPath("/Files/ArticleImages/Thumb/" + newFileName));
 
