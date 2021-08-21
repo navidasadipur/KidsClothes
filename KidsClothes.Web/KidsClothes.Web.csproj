@@ -11834,7 +11834,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\OurTeamsSection.cshtml" />
     <Content Include="Views\Home\AboutOurPropertiesSection.cshtml" />
-    <Content Include="Views\Home\ContactSocialsSection.cshtml" />
+    <Content Include="Views\Home\HomeSocialsSection.cshtml" />
     <Content Include="Views\Home\Certificates.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Blog\AdBlogSection.cshtml" />
@@ -11855,6 +11855,7 @@
     <Content Include="Views\Home\AboutCustomerCounterSection.cshtml" />
     <Content Include="Views\Home\ContactOurStoresSection.cshtml" />
     <Content Include="Views\Home\PartnerCompaniesSection.cshtml" />
+    <Content Include="Views\Home\HomeCustomerCommentsSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

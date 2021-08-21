@@ -304,6 +304,26 @@ namespace KidsClothes.Web.Controllers
             return PartialView(allPartners);
         }
 
+        public ActionResult HomeSocialsSection()
+        {
+            SocialViewModel model = new SocialViewModel();
+
+            model.Facebook = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Facebook);
+            model.Twitter = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Twitter);
+            model.Pinterest = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Pinterest);
+            model.Youtube = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Youtube);
+            model.Instagram = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Instagram);
+
+            return PartialView(model);
+        }
+
+        public ActionResult HomeCustomerCommentsSection()
+        {
+
+
+            return PartialView();
+        }
+
         public ActionResult LatestArticlesSection(int take)
         {
             //var articles = _articlesRepo.GetLatestArticles(3);
@@ -318,7 +338,6 @@ namespace KidsClothes.Web.Controllers
 
             return PartialView(vm);
         }
-
 
         public ActionResult DiscountSection()
         {
@@ -390,7 +409,6 @@ namespace KidsClothes.Web.Controllers
 
             return PartialView(model);
         }
-
 
         public ActionResult OurTeamsSection()
         {
@@ -469,18 +487,7 @@ namespace KidsClothes.Web.Controllers
             return View(vm);
         }
 
-        public ActionResult ContactSocialsSection()
-        {
-            SocialViewModel model = new SocialViewModel();
 
-            model.Facebook = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Facebook);
-            model.Twitter = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Twitter);
-            model.Pinterest = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Pinterest);
-            model.Youtube = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Youtube);
-            model.Instagram = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Instagram);
-
-            return PartialView(model);
-        }
 
         public ActionResult ContactUsForm()
         {
