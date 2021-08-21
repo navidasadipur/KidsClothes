@@ -39,9 +39,20 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     var newFileName = Guid.NewGuid() + Path.GetExtension(OfferImage.FileName);
                     OfferImage.SaveAs(Server.MapPath("/Files/OffersImages/Temp/" + newFileName));
                     // Resize Image
-                    ImageResizer image = new ImageResizer(600, 500);
+
+                    // Resizing Image
+                    ImageResizer image = new ImageResizer();
+                    if (offer.Id == 1 || offer.Id == 2)
+                        image = new ImageResizer(470, 670, true);
+                    if (offer.Id == 5 || offer.Id == 6)
+                        image = new ImageResizer(470, 320, true);
+
                     image.Resize(Server.MapPath("/Files/OffersImages/Temp/" + newFileName),
-                        Server.MapPath("/Files/OffersImages/" + newFileName));
+                        Server.MapPath("/Files/OffersImages/Image/" + newFileName));
+
+                    ImageResizer thumb = new ImageResizer(200, 200, true);
+                    thumb.Resize(Server.MapPath("/Files/OffersImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/OffersImages/Thumb/" + newFileName));
 
                     // Deleting Temp Image
                     System.IO.File.Delete(Server.MapPath("/Files/OffersImages/Temp/" + newFileName));
@@ -80,16 +91,29 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (OfferImage != null)
                 {
-                    if (System.IO.File.Exists(Server.MapPath("/Files/OffersImages/" + offer.Image)))
-                        System.IO.File.Delete(Server.MapPath("/Files/OffersImages/" + offer.Image));
+                    if (System.IO.File.Exists(Server.MapPath("/Files/OffersImages/Image/" + offer.Image)))
+                        System.IO.File.Delete(Server.MapPath("/Files/OffersImages/Image/" + offer.Image));
+
+                    if (System.IO.File.Exists(Server.MapPath("/Files/OffersImages/Thumb/" + offer.Image)))
+                        System.IO.File.Delete(Server.MapPath("/Files/OffersImages/Thumb/" + offer.Image));
 
                     // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(OfferImage.FileName);
                     OfferImage.SaveAs(Server.MapPath("/Files/OffersImages/Temp/" + newFileName));
+
                     // Resize Image
-                    ImageResizer image = new ImageResizer(600, 500);
+                    ImageResizer image = new ImageResizer();
+                    if (offer.Id == 1 || offer.Id == 2)
+                        image = new ImageResizer(470, 670, true);
+                    if (offer.Id == 5 || offer.Id == 6)
+                        image = new ImageResizer(470, 320, true);
+
                     image.Resize(Server.MapPath("/Files/OffersImages/Temp/" + newFileName),
-                        Server.MapPath("/Files/OffersImages/" + newFileName));
+                        Server.MapPath("/Files/OffersImages/Image/" + newFileName));
+
+                    ImageResizer thumb = new ImageResizer(200, 200, true);
+                    thumb.Resize(Server.MapPath("/Files/OffersImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/OffersImages/Thumb/" + newFileName));
 
                     // Deleting Temp Image
                     System.IO.File.Delete(Server.MapPath("/Files/OffersImages/Temp/" + newFileName));
