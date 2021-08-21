@@ -50,7 +50,7 @@ namespace KidsClothes.Core.Utility
         DiscountNews = 5027,
 
         Logo = 14,
-        BackGroundImage = 2,
+        HomeMiddleBanner = 2,
         NewsBackImage = 8,
 
         BlogAd = 32,

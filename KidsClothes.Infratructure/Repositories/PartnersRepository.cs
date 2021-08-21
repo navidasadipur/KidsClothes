@@ -18,5 +18,10 @@ namespace KidsClothes.Infratructure.Repositories
             _context = context;
             _logger = logger;
         }
+
+        public List<Partner> GetPartners(int take)
+        {
+            return _context.Partners.Where(a => a.IsDeleted == false).Take(take).ToList();
+        }
     }
 }

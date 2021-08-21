@@ -68,7 +68,7 @@ namespace KidsClothes.Web.Controllers
 
             var popup = _staticContentRepo.GetSingleContentByTypeId((int)StaticContentTypes.Popup);
 
-            ViewBag.BackImage = _staticContentRepo.GetStaticContentDetail((int)StaticContents.BackGroundImage).Image;
+            ViewBag.HomeMiddleBanner = _staticContentRepo.GetStaticContentDetail((int)StaticContents.HomeMiddleBanner);
 
             ViewBag.NewsBackImage = _staticContentRepo.GetStaticContentDetail((int)StaticContents.NewsBackImage).Image;
             ViewBag.NewsTitle = _staticContentRepo.GetStaticContentDetail((int)StaticContents.NewsBackImage).Title;
@@ -296,7 +296,13 @@ namespace KidsClothes.Web.Controllers
 
             return PartialView(vm);
         }
-        
+
+        public ActionResult PartnerCompaniesSection(int take)
+        {
+            var allPartners = _partnersRepo.GetPartners(take);
+
+            return PartialView(allPartners);
+        }
 
         public ActionResult LatestArticlesSection(int take)
         {

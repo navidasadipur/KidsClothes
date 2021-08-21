@@ -65,8 +65,8 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                         image = new ImageResizer(1400, 1400, true);
                     if (staticContentDetail.Id == (int)StaticContents.ContactUsDescriptionImg)
                         image = new ImageResizer(1170, 450, true);
-                    if (staticContentDetail.Id == (int)StaticContents.BackGroundImage)
-                        image = new ImageResizer(2000, 1000, true);
+                    if (staticContentDetail.Id == (int)StaticContents.HomeMiddleBanner)
+                        image = new ImageResizer(1850, 900, true);
                     if (staticContentDetail.Id == (int)StaticContents.BlogAd)
                         image = new ImageResizer(280, 280, true);
                     if (staticContentDetail.Id == (int)StaticContents.NewsBackImage)
@@ -138,7 +138,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                         image = new ImageResizer(1000, 1000, true);
                     if (staticContentDetail.Id == (int)StaticContents.ContactUsDescriptionImg)
                         image = new ImageResizer(1170, 450, true);
-                    if (staticContentDetail.Id == (int)StaticContents.BackGroundImage)
+                    if (staticContentDetail.Id == (int)StaticContents.HomeMiddleBanner)
                         image = new ImageResizer(2000, 1000, true);
                     if (staticContentDetail.Id == (int)StaticContents.BlogAd)
                         image = new ImageResizer(280, 280, true);
