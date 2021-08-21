@@ -30,6 +30,7 @@ namespace KidsClothes.Core.Utility
         Pinterest = 30,
         Facebook = 26,
         linkedin = 33,
+        SocialDescription = 1034,
         BlogImage = 1013,
         ContactInfo = 1014,
         companyServices = 3003,
@@ -62,6 +63,7 @@ namespace KidsClothes.Core.Utility
         About = 13,
         AboutProperties = 14,
         AboutCustomerCounter = 5,
+        CustomersComments = 3,
 
         HomeTopSlider = 17,
         Contact = 2,

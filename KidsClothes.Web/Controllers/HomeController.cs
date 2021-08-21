@@ -310,9 +310,11 @@ namespace KidsClothes.Web.Controllers
 
             model.Facebook = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Facebook);
             model.Twitter = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Twitter);
+            model.Instagram = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Instagram);
             model.Pinterest = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Pinterest);
             model.Youtube = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Youtube);
-            model.Instagram = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Instagram);
+
+            ViewBag.SocialDescription = _staticContentRepo.GetStaticContentDetail((int)StaticContents.SocialDescription);
 
             return PartialView(model);
         }
