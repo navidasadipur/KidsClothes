@@ -56,7 +56,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     // Resizing Image
                     ImageResizer image = new ImageResizer();
                     if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HomeTopSlider)
-                        image = new ImageResizer(1413, 600, true);
+                        image = new ImageResizer(2000, 1000, true);
                     if(staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.PageBanner)
                         image = new ImageResizer(1450, 250, true);
                     if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.About)
@@ -129,7 +129,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     // Resizing Image
                     ImageResizer image = new ImageResizer();
                     if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.HomeTopSlider)
-                        image = new ImageResizer(1413, 600, true);
+                        image = new ImageResizer(2000, 1000, true);
                     if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.PageBanner)
                         image = new ImageResizer(1450, 250, true);
                     if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.About)
