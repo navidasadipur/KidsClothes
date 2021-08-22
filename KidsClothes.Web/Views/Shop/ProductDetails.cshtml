@@ -1,14 +1,18 @@
 ﻿@using KidsClothes.Core.Utility
 @model KidsClothes.Web.ViewModels.ProductDetailsViewModel
 @{
-    ViewBag.Title = "ProductDetails";
+    ViewBag.Title = "جزئیات محصول";
 }
 
 <style>
     .product-nav-thumbs a.active {
         background-color: burlywood;
+        color: white;
+       
     }
 </style>
+
+@Html.Action("SharedHeaderSection", "Home")
 
 <!-- Product detail contant start -->
 @*<input type="hidden" name="mainFeatureId" id="mainFeatureId" value="@Model.ProductMainFeatures.FirstOrDefault().Id" />
@@ -902,14 +906,29 @@
 
                                 @*<label>رنگ : </label>
 
-                                    <div class="product-nav product-nav-thumbs">
-                                        <a href="#" class="active">
-                                            سفید
-                                        </a>
-                                        <a href="#">
-                                            زرد
-                                        </a>
-                                    </div> End .product-nav*@
+            <div class="product-nav product-nav-thumbs">
+                <a href="#" class="active">
+                    سفید
+                </a>
+                <a href="#">
+                    زرد
+                </a>
+            </div> End .product-nav*@
+                            </div><!-- End .details-filter-row -->
+
+                            <div class="details-filter-row details-row-size">
+                                <label for="size">سایز : </label>
+                                <div class="select-custom">
+                                    <select name="size" id="size" class="form-control">
+                                        <option value="#" selected="selected">سایز را انتخاب کنید</option>
+                                        <option value="s">کوچک (Small)</option>
+                                        <option value="m">متوسط (Medium)</option>
+                                        <option value="l">بزرگ (Large)</option>
+                                        <option value="xl">خیلی بزرگ (XLarge)</option>
+                                    </select>
+                                </div><!-- End .select-custom -->
+
+                                <a href="#" class="size-guide"><i class="icon-th-list"></i>راهنمای اندازه</a>
                             </div><!-- End .details-filter-row -->
                             <input type="hidden" name="mainFeatureId" id="mainFeatureId" value="@Model.ProductMainFeatures.FirstOrDefault().Id" />
                             @if (Model.Price > 0)
@@ -918,7 +937,7 @@
                                     <label for="qty">تعداد : </label>
                                     <div class="product-details-quantity">
                                         @*<input type="number" id="qty" class="form-control" value="1" min="1"
-                                            max="10" step="1" data-decimals="0" required>*@
+                    max="10" step="1" data-decimals="0" required>*@
                                         <div class="input-group  input-spinner">
                                             <div class="input-group-append"><button class="btn btn-decrement btn-spinner" onclick="IncreaseProductCount()" style="min-width: 26px"><i class="icon-plus"></i></button></div>
                                             <div class="form-control"><span readonly="readonly" id="txtProductCount">1</span></div>
@@ -966,7 +985,7 @@
                                 <div class="product-cat text-center">
                                     <span>دسته بندی : </span>
                                     @*<a href="#">سرد درد</a>،
-                                        <a href="#">مسکن</a>،*@
+                <a href="#">مسکن</a>،*@
                                     @if (Model.Group != null)
                                     {
                                         <a href="/Shop/ProductList/@Model.Group.Id">@Model.Group.Title</a>

@@ -1,5 +1,7 @@
 ﻿@model KidsClothes.Web.ViewModels.ProductListViewModel
 
+@Html.Action("SharedHeaderSection", "Home")
+
 @*<div class="contant">
     <div id="banner-part" class="banner inner-banner" style="background-image:url(@ViewBag.Banner)">
         <div class="container">
@@ -178,10 +180,10 @@
             <main class="main">
                 <div class="page-header text-center" style="background-image: url('/Files/StaticContentImages/Image/@ViewBag.BanerImage')">
                     <div class="container">
-                        <h1 style="color: #00B4A2;" class="page-title">فروشگاه</h1>
+                        <h1 class="page-title">فروشگاه</h1>
                         @if (ViewBag.ProductGroupName != null)
                         {
-                           <h5>محصولات دسته <b style="color: #00B4A2;">@ViewBag.ProductGroupName</b> </h5>
+                            <h5>محصولات دسته <b style="color: #00B4A2;">@ViewBag.ProductGroupName</b> </h5>
                         }
                     </div><!-- End .container -->
                 </div><!-- End .page-header -->
@@ -206,9 +208,10 @@
                                         </div>
                                         <div class="select-item col-3">
                                             <select onchange="GetGrid()" name="take" id="take" class="form-control">
-                                                <option value="27" selected="selected">27 محصول</option>
-                                                <option value="15">15 محصول</option>
                                                 <option value="9">9 محصول</option>
+                                                <option value="15">15 محصول</option>
+                                                <option value="27" selected="selected">27 محصول</option>
+
                                             </select>
 
                                         </div>
@@ -256,7 +259,7 @@
                                             <a href='#' onclick='location.reload(true); return false;' class="sidebar-filter-clear">پاک کردن همه</a>
                                         }
                                         else
-                                        {   
+                                        {
                                             <a href="javascript:void(0)" class="sidebar-filter-clear" id="reload">پاک کردن همه</a>
                                         }
                                     </div><!-- End .widget widget-clean -->
@@ -416,32 +419,32 @@
                 </div><!-- End .page-content -->
             </main><!-- End .main -->
             <!-- Loading -->
-@section scripts
+            @section scripts
 {
-    <script>
-    var brandIds = null;
-    var groupIds = null;
-    var productIds = null;
-    </script>
+                <script>
+                    var brandIds = null;
+                    var groupIds = null;
+                    var productIds = null;
+                </script>
 
-    @if (ViewBag.brandIds != null)
-    {
-        <script>
+                @if (ViewBag.brandIds != null)
+                {
+                    <script>
             brandIds = "@ViewBag.BrandIds";
-        </script>
-    }
-    @if (ViewBag.groupIds != null)
-    {
-        <script>
+                    </script>
+                }
+                @if (ViewBag.groupIds != null)
+                {
+                    <script>
             groupIds = "@ViewBag.GroupIds";
-        </script>
-    }
-    @if (ViewBag.productIds != null)
-    {
-        <script>
+                    </script>
+                }
+                @if (ViewBag.productIds != null)
+                {
+                    <script>
             productIds = "@ViewBag.ProductIds";
-        </script>
-    }
+                    </script>
+                }
                 <script>
         var selectedGroupId = @Model.SelectedGroupId;
 
