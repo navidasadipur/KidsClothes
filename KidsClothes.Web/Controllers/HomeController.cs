@@ -321,9 +321,9 @@ namespace KidsClothes.Web.Controllers
 
         public ActionResult HomeCustomerCommentsSection()
         {
+            var model = _staticContentRepo.GetContentByTypeId((int)StaticContentTypes.CustomersComments);
 
-
-            return PartialView();
+            return PartialView(model);
         }
 
         public ActionResult LatestArticlesSection(int take)

@@ -18,7 +18,25 @@
                                             }
                                         }
                                     }'>
-                <blockquote class="testimonial testimonial-icon text-center">
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <blockquote class="testimonial testimonial-icon text-center">
+                            <p class="text-center" dir="rtl">
+
+                                @Html.Raw(item.Description)
+
+                            </p>
+
+                            <cite>
+                                @item.Title
+                                <span>@item.ShortDescription</span>
+                            </cite>
+                        </blockquote><!-- End .testimonial -->
+                    }
+                }
+                @*<blockquote class="testimonial testimonial-icon text-center">
                     <p class="text-center" dir="rtl">
                         “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
                         لورم
@@ -30,35 +48,8 @@
                         رضا کریمی
                         <span>مشتری</span>
                     </cite>
-                </blockquote><!-- End .testimonial -->
+                </blockquote> End .testimonial*@ 
 
-                <blockquote class="testimonial testimonial-icon text-center">
-                    <p class="text-center" dir="rtl">
-                        “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                        لورم
-                        ایپسوم متن ساختگی با
-                        تولید سادگی نامفهوم ”
-                    </p>
-
-                    <cite>
-                        نرگس معصومی
-                        <span>مشتری</span>
-                    </cite>
-                </blockquote><!-- End .testimonial -->
-
-                <blockquote class="testimonial testimonial-icon text-center">
-                    <p class="text-center" dir="rtl">
-                        “ لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
-                        لورم
-                        ایپسوم متن ساختگی با
-                        تولید سادگی نامفهوم ”
-                    </p>
-
-                    <cite>
-                        علی رفیعی
-                        <span>مشتری</span>
-                    </cite>
-                </blockquote><!-- End .testimonial -->
             </div><!-- End .testimonials-slider owl-carousel -->
         </div><!-- End .cta-wrapper -->
     </div><!-- End .col-lg-6 -->
