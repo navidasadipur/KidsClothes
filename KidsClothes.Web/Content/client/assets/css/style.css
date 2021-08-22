@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*--------------------- TABLE OF CONTENTS --------------- */
 /*--------------------- 1.    GENERAL STYLES ------------------- */
 /*--------------------- 2.    HEADERS ------------------- */
@@ -10011,9 +10011,13 @@ a:focus {
   margin-bottom: 3.2rem;
 }
 
-.widget-list {
-  margin-bottom: 0;
+span.widget-about-title > p:last-of-type {
+    margin-bottom: 0.4rem;
 }
+
+    .widget-list {
+        margin-bottom: 0;
+    }
 
 .widget-list li:not(:last-child) {
   margin-bottom: .4rem;

@@ -7,19 +7,17 @@
                 <div class="row">
                     <div class="col-sm-12 col-lg-4">
                         <div class="widget widget-about">
-                            <img src="/Content/client/assets/images/demos/demo-15/logo-footer.png" class="footer-logo"
+                            <img src="/Files/StaticContentImages/Image/@Model.Logo.Image" class="footer-logo"
                                  alt="Footer Logo" width="105" height="25">
                             <p>
-                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی
-                                نامفهوم. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با
-                                تولید سادگی نامفهوم.
+                                @Html.Raw(Model.Logo.ShortDescription)
                             </p>
 
                             <div class="widget-about-info">
                                 <div class="row">
                                     <div class="col-sm-6 col-md-4">
-                                        <span class="widget-about-title">سوالی دارید؟ 7روز هفته/24ساعته</span>
-                                        <a href="tel:123456789">02155667788</a>
+                                        <span class="widget-about-title"><p>سوالی دارید؟ 7روز هفته/24ساعته</p></span>
+                                        <a href="tel:@Model.Phone.ShortDescription">@Model.Phone.ShortDescription</a>
                                     </div><!-- End .col-sm-6 -->
                                 </div><!-- End .row -->
                             </div><!-- End .widget-about-info -->
@@ -32,19 +30,19 @@
 
                             <ul class="widget-list">
                                 <li class="megamenu-container">
-                                    <a href="index.html">خانه</a>
+                                    <a href="/">خانه</a>
                                 </li>
                                 <li>
-                                    <a href="category.html">محصولات</a>
+                                    <a href="/Shop/">محصولات</a>
                                 </li>
                                 <li>
-                                    <a href="blog.html">اخبار </a>
+                                    <a href="/Blog/">اخبار </a>
                                 </li>
                                 <li>
-                                    <a href="about.html">درباره ما</a>
+                                    <a href="/About/">درباره ما</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">تماس با ما</a>
+                                    <a href="/ContentUs/">تماس با ما</a>
                                 </li>
                             </ul><!-- End .widget-list -->
                         </div><!-- End .widget -->
@@ -56,9 +54,9 @@
 
                             <p>با عضویت در خبرنامه از آخرین خبرها مطلع شوید</p>
 
-                            <form action="#">
+                            <form action="/Home/AddEmailSubscription" method="post">
                                 <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="آدرس ایمیل شما"
+                                    <input name="Email" id="Email" type="email" class="form-control" placeholder="آدرس ایمیل شما"
                                            aria-label="Email Adress" required>
                                     <div class="input-group-append">
                                         <button class="btn btn-dark" type="submit">
@@ -75,24 +73,25 @@
 
         <div class="footer-bottom">
             <div class="container-fluid">
-                <p class="footer-copyright">Copyright © 2019 تمامی حقوق محفوظ است.</p>
+                @*<p class="footer-copyright">Copyright © 2019 تمامی حقوق محفوظ است.</p>*@
+                <p class="footer-copyright"> <a href="https://www.spad.co/">© طراحی شده توسط اسپاد</a></p>
                 <!-- End .footer-copyright -->
 
                 <div class="social-icons social-icons-color">
                     <span class="social-label">شبکه های اجتماعی</span>
-                    <a href="#" class="social-icon social-facebook" title="فیسبوک" target="_blank">
+                    <a href="@Model.Facebook.Link" class="social-icon social-facebook" title="@Model.Facebook.Title" target="_blank">
                         <i class="icon-facebook-f"></i>
                     </a>
-                    <a href="#" class="social-icon social-twitter" title="توییتر" target="_blank">
+                    <a href="@Model.Twitter.Link" class="social-icon social-twitter" title="@Model.Twitter.Title" target="_blank">
                         <i class="icon-twitter"></i>
                     </a>
-                    <a href="#" class="social-icon social-instagram" title="اینستاگرام" target="_blank">
+                    <a href="@Model.Instagram.Link" class="social-icon social-instagram" title="@Model.Instagram.Title" target="_blank">
                         <i class="icon-instagram"></i>
                     </a>
-                    <a href="#" class="social-icon social-youtube" title="یوتیوب" target="_blank">
+                    <a href="@Model.Youtube.Link" class="social-icon social-youtube" title="@Model.Youtube.Title" target="_blank">
                         <i class="icon-youtube"></i>
                     </a>
-                    <a href="#" class="social-icon social-pinterest" title="پینترست" target="_blank">
+                    <a href="@Model.Pinterest.Link" class="social-icon social-pinterest" title="@Model.Pinterest.Title" target="_blank">
                         <i class="icon-pinterest"></i>
                     </a>
                 </div><!-- End .soial-icons -->
@@ -118,7 +117,7 @@
                         <div class="widget-about-info">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4">
-                                    <span class="widget-about-title">سوالی دارید؟ 7روز هفته/24ساعته</span>
+                                    <span class="widget-about-title">@Html.Raw(Model.Phone.Description)</span>
                                     <a href="tel:@Model.Phone.ShortDescription">@Model.Phone.ShortDescription</a>
                                 </div><!-- End .col-sm-6 -->
                             </div><!-- End .row -->
