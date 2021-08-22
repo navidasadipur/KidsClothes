@@ -40,7 +40,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     var newFileName = Guid.NewGuid() + Path.GetExtension(PartnerImage.FileName);
                     PartnerImage.SaveAs(Server.MapPath("/Files/PartnersImages/Temp/" + newFileName));
                     // Resize Image
-                    ImageResizer image = new ImageResizer(400, 200, true);
+                    ImageResizer image = new ImageResizer(100, 50, true);
                     image.Resize(Server.MapPath("/Files/PartnersImages/Temp/" + newFileName),
                         Server.MapPath("/Files/PartnersImages/" + newFileName));
 
@@ -88,7 +88,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     var newFileName = Guid.NewGuid() + Path.GetExtension(PartnerImage.FileName);
                     PartnerImage.SaveAs(Server.MapPath("/Files/PartnersImages/Temp/" + newFileName));
                     // Resize Image
-                    ImageResizer image = new ImageResizer(400, 200, true);
+                    ImageResizer image = new ImageResizer(100, 50, true);
                     image.Resize(Server.MapPath("/Files/PartnersImages/Temp/" + newFileName),
                         Server.MapPath("/Files/PartnersImages/" + newFileName));
 
