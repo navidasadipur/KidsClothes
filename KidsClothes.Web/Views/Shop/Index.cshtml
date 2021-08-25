@@ -208,9 +208,9 @@
                                         </div>
                                         <div class="select-item col-3">
                                             <select onchange="GetGrid()" name="take" id="take" class="form-control">
-                                                <option value="9">9 محصول</option>
+                                                <option value="9" selected="selected">9 محصول</option>
                                                 <option value="15">15 محصول</option>
-                                                <option value="27" selected="selected">27 محصول</option>
+                                                <option value="27">27 محصول</option>
 
                                             </select>
 
@@ -525,6 +525,39 @@
             //    alert("Span HTML is now " + $(this).html());
             //    GetGrid();
             //});
+
+            //// Slider For category pages / filter price
+            //if (typeof noUiSlider === 'object') {
+            //    var priceSlider = document.getElementById('price-slider');
+
+            //    console.log("test")
+
+            //    // Check if #price-slider elem is exists if not return
+            //    // to prevent error logs
+            //    if (priceSlider == null) return;
+
+            //    noUiSlider.create(priceSlider, {
+            //        start: [0, 750000],
+            //        connect: true,
+            //        step: 50,
+            //        margin: 200,
+            //        range: {
+            //            'min': 1000,
+            //            'max': 1000000
+            //        },
+            //        tooltips: true,
+            //        format: wNumb({
+            //            decimals: 0,
+            //            suffix: 'تومان'
+            //        })
+            //    });
+
+            //    // Update Price Range
+            //    priceSlider.noUiSlider.on('update', function (values, handle) {
+            //        $('#filter-price-range').text(values.join(' - '));
+            //    });
+            //}
+
 
             // Update Price Range
             $('#price-slider').mouseup(function () {

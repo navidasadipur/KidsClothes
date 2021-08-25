@@ -93,15 +93,15 @@ namespace KidsClothes.Web.Controllers
                 var childrenGroups = _productGroupRepo.GetChildrenProductGroups();
                 vm.ProductGroups = childrenGroups;
                 ViewBag.Title = "محصولات";
-                try
-                {
-                    banner = _staticContentRepo.GetSingleContentDetailByTitle("سربرگ محصولات").Image;
-                    banner = "/Files/StaticContentImages/Image/" + banner;
-                }
-                catch
-                {
+                //try
+                //{
+                //    banner = _staticContentRepo.GetSingleContentDetailByTitle("سربرگ محصولات").Image;
+                //    banner = "/Files/StaticContentImages/Image/" + banner;
+                //}
+                //catch
+                //{
 
-                }
+                //}
             }
             else
             {
