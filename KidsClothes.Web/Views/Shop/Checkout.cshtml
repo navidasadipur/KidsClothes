@@ -3,195 +3,195 @@
     ViewBag.Title = "ثبت نهایی";
 }
 
-
+@Html.Action("SharedHeaderSection", "Home")
 
 @*<div class="contant">
-    <div id="banner-part" class="banner inner-banner">
-        <div class="container">
-            <div class="bread-crumb-main">
-                <h1 class="banner-title">ثبت نهایی</h1>
-                <div class="breadcrumb">
-                    <ul class="inline">
-                        <li><a href="/">خانه</a></li>
-                        <li>ثبت نهایی</li>
-                    </ul>
+        <div id="banner-part" class="banner inner-banner">
+            <div class="container">
+                <div class="bread-crumb-main">
+                    <h1 class="banner-title">ثبت نهایی</h1>
+                    <div class="breadcrumb">
+                        <ul class="inline">
+                            <li><a href="/">خانه</a></li>
+                            <li>ثبت نهایی</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="checkout-part ptb-100">
-        <div class="container">
-            <form class="main-form" action="/Shop/Checkout" method="post">
-                @if (ViewBag.Errors.Count > 0)
-                {
-                    <div class="row">
-                        <div class="col-12 alert alert-danger">
-                            @foreach (string error in ViewBag.Errors)
-                            {
-                                <div>@error</div>
-                            }
-                        </div>
-                    </div>
-                }
-
-                @{
-                    var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
-                }
-                <div class="row">
-                    @if (ViewBag.Errors.Count < 1) // don't show checkout form if there are errors
+        <div class="checkout-part ptb-100">
+            <div class="container">
+                <form class="main-form" action="/Shop/Checkout" method="post">
+                    @if (ViewBag.Errors.Count > 0)
                     {
-                        @Html.Action("CheckoutForm", "Shop", new { invoiceNumber = ViewBag.InvoiceNumber })
+                        <div class="row">
+                            <div class="col-12 alert alert-danger">
+                                @foreach (string error in ViewBag.Errors)
+                                {
+                                    <div>@error</div>
+                                }
+                            </div>
+                        </div>
                     }
 
-                    <div class="col-12 col-lg-4">
-                        <div class="heading-part mb-30 mb-sm-20">
-                            <h3>اقلام سفارش شما</h3>
-                        </div>
-                        <div class="checkout-products sidebar-product mb-60">
-                            <ul>
-                                @foreach (var item in Model.CartItems)
-                                {
-                                    <li>
-                                        <div class="pro-media">
-                                            <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')">
-                                                <img alt="@item.ProductName"
-                                                     src="/Files/ProductImages/Thumb/@item.Image">
-                                            </a>
-                                        </div>
-                                        <div class="pro-detail-info">
-                                            <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')" class="product-title">
-                                                @item.ProductName
-                                            </a>
-                                            <div class="price-box">
-                                                <span class="price">@item.Price.ToString("##,###") تومان</span>
+                    @{
+                        var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
+                    }
+                    <div class="row">
+                        @if (ViewBag.Errors.Count < 1) // don't show checkout form if there are errors
+                        {
+                            @Html.Action("CheckoutForm", "Shop", new { invoiceNumber = ViewBag.InvoiceNumber })
+                        }
+
+                        <div class="col-12 col-lg-4">
+                            <div class="heading-part mb-30 mb-sm-20">
+                                <h3>اقلام سفارش شما</h3>
+                            </div>
+                            <div class="checkout-products sidebar-product mb-60">
+                                <ul>
+                                    @foreach (var item in Model.CartItems)
+                                    {
+                                        <li>
+                                            <div class="pro-media">
+                                                <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')">
+                                                    <img alt="@item.ProductName"
+                                                         src="/Files/ProductImages/Thumb/@item.Image">
+                                                </a>
                                             </div>
-                                            <div class="checkout-qty">
-                                                <div>
-                                                    <label>تعداد </label>
-                                                    <span class="info-deta">@item.Quantity</span>
+                                            <div class="pro-detail-info">
+                                                <a href="/Product/@item.Id/@item.ProductName.Replace(' ', '-')" class="product-title">
+                                                    @item.ProductName
+                                                </a>
+                                                <div class="price-box">
+                                                    <span class="price">@item.Price.ToString("##,###") تومان</span>
+                                                </div>
+                                                <div class="checkout-qty">
+                                                    <div>
+                                                        <label>تعداد </label>
+                                                        <span class="info-deta">@item.Quantity</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-
-                        @if (overallPrice > 200000)
-                        {
-                            <div class="free-delivery mb-30 mb-sm-20">
-                                <div class="delivery-icon"><i class="fas fa-shipping-fast"></i></div>
-                                <div class="delivery-text"><span>ارسال رایگان محموله</span></div>
+                                        </li>
+                                    }
+                                </ul>
                             </div>
-                        }
 
-                        @if (ViewBag.DiscountCode.Equals(""))
-                        {
-                            <div class="checkout-discount-section-container mb-20">
-
-                                <div class="check-box-container">
-                                    <div>
-                                        <label for="" class="control-label chkbox-label">کد تخفیف دارید؟</label>
-                                    </div>
-                                    <div>
-                                        <input id="chkHasDiscountCode" name="chkHasDiscountCode" type="checkbox" class="form-control fashioned-checkbox" />
-                                        <label id="lblHasDiscountCode" for="chkHasDiscountCode" class="chkbox">Toggle</label>
-                                    </div>
+                            @if (overallPrice > 200000)
+                            {
+                                <div class="free-delivery mb-30 mb-sm-20">
+                                    <div class="delivery-icon"><i class="fas fa-shipping-fast"></i></div>
+                                    <div class="delivery-text"><span>ارسال رایگان محموله</span></div>
                                 </div>
+                            }
 
+                            @if (ViewBag.DiscountCode.Equals(""))
+                            {
+                                <div class="checkout-discount-section-container mb-20">
 
-                                <div class="checkout-discount-section">
-
-                                    <span class="inputdesc"><i class="fa fa-info-circle"></i> شما تنها امکان اعمال یک کد تخفیف را دارید.</span>
-                                    <div class="form-inline">
-                                        <div class="form-group">
-                                            <input type="text" id="txtDiscountCode" name="txtDiscountCode" placeholder="کد تخفیف" />
+                                    <div class="check-box-container">
+                                        <div>
+                                            <label for="" class="control-label chkbox-label">کد تخفیف دارید؟</label>
                                         </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-color btn-discount" onclick="ApplyDiscountCode(event, @ViewBag.InvoiceNumber)">اعمال</button>
+                                        <div>
+                                            <input id="chkHasDiscountCode" name="chkHasDiscountCode" type="checkbox" class="form-control fashioned-checkbox" />
+                                            <label id="lblHasDiscountCode" for="chkHasDiscountCode" class="chkbox">Toggle</label>
                                         </div>
                                     </div>
 
-                                    <div class="discount-message"></div>
 
-                                </div>
+                                    <div class="checkout-discount-section">
 
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="checkout-discount-section-container mb-20">
+                                        <span class="inputdesc"><i class="fa fa-info-circle"></i> شما تنها امکان اعمال یک کد تخفیف را دارید.</span>
+                                        <div class="form-inline">
+                                            <div class="form-group">
+                                                <input type="text" id="txtDiscountCode" name="txtDiscountCode" placeholder="کد تخفیف" />
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-color btn-discount" onclick="ApplyDiscountCode(event, @ViewBag.InvoiceNumber)">اعمال</button>
+                                            </div>
+                                        </div>
 
-                                <div class="check-box-container">
-                                    <div>
-                                        <label for="" class="control-label chkbox-label">کد تخفیف شما:</label>
+                                        <div class="discount-message"></div>
+
                                     </div>
+
                                 </div>
+                            }
+                            else
+                            {
+                                <div class="checkout-discount-section-container mb-20">
 
-
-                                <div class="checkout-discount-section" style="display:block">
-
-                                    <div class="form-inline">
-                                        <div class="form-group">
-                                            <input type="text" id="txtDiscountCode" name="txtDiscountCode" placeholder="کد تخفیف" value="@ViewBag.DiscountCode" disabled="disabled" />
+                                    <div class="check-box-container">
+                                        <div>
+                                            <label for="" class="control-label chkbox-label">کد تخفیف شما:</label>
                                         </div>
                                     </div>
 
-                                    <span class="inputdesc"><i class="fa fa-info-circle"></i> شما تنها امکان اعمال یک کد تخفیف را دارید.</span>
+
+                                    <div class="checkout-discount-section" style="display:block">
+
+                                        <div class="form-inline">
+                                            <div class="form-group">
+                                                <input type="text" id="txtDiscountCode" name="txtDiscountCode" placeholder="کد تخفیف" value="@ViewBag.DiscountCode" disabled="disabled" />
+                                            </div>
+                                        </div>
+
+                                        <span class="inputdesc"><i class="fa fa-info-circle"></i> شما تنها امکان اعمال یک کد تخفیف را دارید.</span>
+
+                                    </div>
 
                                 </div>
-
-                            </div>
-                        }
+                            }
 
 
-                        <div class="complete-order-detail commun-table gray-bg mb-30">
-                            <div class="table-responsive">
-                                <table class="table m-0">
-                                    <tbody>
-                                        <tr>
-                                            <td><b>تاریخ</b></td>
-                                            <td>@ViewBag.Today</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>شماره سفارش</b></td>
-                                            <td>#@ViewBag.InvoiceNumber</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>مبلغ سفارش</b></td>
-                                            <td>@overallPrice.ToString("##,###") تومان</td>
-                                        </tr>
-                                        <tr>
-                                            @{
-                                                var strDiscount = ViewBag.DiscountAmount == 0 ? "0 تومان" : ViewBag.DiscountAmount.ToString("##,###") + " تومان";
-                                            }
-                                            <td><b>تخفیف</b></td>
-                                            <td id="tdDiscountAmount">@strDiscount</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>مبلغ نهایی</b></td>
-                                            <td>
-                                                <div class="price-box"><span class="price finalPrice">@Model.TotalPrice.ToString("##,###") تومان</span></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>روش پرداخت</b></td>
-                                            <td>درب منزل</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>شماره سفارش</b></td>
-                                            <td>#011052</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="complete-order-detail commun-table gray-bg mb-30">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <tbody>
+                                            <tr>
+                                                <td><b>تاریخ</b></td>
+                                                <td>@ViewBag.Today</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>شماره سفارش</b></td>
+                                                <td>#@ViewBag.InvoiceNumber</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>مبلغ سفارش</b></td>
+                                                <td>@overallPrice.ToString("##,###") تومان</td>
+                                            </tr>
+                                            <tr>
+                                                @{
+                                                    var strDiscount = ViewBag.DiscountAmount == 0 ? "0 تومان" : ViewBag.DiscountAmount.ToString("##,###") + " تومان";
+                                                }
+                                                <td><b>تخفیف</b></td>
+                                                <td id="tdDiscountAmount">@strDiscount</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>مبلغ نهایی</b></td>
+                                                <td>
+                                                    <div class="price-box"><span class="price finalPrice">@Model.TotalPrice.ToString("##,###") تومان</span></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>روش پرداخت</b></td>
+                                                <td>درب منزل</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>شماره سفارش</b></td>
+                                                <td>#011052</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 
 
@@ -217,66 +217,66 @@
             <div class="container">
                 <div class="checkout-discount">
                     @*<div class="checkout-discount">
+                            <form action="#">
+                                <label for="txtDiscountCode" class="text-truncate">
+                                    کد تخفیف دارید؟ <span>
+                                        برای
+                                        وارد کردن کد تخفیف خود اینجا کلیک کنید
+                                    </span>
+                                </label>
+                                <input type="text" class="form-control" id="txtDiscountCode" name="txtDiscountCode" required>
+                            </form>
+                        </div> End .checkout-discount*@
+
+                    @*@if (ViewBag.Errors.Count > 0)
+                        {
+                            <div class="row">
+                                <div class="col-12 alert alert-danger">
+                                    @foreach (string error in ViewBag.Errors)
+                                    {
+                                        <div>@error</div>
+                                    }
+                                </div>
+                            </div>
+                        }
                         <form action="#">
-                            <label for="txtDiscountCode" class="text-truncate">
+                            <input type="text" class="form-control" required id="checkout-discount-input">
+                            <label for="checkout-discount-input" class="text-truncate">
                                 کد تخفیف دارید؟ <span>
                                     برای
                                     وارد کردن کد تخفیف خود اینجا کلیک کنید
                                 </span>
                             </label>
-                            <input type="text" class="form-control" id="txtDiscountCode" name="txtDiscountCode" required>
-                        </form>
-                    </div> End .checkout-discount*@ 
-
-                    @*@if (ViewBag.Errors.Count > 0)
-                    {
-                        <div class="row">
-                            <div class="col-12 alert alert-danger">
-                                @foreach (string error in ViewBag.Errors)
-                                {
-                                    <div>@error</div>
-                                }
-                            </div>
-                        </div>
-                    }
-                    <form action="#">
-                        <input type="text" class="form-control" required id="checkout-discount-input">
-                        <label for="checkout-discount-input" class="text-truncate">
-                            کد تخفیف دارید؟ <span>
-                                برای
-                                وارد کردن کد تخفیف خود اینجا کلیک کنید
-                            </span>
-                        </label>
-                    </form>*@
+                        </form>*@
 
                     @*@if (ViewBag.DiscountCode.Equals(""))
-            {
+                            {
 
-                <form action="#">
-                    <input type="text" class="form-control" required id="checkout-discount-input">
-                    <label for="checkout-discount-input" class="text-truncate">
-                        کد تخفیف دارید؟ <span>
-                            برای
-                            وارد کردن کد تخفیف خود اینجا کلیک کنید
-                        </span>
-                    </label>
-                </form>
-            }
-            else
-            {
-        <div>
+                                <form action="#">
+                                    <input type="text" class="form-control" required id="checkout-discount-input">
+                                    <label for="checkout-discount-input" class="text-truncate">
+                                        کد تخفیف دارید؟ <span>
+                                            برای
+                                            وارد کردن کد تخفیف خود اینجا کلیک کنید
+                                        </span>
+                                    </label>
+                                </form>
+                            }
+                            else
+                            {
+                        <div>
 
-            <h3 class="summary-title">سفارش شما</h3> End .summary-title
-        </div>
+                            <h3 class="summary-title">سفارش شما</h3> End .summary-title
+                        </div>
 
-            }*@
+                            }*@
 
 
 
                 </div><!-- End .checkout-discount -->
                 <form action="/Shop/Checkout" method="post">
                     <div class="row">
-                        
+
 
                         @if (ViewBag.Errors.Count < 1) // don't show checkout form if there are errors
                         {
@@ -304,13 +304,13 @@
                                         }
 
                                         @*<tr>
-                            <td><a href="#">سارافون آبی بلند</a></td>
-                            <td class="text-left">152,000 تومان</td>
-                        </tr>*@
+                                                <td><a href="#">سارافون آبی بلند</a></td>
+                                                <td class="text-left">152,000 تومان</td>
+                                            </tr>*@
                                         @{
-                            var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
-                            var strDiscount = ViewBag.DiscountAmount == 0 ? "0 تومان" : ViewBag.DiscountAmount.ToString("##,###") + " تومان";
-                        }
+                                            var overallPrice = ViewBag.DiscountAmount + Model.TotalPrice;
+                                            var strDiscount = ViewBag.DiscountAmount == 0 ? "0 تومان" : ViewBag.DiscountAmount.ToString("##,###") + " تومان";
+                                        }
                                         <tr class="summary-subtotal">
                                             <td>جمع سبد خرید</td>
                                             <td class="text-left">@overallPrice.ToString("##,###") تومان</td>
@@ -320,12 +320,12 @@
                                             <td class="text-left">@strDiscount</td>
                                         </tr><!-- End .summary-subtotal -->
                                         @*@if (overallPrice > 200000)
-                                        {
-                                            <tr>
-                                                <td>شیوه ارسال : </td>
-                                                <td class="text-left">ارسال رایگان</td>
-                                            </tr>
-                                        }*@
+                                            {
+                                                <tr>
+                                                    <td>شیوه ارسال : </td>
+                                                    <td class="text-left">ارسال رایگان</td>
+                                                </tr>
+                                            }*@
                                         <tr>
                                             <td>تاریخ </td>
                                             <td class="text-left">@ViewBag.Today</td>
@@ -343,110 +343,110 @@
 
                                 <div class="accordion-summary" id="accordion-payment">
                                     @*<div class="card">
-                                        <div class="card-header" id="heading-1">
-                                            <h2 class="card-title">
-                                                <a role="button" data-toggle="collapse" href="#collapse-1"
-                                                   aria-expanded="true" aria-controls="collapse-1">
-                                                    درگاه بانک ملت
-                                                </a>
-                                            </h2>
-                                        </div><!-- End .card-header -->
-                                        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1"
-                                             data-parent="#accordion-payment">
-                                            <div class="card-body">
-                                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
-                                                ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
-                                                سادگی نامفهوم.
-                                            </div><!-- End .collapse -->
-                                        </div><!-- End .card -->
-
-                                        <div class="card">
-                                            <div class="card-header" id="heading-2">
+                                            <div class="card-header" id="heading-1">
                                                 <h2 class="card-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse"
-                                                       href="#collapse-2" aria-expanded="false"
-                                                       aria-controls="collapse-2">
-                                                        درگاه شاپرک
+                                                    <a role="button" data-toggle="collapse" href="#collapse-1"
+                                                       aria-expanded="true" aria-controls="collapse-1">
+                                                        درگاه بانک ملت
                                                     </a>
                                                 </h2>
                                             </div><!-- End .card-header -->
-                                            <div id="collapse-2" class="collapse" aria-labelledby="heading-2"
+                                            <div id="collapse-1" class="collapse show" aria-labelledby="heading-1"
                                                  data-parent="#accordion-payment">
                                                 <div class="card-body">
-                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم.
-                                                </div><!-- End .card-body -->
-                                            </div><!-- End .collapse -->
-                                        </div><!-- End .card -->
+                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن
+                                                    ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید
+                                                    سادگی نامفهوم.
+                                                </div><!-- End .collapse -->
+                                            </div><!-- End .card -->
 
-                                        <div class="card">
-                                            <div class="card-header" id="heading-3">
-                                                <h2 class="card-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse"
-                                                       href="#collapse-3" aria-expanded="false"
-                                                       aria-controls="collapse-3">
-                                                        زرین پال <small class="float-left paypal-link">
-                                                            زرین پال
-                                                            چیست؟
-                                                        </small>
-                                                    </a>
-                                                </h2>
-                                            </div><!-- End .card-header -->
-                                            <div id="collapse-3" class="collapse" aria-labelledby="heading-3"
-                                                 data-parent="#accordion-payment">
-                                                <div class="card-body">
-                                                    لورم ایپسوم متن ساختگی با تولید سادگی
-                                                    نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.
-                                                </div><!-- End .card-body -->
-                                            </div><!-- End .collapse -->
-                                        </div><!-- End .card -->
+                                            <div class="card">
+                                                <div class="card-header" id="heading-2">
+                                                    <h2 class="card-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                                           href="#collapse-2" aria-expanded="false"
+                                                           aria-controls="collapse-2">
+                                                            درگاه شاپرک
+                                                        </a>
+                                                    </h2>
+                                                </div><!-- End .card-header -->
+                                                <div id="collapse-2" class="collapse" aria-labelledby="heading-2"
+                                                     data-parent="#accordion-payment">
+                                                    <div class="card-body">
+                                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوملورم ایپسوم متن
+                                                        ساختگی با تولید سادگی نامفهوم.
+                                                    </div><!-- End .card-body -->
+                                                </div><!-- End .collapse -->
+                                            </div><!-- End .card -->
 
-                                        <div class="card">
-                                            <div class="card-header" id="heading-4">
-                                                <h2 class="card-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse"
-                                                       href="#collapse-4" aria-expanded="false"
-                                                       aria-controls="collapse-4">
-                                                        واریز بانک
-                                                    </a>
-                                                </h2>
-                                            </div><!-- End .card-header -->
-                                            <div id="collapse-4" class="collapse" aria-labelledby="heading-4"
-                                                 data-parent="#accordion-payment">
-                                                <div class="card-body">
-                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم
-                                                    متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با
-                                                    تولید سادگی نامفهوم.
-                                                </div><!-- End .card-body -->
-                                            </div><!-- End .collapse -->
-                                        </div><!-- End .card -->
+                                            <div class="card">
+                                                <div class="card-header" id="heading-3">
+                                                    <h2 class="card-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                                           href="#collapse-3" aria-expanded="false"
+                                                           aria-controls="collapse-3">
+                                                            زرین پال <small class="float-left paypal-link">
+                                                                زرین پال
+                                                                چیست؟
+                                                            </small>
+                                                        </a>
+                                                    </h2>
+                                                </div><!-- End .card-header -->
+                                                <div id="collapse-3" class="collapse" aria-labelledby="heading-3"
+                                                     data-parent="#accordion-payment">
+                                                    <div class="card-body">
+                                                        لورم ایپسوم متن ساختگی با تولید سادگی
+                                                        نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.
+                                                    </div><!-- End .card-body -->
+                                                </div><!-- End .collapse -->
+                                            </div><!-- End .card -->
 
-                                        <div class="card">
-                                            <div class="card-header" id="heading-5">
-                                                <h2 class="card-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse"
-                                                       href="#collapse-5" aria-expanded="false"
-                                                       aria-controls="collapse-5">
-                                                        کارت به کارت
-                                                    </a>
-                                                </h2>
-                                            </div><!-- End .card-header -->
-                                            <div id="collapse-5" class="collapse" aria-labelledby="heading-5"
-                                                 data-parent="#accordion-payment">
-                                                <div class="card-body">
-                                                    لورم ایپسوم متن ساختگی با تولید سادگی
-                                                    نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.
-                                                </div><!-- End .card-body -->
-                                            </div><!-- End .collapse -->
-                                        </div><!-- End .card -->
-                                    </div><!-- End .accordion -->*@
+                                            <div class="card">
+                                                <div class="card-header" id="heading-4">
+                                                    <h2 class="card-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                                           href="#collapse-4" aria-expanded="false"
+                                                           aria-controls="collapse-4">
+                                                            واریز بانک
+                                                        </a>
+                                                    </h2>
+                                                </div><!-- End .card-header -->
+                                                <div id="collapse-4" class="collapse" aria-labelledby="heading-4"
+                                                     data-parent="#accordion-payment">
+                                                    <div class="card-body">
+                                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم
+                                                        متن ساختگی با تولید سادگی نامفهوم لورم ایپسوم متن ساختگی با
+                                                        تولید سادگی نامفهوم.
+                                                    </div><!-- End .card-body -->
+                                                </div><!-- End .collapse -->
+                                            </div><!-- End .card -->
+
+                                            <div class="card">
+                                                <div class="card-header" id="heading-5">
+                                                    <h2 class="card-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                                           href="#collapse-5" aria-expanded="false"
+                                                           aria-controls="collapse-5">
+                                                            کارت به کارت
+                                                        </a>
+                                                    </h2>
+                                                </div><!-- End .card-header -->
+                                                <div id="collapse-5" class="collapse" aria-labelledby="heading-5"
+                                                     data-parent="#accordion-payment">
+                                                    <div class="card-body">
+                                                        لورم ایپسوم متن ساختگی با تولید سادگی
+                                                        نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم.
+                                                    </div><!-- End .card-body -->
+                                                </div><!-- End .collapse -->
+                                            </div><!-- End .card -->
+                                        </div><!-- End .accordion -->*@
 
                                     <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                         <span class="btn-text">ثبت</span>
                                         <span class="btn-hover-text">پرداخت</span>
                                     </button>
-                                    </div>
-                                </div><!-- End .summary -->
+                                </div>
+                            </div><!-- End .summary -->
                         </aside><!-- End .col-lg-3 -->
                     </div><!-- End .row -->
                 </form>

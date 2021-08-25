@@ -1,30 +1,33 @@
 ﻿@{
     ViewBag.Title = "لیست علاقه مندی";
 }
+
+@Html.Action("SharedHeaderSection", "Home")
+
 @*<div class="contant">
-    <div id="banner-part" class="banner inner-banner">
-        <div class="container">
-            <div class="bread-crumb-main">
-                <h1 class="banner-title">علاقه مندی ها</h1>
-                <div class="breadcrumb">
-                    <ul class="inline">
-                        <li><a href="/">خانه</a></li>
-                        <li>علاقه مندی ها</li>
-                    </ul>
+        <div id="banner-part" class="banner inner-banner">
+            <div class="container">
+                <div class="bread-crumb-main">
+                    <h1 class="banner-title">علاقه مندی ها</h1>
+                    <div class="breadcrumb">
+                        <ul class="inline">
+                            <li><a href="/">خانه</a></li>
+                            <li>علاقه مندی ها</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="ptb-100">
-        <div class="container">
-            <div class="cart-item-table commun-table">
-                <div class="table-responsive" id="WishListTable">
-                    @Html.Action("WishListTable", "Shop")
+        <div class="ptb-100">
+            <div class="container">
+                <div class="cart-item-table commun-table">
+                    <div class="table-responsive" id="WishListTable">
+                        @Html.Action("WishListTable", "Shop")
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 
 <main class="main">
@@ -49,9 +52,9 @@
                 @Html.Action("WishListTable", "Shop")
             </div>
 
-                <div class="wishlist-share">
-                    @Html.Action("SocialsSection", "Shop")
-                </div><!-- End .wishlist-share -->
-            </div><!-- End .container -->
-        </div><!-- End .page-content -->
+            <div class="wishlist-share">
+                @Html.Action("SocialsSection", "Shop")
+            </div><!-- End .wishlist-share -->
+        </div><!-- End .container -->
+    </div><!-- End .page-content -->
 </main><!-- End .main -->
