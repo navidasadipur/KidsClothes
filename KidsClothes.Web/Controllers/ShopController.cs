@@ -131,6 +131,10 @@ namespace KidsClothes.Web.Controllers
             //    banner = "/Files/StaticContentImages/Image/" + banner;
             //}
 
+            ViewBag.MinPrice = _productMainFeaturesRepo.GetMinPrice();
+            ViewBag.MaxPrice = _productMainFeaturesRepo.GetMaxPrice();
+
+
             if (searchString != null)
                 ViewBag.SearchString = searchString;
 
