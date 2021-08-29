@@ -271,91 +271,6 @@
                                                 دسته بندی
                                             </a>
                                         </h3><!-- End .widget-title -->
-
-                                        <div class="collapse show" id="widget-1">
-                                            <div class="widget-body">
-                                                <div class="filter-items filter-items-count">
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-1">
-                                                            <label class="custom-control-label" for="cat-1">لباس</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">3</span>
-                                                    </div><!-- End .filter-item -->
-
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-2">
-                                                            <label class="custom-control-label" for="cat-2">تی شرت</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">0</span>
-                                                    </div><!-- End .filter-item -->
-
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-3">
-                                                            <label class="custom-control-label" for="cat-3">کیف</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">4</span>
-                                                    </div><!-- End .filter-item -->
-
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-4">
-                                                            <label class="custom-control-label" for="cat-4">ژاکت</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">2</span>
-                                                    </div><!-- End .filter-item -->
-
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-5">
-                                                            <label class="custom-control-label" for="cat-5">کفش</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">2</span>
-                                                    </div><!-- End .filter-item -->
-
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-6">
-                                                            <label class="custom-control-label" for="cat-6">
-                                                                شال و
-                                                                روسری
-                                                            </label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">1</span>
-                                                    </div><!-- End .filter-item -->
-
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-7">
-                                                            <label class="custom-control-label" for="cat-7">لی</label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">1</span>
-                                                    </div><!-- End .filter-item -->
-
-                                                    <div class="filter-item">
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-8">
-                                                            <label class="custom-control-label" for="cat-8">
-                                                                لباس
-                                                                ورزشی
-                                                            </label>
-                                                        </div><!-- End .custom-checkbox -->
-                                                        <span class="item-count">0</span>
-                                                    </div><!-- End .filter-item -->
-                                                </div><!-- End .filter-items -->
-                                            </div><!-- End .widget-body -->
-                                        </div><!-- End .collapse -->
-                                    </div><!-- End .widget -->
-
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title">
-                                            <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true"
-                                               aria-controls="widget-1">
-                                                دسته بندی
-                                            </a>
-                                        </h3><!-- End .widget-title -->
                                         <div class="collapse show" id="widget-1">
                                             <!--subset-->
 
@@ -366,6 +281,15 @@
                                                     <a href="javascript:void(0)" onclick="GetGrid(null, @item.Id)">
                                                         @item.Title
                                                     </a>
+                                                    <div class="filter-item">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" id="cat-@item.Id" onchange="GetGrid()">
+                                                            <label class="custom-control-label" for="cat-@item.Id">
+                                                                @item.Title
+                                                            </label>
+                                                        </div><!-- End .custom-checkbox -->
+                                                        @*<span class="item-count">0</span>*@
+                                                    </div><!-- End .filter-item -->
                                                     <div class="widget widget-collapsible border-0">
                                                         <h3 class="widget-title widget-title-custome">
                                                             <a data-toggle="collapse" href="#category-@item.Id" role="button"
@@ -379,62 +303,49 @@
 
                                                     if (item.Children.Count > 0)
                                                     {
-                                                        <div class="collapse" id="category-@item.Id">
-                                                            <ul class="category-collaps">
-                                                                @foreach (var subItem in item.Children)
-                                                                {
-                                                                    if (subItem.IsDeleted)
-                                                                    {
-                                                                        continue;
-                                                                    }
-                                                                    <li><a href="javascript:void(0)" onclick="GetGrid(null, @subItem.Id)">@subItem.Title</a></li>
-                                                                }
-                                                            </ul>
+                                            <div class="collapse" id="category-@item.Id">
+                                                <div class="widget-body">
+                                                    <div class="filter-items filter-items-count">
+                                                        @foreach (var subItem in item.Children)
+                                                        {
+                                                            if (subItem.IsDeleted)
+                                                            {
+                                                                continue;
+                                                            }
+                                                        <div class="filter-item">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input" id="cat-@subItem.Id" onchange="GetGrid()">
+                                                                <label class="custom-control-label" for="cat-@subItem.Id">
+                                                                    @subItem.Title
+                                                                </label>
+                                                            </div><!-- End .custom-checkbox -->
+                                                            @*<span class="item-count">3</span>*@
+                                                        </div><!-- End .filter-item -->
+                                                        }
                                                         </div>
+                                                    </div>
+                                                        @*<ul class="category-collaps">
+                                                            @foreach (var subItem in item.Children)
+                                                            {
+                                                                if (subItem.IsDeleted)
+                                                                {
+                                                                    continue;
+                                                                }
+                                                                <li>
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" id="cat-@subItem.Id" onchange="GetGrid()">
+                                                                        <label class="custom-control-label" for="cat-@subItem.Id">
+                                                                            @subItem.Title
+                                                                        </label>
+                                                                    </div><!-- End .custom-checkbox -->
+                                                                </li>
+                                                            }
+                                                        </ul>*@
+                                                    </div>
                                                     }
-                                                    @*<li><a href="product.html">قرص استامینوقن</a></li>
-                        <li><a href="product.html">قرص ژلوفن</a></li>
-                        <li><a href="product.html">قرص سرماخوردگی</a></li>*@
-
-
-                                                }
-                                                @*<div class="widget widget-collapsible border-0">
-                        <h3 class="widget-title widget-title-custome">
-                            <a data-toggle="collapse" href="#category1" role="button"
-                               aria-expanded="true"
-                               aria-controls="category1">
-                                قرص
-                            </a>
-                        </h3>
-                    </div>
-                    <div class="collapse" id="category1">
-                        <ul class="category-collaps">
-                            <li><a href="product.html">قرص استامینوقن</a></li>
-                            <li><a href="product.html">قرص ژلوفن</a></li>
-                            <li><a href="product.html">قرص سرماخوردگی</a></li>
-                        </ul>
-                    </div>
-                    <!--End Item 1-->
-                    <!--Item 2-->
-                    <div class="widget widget-collapsible border-0">
-                        <h3 class="widget-title widget-title-custome">
-                            <a data-toggle="collapse" href="#category2" role="button"
-                               aria-expanded="true"
-                               aria-controls="category2">
-                                ضدعفونی کننده
-                            </a>
-                        </h3>
-                    </div>
-                    <div class="collapse" id="category2">
-                        <ul class="category-collaps">
-                            <li><a href="product.html">ژل ضدعفونی کننده</a></li>
-                            <li><a href="product.html">اسپری ضدعفونی کننده</a></li>
-                        </ul>
-                    </div>
-                    <!--End Item 3-->*@
-
-                                            </div>
-                                        </div><!-- End .widget -->
+                                                    }
+                                                </div>
+                                            </div><!-- End .widget -->
                                     </div>
 
                                     <div class="widget widget-collapsible">
