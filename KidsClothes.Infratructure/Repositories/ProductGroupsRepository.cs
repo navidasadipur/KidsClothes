@@ -20,11 +20,45 @@ namespace KidsClothes.Infrastructure.Repositories
 
         public List<ProductGroup> GetProductGroupTable()
         {
-            return _context.ProductGroups.Where(p => p.ParentId == null && p.IsDeleted == false).Include(p=>p.Children).ToList();
+            var allGroups = _context.ProductGroups.Where(p => p.ParentId == null && p.IsDeleted == false).Include(p=>p.Children).ToList();
+
+            var removableListIds = new List<int>();
+
+            foreach (var item in allGroups)
+            {
+                foreach (var child in item.Children)
+                {
+                    if (child.IsDeleted == true)
+                        removableListIds.Add(child.Id);
+                }
+            }
+
+            allGroups.RemoveAll(g => removableListIds.Contains(g.Id));
+
+            return allGroups;
         }
         public List<ProductGroup> GetProductGroupTable(int id)
         {
-            return _context.ProductGroups.Where(p => p.ParentId == id && p.IsDeleted == false).Include(p=>p.Children).ToList();
+            var allGroups = _context.ProductGroups.Where(p => p.ParentId == id && p.IsDeleted == false).Include(p=>p.Children).ToList();
+
+            var removableListIds = new List<int>();
+
+            var removeableChild = new ProductGroup();
+
+            foreach (var item in allGroups)
+            {
+                foreach (var child in item.Children)
+                {
+                    if (child.IsDeleted == true)
+                        removeableChild = child;
+                }
+
+                item.Children.Remove(removeableChild);
+            }
+
+            allGroups.RemoveAll(g => removableListIds.Contains(g.Id));
+
+            return allGroups;
         }
         public ProductGroup GetProductGroup(int id)
         {
