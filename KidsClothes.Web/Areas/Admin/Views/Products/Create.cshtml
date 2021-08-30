@@ -324,6 +324,66 @@
                     </div>
                 </div>
 
+                <div class="form-group perfume-notes-section-wrapper" style="display:block">
+
+                    <div class="perfume-notes-section">
+                        <label class="perfume-notes-title expandable edeactive">کدهای رنگ محصول</label>
+
+                        <div id="product_size_repeater">
+                            <div class="form-group row" id="product_size_repeater">
+                                <label class="col-lg-12 col-form-label text-left">
+                                    <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
+                                        <i class="la la-plus"></i>
+                                    </a>
+                                    کد رنگ :
+                                </label>
+                                <div data-repeater-list="product_size" class="col-lg-10">
+                                    <div data-repeater-item="" class="" style="">
+                                        <div class="form-group row" style="align-items: center">
+                                            <label class="col-md-7">حذف ویژگی</label>
+                                            <div class="col-md-2">
+                                                <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label text-left">کد رنگی :</label>
+                                            <div class="col-lg-8">
+                                                <input type="text" name="SizeValue" id="SizeValue" class="form-control" placeholder="#FFFFFF" style="text-align:left; direction:ltr">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-md-4">عنوان: </label>
+                                            <div class="col-md-8">
+                                                <input type="text" name="SizeName" id="SizeName" class="form-control" placeholder="نام کد رنگ" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="" class="col-md-4">لینک: </label>
+                                            <div class="col-md-8">
+                                                <input type="text" name="SizeLink" id="SizeLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                $("#product_size_repeater").repeater({
+                                    initEmpty: true,
+                                    show: function () { $(this).slideDown(); }
+                                    , hide:
+                                        function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
+                                });
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
+
                 <div id="product-similars-section" class="form-group row">
                     <div class="col-md-12">
                         <label class="">محصولات مکمل</label>
@@ -774,6 +834,31 @@
 
                                         index++;
                                     }
+                                    // getting product sizes
+                                    index = 0;
+                                    while (true) {
+                                        var colorCode = $("[name='product_size" + "[" + index + "][SizeValue]']").val();
+
+                                        if (colorCode == null || colorCode == undefined) {
+                                            break;
+                                        }
+
+                                        var title = $("[name='product_size" + "[" + index + "][SizeName]']").val();
+                                        var link = $("[name='product_size" + "[" + index + "][SizeLink]']").val();
+
+                                        item = {
+                                            Title: title,
+                                            Link: link,
+                                            Additional: colorCode,
+                                            ObjectType: 2, // color code
+                                            Type: -1 // not important
+                                        }
+
+
+                                        data.push(item);
+
+                                        index++;
+                                    }
                                     // getting perfume volumes if perfume group is selected
                                     index = 0;
                                     if (selectedGroupId == perfumeGroupId) {
@@ -843,7 +928,7 @@
         });
 
         function TestSubmit() {
-            // submitting perfume notes and color codes
+            // submitting perfume notes and color codes and sizes
             var formData = new FormData();
             var id = 3;
             var data = [];
@@ -913,6 +998,29 @@
                 var image = $("[name='product_color_code" + "[" + index + "][ColorCodeImage]']").get(0).files[0];
                 formData.append("image" + imageIndex, image);
                 imageIndex++;
+
+                index++;
+            }
+            // getting product sizes
+            var index = 0;
+            var imageIndex = 4;
+            while (true) {
+                var colorCode = $("[name='product_size" + "[" + index + "][SizeValue]']").val();
+                console.log(colorCode);
+                if (colorCode == null && colorCode == undefined) {
+                    break;
+                }
+
+                var title = $("[name='product_size" + "[" + index + "][SizeName]']").val();
+                var link = $("[name='product_size" + "[" + index + "][SizeLink]']").val();
+
+                item = {
+                    Title: title,
+                    Link: link,
+                    Additional: colorCode,
+                    ObjectType: 2, // color code
+                    Type: -1 // not important
+                }
 
                 index++;
             }

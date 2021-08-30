@@ -55,6 +55,6 @@ namespace KidsClothes.Infrastructure
         public DbSet<SMSLog> SMSLogs { get; set; }
         public DbSet<OurTeam> OurTeams { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
-
+        public DbSet<ProductSize> ProductSizes { get; set; }
     }
 }

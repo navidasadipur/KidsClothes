@@ -50,6 +50,7 @@ namespace KidsClothes.Core.Models
         public ICollection<InvoiceItem> InvoiceItems { get; set; }
         public ICollection<SimilarProduct> SimilarProducts { get; set; }
         public ICollection<AdditionalFeature> AdditionalFeatures { get; set; }
+        public ICollection<ProductSize> ProductSizes { get; set; }
 
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }

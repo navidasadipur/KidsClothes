@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*--------------------- TABLE OF CONTENTS --------------- */
 /*--------------------- 1.    GENERAL STYLES ------------------- */
 /*--------------------- 2.    HEADERS ------------------- */
@@ -10011,9 +10011,13 @@ a:focus {
   margin-bottom: 3.2rem;
 }
 
-.widget-list {
-  margin-bottom: 0;
+span.widget-about-title > p:last-of-type {
+    margin-bottom: 0.4rem;
 }
+
+    .widget-list {
+        margin-bottom: 0;
+    }
 
 .widget-list li:not(:last-child) {
   margin-bottom: .4rem;
@@ -12611,17 +12615,18 @@ a:focus {
   margin-bottom: 1.6rem;
 }
 
-.product-nav-thumbs a,
-.product-nav-thumbs span {
-  display: flex;
-  align-items: center;
-  width: 4.4rem;
-  height: 4.4rem;
-  border-radius: .2rem;
-  border: .2rem solid #fff;
-  margin-left: .4rem;
-  transition: box-shadow .35s ease
-}
+    .product-nav-thumbs a,
+    .product-nav-thumbs span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 4.4rem;
+        height: 4.4rem;
+        border-radius: .2rem;
+        border: .2rem solid #fff;
+        margin-left: .4rem;
+        transition: box-shadow .35s ease
+    }
 
 .product-nav-thumbs a.active,
 .product-nav-thumbs a:hover,

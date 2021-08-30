@@ -104,6 +104,7 @@
     <Compile Include="Models\PerfumeNote.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductSize.cs" />
     <Compile Include="Models\ProductColor.cs" />
     <Compile Include="Models\ProductComment.cs" />
     <Compile Include="Models\ProductFeatureValue.cs" />

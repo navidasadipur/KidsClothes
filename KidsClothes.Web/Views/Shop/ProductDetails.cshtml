@@ -5,11 +5,23 @@
 }
 
 <style>
-/*    .product-nav-thumbs a.active {
+    .main-feature a.active {
         background-color: burlywood;
         color: white;
-       
-    }*/
+    }
+
+    .main-feature a,
+    .main-feature span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 4.4rem;
+        height: 4.4rem;
+        border-radius: .2rem;
+        border: .2rem solid #fff;
+        margin-left: .4rem;
+        transition: box-shadow .35s ease
+    }
 </style>
 
 @Html.Action("SharedHeaderSection", "Home")
@@ -886,7 +898,7 @@
 
                                     <label>@featureName : </label>
 
-                                    <div class="product-nav product-nav-thumbs" id="product-main-btn">
+                                    <div class="product-nav product-nav-thumbs main-feature" id="product-main-btn">
                                         @foreach (var item in Model.ProductMainFeatures)
                                         {
                                             var className = "";
@@ -900,23 +912,156 @@
                                                 @(item.SubFeature != null ? item.SubFeature.Value : item.Value)
                                             </a>
                                         }
-
                                     </div><!-- End .product-nav -->
                                 }
                             </div><!-- End .details-filter-row -->
-                            <div class="details-filter-row details-row-size">
-                                <label>رنگ : </label>
+                            @{
+                                if (ViewBag.ProductColors.Count > 0)
+                                {
+                                    <div class="details-filter-row details-row-size">
+                                        <label>رنگ : </label>
 
-                                <div class="product-nav product-nav-thumbs">
-                                    <a href="#" class="active">
-                                        <img src="/Content/client/my-img/15.jpg" alt="product desc">
-                                    </a>
-                                    <a href="#">
-                                        <img src="/Content/client/my-img/17.png" alt="product desc">
-                                    </a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .details-filter-row -->
+                                        <div class="product-nav product-nav-thumbs">
+                                            @foreach (var item in ViewBag.ProductColors)
+                                            {
+                                                var className = "";
+                                                var parts = item.Link.ToString().Split('/');
+                                                int index = -1;
+                                                foreach (var p in parts)
+                                                {
+                                                    if (int.TryParse(p, out index))
+                                                    {
+                                                        break;
+                                                    }
+                                                }
 
+                                                if (Model.Product.Id == index)
+                                                {
+                                                    className = "active-color";
+                                                }
+                                                if (!string.IsNullOrEmpty(item.Image))
+                                                {
+                                                    <a href="#" class="@className">
+                                                        <img src="/Files/ProductColors/Images/@item.Image" alt="@item.Title">
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#" class="@className" style="background:@item.ColorCode">
+                                                        <img src="/Files/ProductColors/Images/@item.Image" alt="@item.Title">
+                                                    </a>
+                                                }
+                                            }
+                                        </div><!-- End .product-nav -->
+                                    </div><!-- End .details-filter-row -->
+                                }
+                            }
+                            @*@{
+                                    var featureName = Model.ProductMainFeatures.FirstOrDefault().Feature.Title;
+                                    var i = 0;
+                                    if (featureName.Contains("رنگبندی") || featureName.Contains("رنگ"))
+                                    {
+                                        <div class="row mb-20" style="position: relative;">
+                                            <div class="col-xl-2 col-md-3 col-sm-12">
+                                                @featureName
+                                            </div>
+                                            <div class="col-xl-10 col-md-9 col-sm-12">
+                                                <div class="colors-wrapper">
+                                                    @foreach (var item in Model.ProductMainFeatures)
+                                                    {
+                                                        var className = "";
+                                                        i++;
+
+                                                        if (i == 1)
+                                                        {
+                                                            className = "active-color";
+                                                        }
+
+
+                                                        <div class="color-wrapper">
+                                                            <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)">
+                                                                <div class="spn-product-code @className" style="background:@item.Value">
+
+                                                                    <div class="spn-product-code-Title-wrapper">
+                                                                        <span class="spn-product-code-Title">@item.AdditionalInfo</span>
+                                                                    </div>
+
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+
+                                            <div class="color-notification"></div>
+
+                                        </div>
+
+                                    }
+
+                                }
+
+                                @{
+                                    if (ViewBag.ProductColors.Count > 0)
+                                    {
+                                        <div class="row mb-20" style="position: relative;">
+                                            <div class="col-xl-2 col-md-3 col-sm-12">
+                                                رنگبندی:
+                                            </div>
+                                            <div class="col-xl-10 col-md-9 col-sm-12">
+                                                <div class="colors-wrapper">
+                                                    @foreach (var item in ViewBag.ProductColors)
+                                                    {
+                                                        var className = "";
+                                                        var parts = item.Link.ToString().Split('/');
+                                                        int index = -1;
+                                                        foreach (var p in parts)
+                                                        {
+                                                            if (int.TryParse(p, out index))
+                                                            {
+                                                                break;
+                                                            }
+                                                        }
+
+                                                        if (Model.Product.Id == index)
+                                                        {
+                                                            className = "active-color";
+                                                        }
+
+
+                                                        <div class="color-wrapper">
+                                                            <a href="@item.Link">
+                                                                @if (!string.IsNullOrEmpty(item.Image))
+                                                                {
+                                                                    <div class="spn-product-code @className" style="background-image: url(/Files/ProductColors/Images/@item.Image)">
+
+                                                                        <div class="spn-product-code-Title-wrapper">
+                                                                            <span class="spn-product-code-Title">@item.Title</span>
+                                                                        </div>
+
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="spn-product-code @className" style="background:@item.ColorCode">
+
+                                                                        <div class="spn-product-code-Title-wrapper">
+                                                                            <span class="spn-product-code-Title">@item.Title</span>
+                                                                        </div>
+
+                                                                    </div>
+                                                                }
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+
+                                            <div class="color-notification"></div>
+
+                                        </div>
+                                    }
+                                }*@
                             <div class="details-filter-row details-row-size">
                                 <label for="size">سایز : </label>
                                 <div class="select-custom">
@@ -938,7 +1083,7 @@
                                     <label for="qty">تعداد : </label>
                                     <div class="product-details-quantity">
                                         @*<input type="number" id="qty" class="form-control" value="1" min="1"
-                    max="10" step="1" data-decimals="0" required>*@
+                                            max="10" step="1" data-decimals="0" required>*@
                                         <div class="input-group  input-spinner">
                                             <div class="input-group-append"><button class="btn btn-decrement btn-spinner" onclick="IncreaseProductCount()" style="min-width: 26px"><i class="icon-plus"></i></button></div>
                                             <div class="form-control"><span readonly="readonly" id="txtProductCount">1</span></div>
@@ -986,7 +1131,7 @@
                                 <div class="product-cat text-center">
                                     <span>دسته بندی : </span>
                                     @*<a href="#">سرد درد</a>،
-                <a href="#">مسکن</a>،*@
+                                        <a href="#">مسکن</a>،*@
                                     @if (Model.Group != null)
                                     {
                                         <a href="/Shop/ProductList/@Model.Group.Id">@Model.Group.Title</a>
