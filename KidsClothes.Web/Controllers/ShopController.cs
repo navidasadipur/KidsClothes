@@ -161,6 +161,19 @@ namespace KidsClothes.Web.Controllers
         {
             var products = new List<Product>();
 
+            var groupsIntArr = new List<int>();
+
+            if (grid.categoryId.HasValue && grid.categoryId != 0)
+            {
+                groupsIntArr.Add(grid.categoryId.Value);
+            }
+
+            if (string.IsNullOrEmpty(grid.groups) == false)
+            {
+                var groupsArr = grid.groups.Split('-').ToList();
+                groupsArr.ForEach(b => groupsIntArr.Add(Convert.ToInt32(b)));
+            }
+
             var brandsIntArr = new List<int>();
 
             if (string.IsNullOrEmpty(grid.brands) == false)
@@ -176,7 +189,7 @@ namespace KidsClothes.Web.Controllers
                 subFeaturesArr.ForEach(b => subFeaturesIntArr.Add(Convert.ToInt32(b)));
             }
 
-            products = _productService.GetProductsGrid(grid.categoryId, brandsIntArr, subFeaturesIntArr, grid.priceFrom, grid.priceTo, grid.searchString);
+            products = _productService.GetProductsGrid(groupsIntArr, brandsIntArr, subFeaturesIntArr, grid.priceFrom, grid.priceTo, grid.searchString);
 
             #region Get Products Base on Group, Brand and Products of "offer"
 
@@ -269,6 +282,17 @@ namespace KidsClothes.Web.Controllers
                 products = allSearchedTargetProducts;
             }
 
+            // if products in a group that deleted that product is not the case
+            var targetProducts = new List<Product>();
+
+            foreach (var item in products)
+            {
+                if (item.ProductGroup != null && item.ProductGroup.IsDeleted == false)
+                {
+                    targetProducts.Add(item);
+                }
+            }
+
             #endregion
 
             #region Sorting
@@ -278,16 +302,16 @@ namespace KidsClothes.Web.Controllers
                 switch (grid.sort)
                 {
                     case "name":
-                        products = products.OrderBy(p => p.Title).ToList();
+                        targetProducts = targetProducts.OrderBy(p => p.Title).ToList();
                         break;
                     case "sale":
-                        products = products.OrderByDescending(p => _productService.GetProductSoldCount(p)).ToList();
+                        targetProducts = targetProducts.OrderByDescending(p => _productService.GetProductSoldCount(p)).ToList();
                         break;
                     case "price-high-to-low":
-                        products = products.OrderByDescending(p => _productService.GetProductPriceAfterDiscount(p)).ToList();
+                        targetProducts = targetProducts.OrderByDescending(p => _productService.GetProductPriceAfterDiscount(p)).ToList();
                         break;
                     case "price-low-to-high":
-                        products = products.OrderBy(p => _productService.GetProductPriceAfterDiscount(p)).ToList();
+                        targetProducts = targetProducts.OrderBy(p => _productService.GetProductPriceAfterDiscount(p)).ToList();
                         break;
                 }
             }
@@ -295,16 +319,16 @@ namespace KidsClothes.Web.Controllers
 
 
 
-            var count = products.Count;
+            var count = targetProducts.Count;
             var skip = grid.pageNumber * grid.take - grid.take;
             int pageCount = (int)Math.Ceiling((double)count / grid.take);
             ViewBag.PageCount = pageCount;
             ViewBag.CurrentPage = grid.pageNumber;
 
-            products = products.Skip(skip).Take(grid.take).ToList();
+            targetProducts = targetProducts.Skip(skip).Take(grid.take).ToList();
 
             var vm = new List<ProductWithPriceDto>();
-            foreach (var product in products)
+            foreach (var product in targetProducts)
                 vm.Add(_productService.CreateProductWithPriceDto(product));
 
             return PartialView(vm);

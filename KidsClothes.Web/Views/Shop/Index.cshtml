@@ -202,7 +202,6 @@
                             <div class="col-lg-9">
                                 <div class="toolbox">
                                     <div class="toolbox-left row">
-                                        @*<div class="">*@
                                         <div class="col-6">
 
                                         </div>
@@ -218,8 +217,6 @@
                                         <div class="select-item col-3">
                                             <span>در هر صفحه</span>
                                         </div>
-                                        @*نمایش <span>9 از 56</span> محصول*@
-                                        @*</div> End .toolbox-info*@
                                     </div><!-- End .toolbox-left -->
 
                                     <div class="toolbox-right">
@@ -233,11 +230,6 @@
                                                     <option value="price-low-to-high">قیمت از کم به زیاد</option>
                                                     <option value="sale">پر فروش ها</option>
                                                 </select>
-                                                @*<select name="sortby" id="sortby" class="form-control">
-                                                        <option value="popularity" selected="selected">بیشترین خرید</option>
-                                                        <option value="rating">بیشترین امتیاز</option>
-                                                        <option value="date">تاریخ</option>
-                                                    </select>*@
                                             </div>
                                         </div><!-- End .toolbox-sort -->
 
@@ -278,17 +270,20 @@
                                                 <!--Item 1-->
                                                 @foreach (var item in Model.ProductGroups)
                                                 {
-                                                    <a href="javascript:void(0)" onclick="GetGrid(null, @item.Id)">
+                                                    @*<a href="javascript:void(0)" onclick="GetGrid(null, @item.Id)">
                                                         @item.Title
-                                                    </a>
+                                                    </a>*@
                                                     <div class="filter-item">
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="cat-@item.Id" onchange="GetGrid()">
+                                                            <input type="checkbox" class="custom-control-input" 
+                                                                   id="cat-@item.Id" 
+                                                                   value="@item.Id"
+                                                                   name="groups"
+                                                                   onchange="GetGrid()">
                                                             <label class="custom-control-label" for="cat-@item.Id">
                                                                 @item.Title
                                                             </label>
                                                         </div><!-- End .custom-checkbox -->
-                                                        @*<span class="item-count">0</span>*@
                                                     </div><!-- End .filter-item -->
                                                     <div class="widget widget-collapsible border-0">
                                                         <h3 class="widget-title widget-title-custome">
@@ -299,7 +294,6 @@
                                                                 <a />
                                                         </h3>
                                                     </div>
-
 
                                                     if (item.Children.Count > 0)
                                                     {
@@ -314,12 +308,15 @@
                                                             }
                                                         <div class="filter-item">
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="cat-@subItem.Id" onchange="GetGrid()">
+                                                                <input type="checkbox" class="custom-control-input" 
+                                                                       id="cat-@subItem.Id" 
+                                                                       value="@subItem.Id"
+                                                                       name="groups"
+                                                                       onchange="GetGrid()">
                                                                 <label class="custom-control-label" for="cat-@subItem.Id">
                                                                     @subItem.Title
                                                                 </label>
                                                             </div><!-- End .custom-checkbox -->
-                                                            @*<span class="item-count">3</span>*@
                                                         </div><!-- End .filter-item -->
                                                         }
                                                         </div>
@@ -394,13 +391,6 @@
                                                             </div><!-- End .custom-checkbox -->
                                                         </div><!-- End .filter-item -->
                                                     }
-                                                    @*<div class="filter-item">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input"
-                                       id="brand-1">
-                                <label class="custom-control-label" for="brand-1">Next</label>
-                            </div><!-- End .custom-checkbox -->
-                        </div><!-- End .filter-item -->*@
 
                                                 </div><!-- End .filter-items -->
                                             </div><!-- End .widget-body -->
@@ -429,7 +419,6 @@
     var maxPrice = @ViewBag.MaxPrice ;
                     </script>
                 }
-
 
                 <script>
                     var brandIds = null;
@@ -470,6 +459,7 @@
             categoryId = categoryId === null ? selectedGroupId : categoryId;
             var searchString =  '@ViewBag.SearchString';
             var brands = [];
+            var groups = [];
             var priceFrom = null;
             var priceTo = null;
             var selectedPriceRange = $("span#filter-price-range").text().replaceAll("تومان", "");
@@ -491,6 +481,13 @@
                     brands.push(parseInt($(this).val()));
                 }
             });
+
+            $("input[name='groups']").map(function () {
+                if ($(this).prop("checked") === true) {
+                    groups.push(parseInt($(this).val()));
+                }
+            });
+
             var subFeatures = [];
             $("[name='subFeatures']").map(function() {
                 if ($(this).prop("checked") === true) {
@@ -503,6 +500,7 @@
                 priceFrom: priceFrom,
                 priceTo: priceTo,
                 brands: brands.join('-'),
+                groups: groups.join('-'),
                 subFeatures: subFeatures.join('-'),
                 pageNumber: pageNumber,
                 take: take,
