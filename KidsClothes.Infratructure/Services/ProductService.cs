@@ -468,25 +468,32 @@ namespace KidsClothes.Infratructure.Services
                 var productsFilteredByBrand = new List<Product>();
                 var productsFilteredByFeature = new List<Product>();
 
-                if (groupIds != null && groupIds.Any())
+                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
                 {
-                    foreach (var group in groupIds)
-                        productsFilteredByGroup.AddRange(allProducts.Where(p => p.IsDeleted == false && p.ProductGroupId == group).OrderByDescending(p => p.InsertDate).ToList());
-                }
-                if (brandIds != null && brandIds.Any())
-                {
-                    foreach (var brand in brandIds)
-                        productsFilteredByBrand.AddRange(allProducts.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate).ToList());
-                }
-                if (subFeatureIds != null && subFeatureIds.Any(f => f != 0))
-                {
-                    foreach (var subFeature in subFeatureIds.Where(f => f != 0))
-                        productsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate).ToList());
-                }
+                    if (groupIds != null && groupIds.Any())
+                    {
+                        foreach (var group in groupIds)
+                            productsFilteredByGroup.AddRange(allProducts.Where(p => p.IsDeleted == false && p.ProductGroupId == group).OrderByDescending(p => p.InsertDate).ToList());
+                    }
+                    if (brandIds != null && brandIds.Any())
+                    {
+                        foreach (var brand in brandIds)
+                            productsFilteredByBrand.AddRange(allProducts.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate).ToList());
+                    }
+                    if (subFeatureIds != null && subFeatureIds.Any(f => f != 0))
+                    {
+                        foreach (var subFeature in subFeatureIds.Where(f => f != 0))
+                            productsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate).ToList());
+                    }
 
-                allFilteredProducts.AddRange(productsFilteredByGroup);
-                allFilteredProducts.AddRange(productsFilteredByBrand);
-                allFilteredProducts.AddRange(productsFilteredByFeature);
+                    allFilteredProducts.AddRange(productsFilteredByGroup);
+                    allFilteredProducts.AddRange(productsFilteredByBrand);
+                    allFilteredProducts.AddRange(productsFilteredByFeature);
+                }
+                else
+                {
+                    allFilteredProducts = allProducts;
+                }
 
                 if (fromPrice != null)
                     allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) >= fromPrice).ToList();
