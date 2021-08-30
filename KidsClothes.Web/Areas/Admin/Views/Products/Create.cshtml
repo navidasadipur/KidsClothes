@@ -123,135 +123,135 @@
 
                 @*<div class="form-group perfume-notes-section-wrapper">
 
-                    <div class="perfume-notes-section">
-                        <label class="perfume-notes-title expandable edeactive">نت های عطر</label>
-                        <div>
-                            <div id="perfume_note_repeater">
-                                <div class="form-group row" id="perfume_note_repeater">
-                                    <label class="col-lg-12 col-form-label text-left">
-                                        <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
-                                            <i class="la la-plus"></i>
-                                        </a>
-                                        نت بویایی :
-                                    </label>
-                                    <div data-repeater-list="perfume_note" class="col-lg-10">
-                                        <div data-repeater-item="" class="" style="">
-                                            <div class="form-group row" style="align-items: center">
-                                                <label class="col-md-7">حذف نت</label>
-                                                <div class="col-md-2">
-                                                    <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label class="col-md-4 col-form-label text-left">نوع نت :</label>
-                                                <div class="col-lg-8">
-                                                    <select class="form-control" name="NoteType" id="NoteType">
-                                                        <option value="1" selected="selected">نت ابتدایی</option>
-                                                        <option value="2">نت میانی</option>
-                                                        <option value="3">نت پایانی</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="" class="col-md-4">عنوان: </label>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="NoteName" id="NoteName" class="form-control" placeholder="عنوان/نام نت" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="" class="col-md-4">لینک: </label>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="NoteName" id="NoteLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="" class="col-md-4">تصویر: </label>
-                                                <div class="col-md-12">
-                                                    <input type="file" name="NoteImage" id="NoteImage" class="form-control" accept="image/*" />
-                                                </div>
-                                            </div>
-
-
-
+            <div class="perfume-notes-section">
+                <label class="perfume-notes-title expandable edeactive">نت های عطر</label>
+                <div>
+                    <div id="perfume_note_repeater">
+                        <div class="form-group row" id="perfume_note_repeater">
+                            <label class="col-lg-12 col-form-label text-left">
+                                <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
+                                    <i class="la la-plus"></i>
+                                </a>
+                                نت بویایی :
+                            </label>
+                            <div data-repeater-list="perfume_note" class="col-lg-10">
+                                <div data-repeater-item="" class="" style="">
+                                    <div class="form-group row" style="align-items: center">
+                                        <label class="col-md-7">حذف نت</label>
+                                        <div class="col-md-2">
+                                            <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
                                         </div>
                                     </div>
-                                </div>
 
-                                <script>
-                                    $("#perfume_note_repeater").repeater({
-                                        initEmpty: true,
-                                        show: function () { $(this).slideDown(); }
-                                        , hide:
-                                            function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
-                                    });
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-                <div class="form-group perfume-notes-section-wrapper">
-
-                    <div class="perfume-notes-section">
-                        <label class="perfume-notes-title expandable edeactive">حجم های عطر</label>
-                        <div>
-                            <div id="perfume_volume_repeater">
-                                <div class="form-group row" id="perfume_volume_repeater">
-                                    <label class="col-lg-12 col-form-label text-left">
-                                        <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
-                                            <i class="la la-plus"></i>
-                                        </a>
-                                        حجم عطر :
-                                    </label>
-                                    <div data-repeater-list="perfume_volume" class="col-lg-10">
-                                        <div data-repeater-item="" class="" style="">
-                                            <div class="form-group row" style="align-items: center">
-                                                <label class="col-md-7">حذف مورد</label>
-                                                <div class="col-md-2">
-                                                    <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="" class="col-md-4">حجم: </label>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="VolumeValue" id="VolumeValue" class="form-control" placeholder="برای مثال 100 میلی لیتر" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="" class="col-md-4">لینک: </label>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="VolumeLink" id="VolumeLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
-                                                </div>
-                                            </div>
-
-
-
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-left">نوع نت :</label>
+                                        <div class="col-lg-8">
+                                            <select class="form-control" name="NoteType" id="NoteType">
+                                                <option value="1" selected="selected">نت ابتدایی</option>
+                                                <option value="2">نت میانی</option>
+                                                <option value="3">نت پایانی</option>
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
 
-                                <script>
-                                    $("#perfume_volume_repeater").repeater({
-                                        initEmpty: true,
-                                        show: function () { $(this).slideDown(); }
-                                        , hide:
-                                            function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
-                                    });
-                                </script>
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">عنوان: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="NoteName" id="NoteName" class="form-control" placeholder="عنوان/نام نت" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">لینک: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="NoteName" id="NoteLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">تصویر: </label>
+                                        <div class="col-md-12">
+                                            <input type="file" name="NoteImage" id="NoteImage" class="form-control" accept="image/*" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                        <script>
+                            $("#perfume_note_repeater").repeater({
+                                initEmpty: true,
+                                show: function () { $(this).slideDown(); }
+                                , hide:
+                                    function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
+                            });
+                        </script>
+                    </div>
                 </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group perfume-notes-section-wrapper">
+
+            <div class="perfume-notes-section">
+                <label class="perfume-notes-title expandable edeactive">حجم های عطر</label>
+                <div>
+                    <div id="perfume_volume_repeater">
+                        <div class="form-group row" id="perfume_volume_repeater">
+                            <label class="col-lg-12 col-form-label text-left">
+                                <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
+                                    <i class="la la-plus"></i>
+                                </a>
+                                حجم عطر :
+                            </label>
+                            <div data-repeater-list="perfume_volume" class="col-lg-10">
+                                <div data-repeater-item="" class="" style="">
+                                    <div class="form-group row" style="align-items: center">
+                                        <label class="col-md-7">حذف مورد</label>
+                                        <div class="col-md-2">
+                                            <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">حجم: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="VolumeValue" id="VolumeValue" class="form-control" placeholder="برای مثال 100 میلی لیتر" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">لینک: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="VolumeLink" id="VolumeLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            $("#perfume_volume_repeater").repeater({
+                                initEmpty: true,
+                                show: function () { $(this).slideDown(); }
+                                , hide:
+                                    function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
 
 
 
@@ -322,7 +322,7 @@
                         </div>
 
                     </div>
-                </div>*@
+                </div>
 
                 <div id="product-similars-section" class="form-group row">
                     <div class="col-md-12">
