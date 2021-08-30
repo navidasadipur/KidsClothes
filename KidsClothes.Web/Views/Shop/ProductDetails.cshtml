@@ -5,11 +5,11 @@
 }
 
 <style>
-    .product-nav-thumbs a.active {
+/*    .product-nav-thumbs a.active {
         background-color: burlywood;
         color: white;
        
-    }
+    }*/
 </style>
 
 @Html.Action("SharedHeaderSection", "Home")
@@ -903,17 +903,18 @@
 
                                     </div><!-- End .product-nav -->
                                 }
+                            </div><!-- End .details-filter-row -->
+                            <div class="details-filter-row details-row-size">
+                                <label>رنگ : </label>
 
-                                @*<label>رنگ : </label>
-
-            <div class="product-nav product-nav-thumbs">
-                <a href="#" class="active">
-                    سفید
-                </a>
-                <a href="#">
-                    زرد
-                </a>
-            </div> End .product-nav*@
+                                <div class="product-nav product-nav-thumbs">
+                                    <a href="#" class="active">
+                                        <img src="/Content/client/my-img/15.jpg" alt="product desc">
+                                    </a>
+                                    <a href="#">
+                                        <img src="/Content/client/my-img/17.png" alt="product desc">
+                                    </a>
+                                </div><!-- End .product-nav -->
                             </div><!-- End .details-filter-row -->
 
                             <div class="details-filter-row details-row-size">
@@ -1063,34 +1064,6 @@
                                 }
                             }
 
-                            @*<div class="review">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <h4><a class="text-dark" href="#">کاربر 1</a></h4>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                            </div><!-- End .rating-container -->
-                                            <span class="review-date">4 روز پیش</span>
-                                        </div><!-- End .col -->
-                                        <div class="col-12">
-                                            <h4>عالی، سایز فوق العاده</h4>
-
-                                            <div class="review-content">
-                                                <p>
-                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم،لورم ایپسوم متن
-                                                    ساختگی با تولید سادگی نامفهوم، لورم ایپسوم متن ساختگی با تولید
-                                                    سادگی نامفهوم لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم!
-                                                </p>
-                                            </div><!-- End .review-content -->
-
-
-                                        </div><!-- End .col-auto -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .review -->*@
-
                         </div><!-- End .نظر -->
                     </div><!-- .End .tab-pane -->
                 </div><!-- End .tab-content -->
@@ -1163,8 +1136,6 @@
                     }
                 </div><!-- End .product-price -->
                 <div class="product-details-quantity">
-                    @*<input type="number" id="sticky-cart-qty" class="form-control" value="1" min="1" max="10"
-                        step="1" data-decimals="0" required>*@
                     <div class="input-group  input-spinner">
                         <div class="input-group-append"><button class="btn btn-decrement btn-spinner" onclick="StikyIncreaseProductCount()" style="min-width: 26px"><i class="icon-plus"></i></button></div>
                         <div class="form-control"><span readonly="readonly" id="stiky-txtProductCount">1</span></div>
