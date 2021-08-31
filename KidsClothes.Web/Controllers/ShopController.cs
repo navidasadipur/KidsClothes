@@ -468,6 +468,8 @@ namespace KidsClothes.Web.Controllers
 
             ViewBag.CallForProductNumber = _staticContentRepo.GetStaticContentDetail((int)StaticContents.Phone);
 
+            ViewBag.SizeId = new SelectList(_productsRepo.GetProductSizes(product.Id), "Id", "SizeValue");
+
             return View(vm);
         }
 

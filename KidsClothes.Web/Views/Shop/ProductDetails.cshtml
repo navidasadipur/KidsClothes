@@ -5,9 +5,16 @@
 }
 
 <style>
-    .main-feature a.active {
+    .main-feature a.main-feature-active {
         background-color: burlywood;
         color: white;
+        border: .3rem solid #000;
+    }
+
+    .product-nav-thumbs a.active-color {
+        background-color: burlywood;
+        color: white;
+        border: .3rem solid #000;
     }
 
     .main-feature a,
@@ -906,9 +913,9 @@
 
                                             if (i == 1)
                                             {
-                                                className = "active";
+                                                className = "main-feature-active";
                                             }
-                                            <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 b @className">
+                                            <a href="javascript:void(0)" onclick="UpdateProductPrice(@item.ProductId,@item.Id, this)" class="test1 @className">
                                                 @(item.SubFeature != null ? item.SubFeature.Value : item.Value)
                                             </a>
                                         }
@@ -918,24 +925,19 @@
                             @{
                                 if (ViewBag.ProductColors.Count > 0)
                                 {
+                                    var colorIndex = 0;
                                     <div class="details-filter-row details-row-size">
                                         <label>رنگ : </label>
 
-                                        <div class="product-nav product-nav-thumbs">
+                                        <div class="product-nav product-nav-thumbs" id="product-color">
                                             @foreach (var item in ViewBag.ProductColors)
                                             {
                                                 var className = "";
-                                                var parts = item.Link.ToString().Split('/');
-                                                int index = -1;
-                                                foreach (var p in parts)
-                                                {
-                                                    if (int.TryParse(p, out index))
-                                                    {
-                                                        break;
-                                                    }
-                                                }
+                                                //var parts = item.Link.ToString().Split('/');
 
-                                                if (Model.Product.Id == index)
+                                                colorIndex++;
+
+                                                if (colorIndex == 1)
                                                 {
                                                     className = "active-color";
                                                 }
@@ -1065,13 +1067,14 @@
                             <div class="details-filter-row details-row-size">
                                 <label for="size">سایز : </label>
                                 <div class="select-custom">
-                                    <select name="size" id="size" class="form-control">
+                                    @*<select name="size" id="size" class="form-control">
                                         <option value="#" selected="selected">سایز را انتخاب کنید</option>
                                         <option value="s">کوچک (Small)</option>
                                         <option value="m">متوسط (Medium)</option>
                                         <option value="l">بزرگ (Large)</option>
                                         <option value="xl">خیلی بزرگ (XLarge)</option>
-                                    </select>
+                                    </select>*@
+                                    @Html.DropDownList("SizeId", null, htmlAttributes: new { @class = "form-control" })
                                 </div><!-- End .select-custom -->
 
                                 <a href="#" class="size-guide"><i class="icon-th-list"></i>راهنمای اندازه</a>
@@ -1352,14 +1355,28 @@
             // Get all buttons with class="btn" inside the container
             var btns = btnContainer.getElementsByClassName("test1");
 
-            console.log(btns)
             // Loop through the buttons and add the active class to the current/clicked button
             for (var i = 0; i < btns.length; i++) {
                 btns[i].addEventListener("click", function () {
-                    var current = document.getElementsByClassName("b active");
-                    console.log(current)
-                    current[0].className = current[0].className.replace(" b active", "");
-                    this.className += " b active";
+                    var current = $(".main-feature-active");
+
+                    current.removeClass("main-feature-active");
+
+                    $(this).addClass("main-feature-active");
+                });
+            }
+
+            //Get all buts Of colors
+            var allColorBtns = $("#product-color a")
+
+            // Loop through the buttons and add the active-color class to the current/clicked button
+            for (var i = 0; i < allColorBtns.length; i++) {
+                allColorBtns[i].addEventListener("click", function () {
+                    var current = $(".active-color");
+
+                    current.removeClass("active-color");
+
+                    $(this).addClass("active-color");
                 });
             }
 
