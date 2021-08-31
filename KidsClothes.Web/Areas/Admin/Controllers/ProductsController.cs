@@ -217,6 +217,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
 
             #region  getting previous information if exists
             var productColors = _repo.GetProductColors(id);
+            var productSizes = _repo.GetProductSizes(id);
             var perfumeNotes = _repo.GetProductPerfumeNotes(id);
             var perfumeVolumes = _repo.GetProductPerfumeVolumes(id);
             #endregion
@@ -230,6 +231,10 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
             _repo.DeleteColorCodes(id);
             #endregion
 
+            #region Removing Previous Size Codes
+            _repo.DeleteSizes(id);
+            #endregion
+
             #region Removing Perfume Volumes
             _repo.DeletePerfumeVolume(id);
             #endregion
@@ -237,6 +242,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
             #region Adding Form Data Depending on Their Type
             var imageIndex = 1;
             int colorCodeIndex = 0;
+            int sizeIndex = 0;
             int perfumeNoteIndex = 0;
             int perfumeVolumeIndex = 0;
             foreach(var item in productFormDataList)
@@ -328,6 +334,50 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
                     _repo.AddProductColor(productColor);
                     colorCodeIndex++;
                 }
+                else if (item.ObjectType == 3) // size
+                {
+                    ProductSize productSize = new ProductSize();
+                    productSize.SizeValue = item.Additional;
+                    productSize.Title = item.Title;
+                    productSize.Link = item.Link;
+                    productSize.ProductId = id;
+
+                    //var file = Request.Files["image" + imageIndex];
+                    //if (file != null)
+                    //{
+                    //    var newFileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    //    productColor.Image = newFileName;
+
+                    //    file.SaveAs(Server.MapPath("/Files/ProductColors/Images/" + newFileName));
+
+                    //    // delete existing image 
+                    //    try
+                    //    {
+                    //        if (System.IO.File.Exists(Server.MapPath("/Files/PerfumeNotes/Images/" + productColors[colorCodeIndex].Image)))
+                    //            System.IO.File.Delete(Server.MapPath("/Files/PerfumeNotes/Images/" + productColors[colorCodeIndex].Image));
+                    //    }
+                    //    catch
+                    //    {
+
+                    //    }
+
+                    //}
+                    //else
+                    //{
+                    //    try
+                    //    {
+                    //        productColor.Image = productColors[colorCodeIndex].Image;
+                    //    }
+                    //    catch
+                    //    {
+                    //        productColor.Image = "";
+                    //    }
+                    //}
+
+
+                    _repo.AddProductSize(productSize);
+                    sizeIndex++;
+                }
                 else //additional features
                 {
 
@@ -389,6 +439,12 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
         {
             var colorCodes = _repo.GetProductColors(id);
             return Json(colorCodes.GroupBy(c=>c.Id), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetProductSizes(int id)
+        {
+            var sizes = _repo.GetProductSizes(id);
+            return Json(sizes.GroupBy(c => c.Id), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetProductPerfumeNotes(int id)
@@ -478,6 +534,10 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
             _repo.DeleteColorCodes(id);
             #endregion
 
+            #region Removing Product Sizes
+            _repo.DeleteSizes(id);
+            #endregion
+
             #region Removing Product Perfume Volumes
             _repo.DeletePerfumeVolume(id);
             #endregion
@@ -492,7 +552,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
         public string Title { get; set; }
         public string Link { get; set; }
         public string Additional { get; set; }
-        public int ObjectType { get; set; } // 1: perfume note, 2: color code 3: additional features
+        public int ObjectType { get; set; } // 1: perfume note, 2: color code 3: size 4: additional features
         public int Type { get; set; } // -1: not important, 1: beginning note, 2: middle note, 3: ending note
         public string Volume { get; set; } // for perfumes
         public int AdditionalFeatureType { get; set; }

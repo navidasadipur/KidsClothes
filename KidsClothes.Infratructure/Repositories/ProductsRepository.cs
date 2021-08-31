@@ -100,6 +100,31 @@ namespace KidsClothes.Infrastructure.Repositories
         }
 
 
+        public List<ProductSize> GetProductSizes(int productId)
+        {
+            return _context.ProductSizes.Where(c => c.ProductId == productId).ToList();
+        }
+
+        public void DeleteSizes(int productId)
+        {
+            var list = _context.ProductSizes.Where(c => c.ProductId == productId).ToList();
+            foreach (var item in list)
+                _context.ProductSizes.Remove(item);
+            _context.SaveChanges();
+        }
+
+
+        public void AddProductSize(ProductSize productSize)
+        {
+            var user = GetCurrentUser();
+            productSize.InsertUser = user.UserName;
+            productSize.InsertDate = DateTime.Now;
+
+            _context.ProductSizes.Add(productSize);
+            _context.SaveChanges();
+        }
+
+
         public List<PerfumeNote> GetProductPerfumeNotes(int productId)
         {
             return _context.PerfumeNotes.Where(p => p.ProductId == productId).OrderBy(p=>p.PerfumeNoteType).ToList();

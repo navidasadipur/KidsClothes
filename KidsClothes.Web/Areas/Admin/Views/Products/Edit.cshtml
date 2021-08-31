@@ -122,138 +122,138 @@
                         </div>
 
                         @*@if (Model.ProductGroupId == 75)
-                        {
-                            <div class="form-group perfume-notes-section-wrapper" style="display:block">
+        {
+            <div class="form-group perfume-notes-section-wrapper" style="display:block">
 
-                                <div class="perfume-notes-section">
-                                    <label class="perfume-notes-title expandable edeactive">نت های عطر</label>
+                <div class="perfume-notes-section">
+                    <label class="perfume-notes-title expandable edeactive">نت های عطر</label>
 
-                                    <div id="perfume_note_repeater">
-                                        <div class="form-group row" id="perfume_note_repeater">
-                                            <label class="col-lg-12 col-form-label text-left">
-                                                <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
-                                                    <i class="la la-plus"></i>
-                                                </a>
-                                                نت بویایی :
-                                            </label>
-                                            <div data-repeater-list="perfume_note" class="col-lg-10">
-                                                <div data-repeater-item="" class="" style="">
-                                                    <div class="form-group row" style="align-items: center">
-                                                        <label class="col-md-7">حذف نت</label>
-                                                        <div class="col-md-2">
-                                                            <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label class="col-md-4 col-form-label text-left">نوع نت :</label>
-                                                        <div class="col-lg-8">
-                                                            <select class="form-control" name="NoteType" id="NoteType">
-                                                                <option value="1" selected="selected">نت ابتدایی</option>
-                                                                <option value="2">نت میانی</option>
-                                                                <option value="3">نت پایانی</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="" class="col-md-4">عنوان: </label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" name="NoteName" id="NoteName" class="form-control" placeholder="عنوان/نام نت" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="" class="col-md-4">لینک: </label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" name="NoteLink" id="NoteLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="" class="col-md-4">تصویر: </label>
-                                                        <div class="col-md-12">
-                                                            <input type="file" name="NoteImage" id="NoteImage" class="form-control" accept="image/*" />
-                                                        </div>
-                                                    </div>
-
-
-
-                                                </div>
-                                            </div>
+                    <div id="perfume_note_repeater">
+                        <div class="form-group row" id="perfume_note_repeater">
+                            <label class="col-lg-12 col-form-label text-left">
+                                <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
+                                    <i class="la la-plus"></i>
+                                </a>
+                                نت بویایی :
+                            </label>
+                            <div data-repeater-list="perfume_note" class="col-lg-10">
+                                <div data-repeater-item="" class="" style="">
+                                    <div class="form-group row" style="align-items: center">
+                                        <label class="col-md-7">حذف نت</label>
+                                        <div class="col-md-2">
+                                            <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
                                         </div>
-
-                                        <script>
-                                            $("#perfume_note_repeater").repeater({
-                                                initEmpty: true,
-                                                show: function () { $(this).slideDown(); }
-                                                , hide:
-                                                    function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
-                                            });
-                                        </script>
                                     </div>
-                                </div>
 
-                            </div>
-                        }
-
-                        @if (Model.ProductGroupId == 75)// additional features including Volume
-                        {
-                            <div class="form-group perfume-notes-section-wrapper" style="display:block">
-
-                                <div class="perfume-notes-section">
-                                    <label class="perfume-notes-title expandable edeactive">حجم عطر</label>
-
-                                    <div id="perfume_volume_repeater">
-                                        <div class="form-group row" id="perfume_volume_repeater">
-                                            <label class="col-lg-12 col-form-label text-left">
-                                                <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
-                                                    <i class="la la-plus"></i>
-                                                </a>
-                                                حجم عطر
-                                            </label>
-                                            <div data-repeater-list="perfume_volume" class="col-lg-10">
-                                                <div data-repeater-item="" class="" style="">
-                                                    <div class="form-group row" style="align-items: center">
-                                                        <label class="col-md-7">حذف مورد</label>
-                                                        <div class="col-md-2">
-                                                            <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="" class="col-md-4">حجم: </label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" name="VolumeValue" id="VolumeValue" class="form-control" placeholder="برای مثال 100 میلی لیتر" />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="" class="col-md-4">لینک: </label>
-                                                        <div class="col-md-8">
-                                                            <input type="text" name="VolumeLink" id="VolumeLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
-                                                        </div>
-                                                    </div>
-
-
-
-                                                </div>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-left">نوع نت :</label>
+                                        <div class="col-lg-8">
+                                            <select class="form-control" name="NoteType" id="NoteType">
+                                                <option value="1" selected="selected">نت ابتدایی</option>
+                                                <option value="2">نت میانی</option>
+                                                <option value="3">نت پایانی</option>
+                                            </select>
                                         </div>
-
-                                        <script>
-                                            $("#perfume_volume_repeater").repeater({
-                                                initEmpty: true,
-                                                show: function () { $(this).slideDown(); }
-                                                , hide:
-                                                    function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
-                                            });
-                                        </script>
                                     </div>
-                                </div>
 
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">عنوان: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="NoteName" id="NoteName" class="form-control" placeholder="عنوان/نام نت" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">لینک: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="NoteLink" id="NoteLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">تصویر: </label>
+                                        <div class="col-md-12">
+                                            <input type="file" name="NoteImage" id="NoteImage" class="form-control" accept="image/*" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
                             </div>
-                        }*@
+                        </div>
+
+                        <script>
+                            $("#perfume_note_repeater").repeater({
+                                initEmpty: true,
+                                show: function () { $(this).slideDown(); }
+                                , hide:
+                                    function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
+                            });
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+        @if (Model.ProductGroupId == 75)// additional features including Volume
+        {
+            <div class="form-group perfume-notes-section-wrapper" style="display:block">
+
+                <div class="perfume-notes-section">
+                    <label class="perfume-notes-title expandable edeactive">حجم عطر</label>
+
+                    <div id="perfume_volume_repeater">
+                        <div class="form-group row" id="perfume_volume_repeater">
+                            <label class="col-lg-12 col-form-label text-left">
+                                <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
+                                    <i class="la la-plus"></i>
+                                </a>
+                                حجم عطر
+                            </label>
+                            <div data-repeater-list="perfume_volume" class="col-lg-10">
+                                <div data-repeater-item="" class="" style="">
+                                    <div class="form-group row" style="align-items: center">
+                                        <label class="col-md-7">حذف مورد</label>
+                                        <div class="col-md-2">
+                                            <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">حجم: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="VolumeValue" id="VolumeValue" class="form-control" placeholder="برای مثال 100 میلی لیتر" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="" class="col-md-4">لینک: </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="VolumeLink" id="VolumeLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            $("#perfume_volume_repeater").repeater({
+                                initEmpty: true,
+                                show: function () { $(this).slideDown(); }
+                                , hide:
+                                    function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
+                            });
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+        }*@
 
                         <div class="form-group perfume-notes-section-wrapper" style="display:block">
 
@@ -324,6 +324,65 @@
                             </div>
                         </div>
 
+                        <div class="form-group perfume-notes-section-wrapper" style="display:block">
+
+                            <div class="perfume-notes-section">
+                                <label class="perfume-notes-title expandable edeactive">سایزهای محصول</label>
+
+                                <div id="product_size_repeater">
+                                    <div class="form-group row" id="product_size_repeater">
+                                        <label class="col-lg-12 col-form-label text-left">
+                                            <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
+                                                <i class="la la-plus"></i>
+                                            </a>
+                                            سایز :
+                                        </label>
+                                        <div data-repeater-list="product_size" class="col-lg-10">
+                                            <div data-repeater-item="" class="" style="">
+                                                <div class="form-group row" style="align-items: center">
+                                                    <label class="col-md-7">حذف ویژگی</label>
+                                                    <div class="col-md-2">
+                                                        <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="" class="col-md-4">عنوان سایز: </label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="SizeName" id="SizeName" class="form-control" placeholder="نام سایز" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 col-form-label text-left">سایز :</label>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" name="SizeValue" id="SizeValue" class="form-control" placeholder="XLarg" style="text-align:left; direction:ltr">
+                                                    </div>
+                                                </div>
+
+                                                @*<div class="form-group row">
+            <label for="" class="col-md-4">لینک: </label>
+            <div class="col-md-8">
+                <input type="text" name="ColorLink" id="ColorLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
+            </div>
+        </div>*@
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        $("#product_size_repeater").repeater({
+                                            initEmpty: true,
+                                            show: function () { $(this).slideDown(); }
+                                            , hide:
+                                                function (deleteElement) { var currentInstance = $(this).index(); var nextInstance = $(this).index() + 1; $(this).slideUp(deleteElement); }
+                                        });
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
 
                         <div id="product-similars-section" class="form-group">
                             <div class="row">
@@ -461,13 +520,13 @@
                 getProductGroupFeatures(productGroupId);
                 getProductGroupBrands(productGroupId);
 
-                selectedGroupId = parseInt(selectedGroupArr[1]);
-                if (parseInt(selectedGroupArr[1]) == perfumeGroupId) { // group code for perfumes
-                    $(".perfume-notes-section-wrapper").css({ "display": "block" });
-                }
-                else {
-                    $(".perfume-notes-section-wrapper").css({ "display": "none" });
-                }
+                //selectedGroupId = parseInt(selectedGroupArr[1]);
+                //if (parseInt(selectedGroupArr[1]) == perfumeGroupId) { // group code for perfumes
+                //    $(".perfume-notes-section-wrapper").css({ "display": "block" });
+                //}
+                //else {
+                //    $(".perfume-notes-section-wrapper").css({ "display": "none" });
+                //}
             });
         new KTImageInput('product-image');
         new KTImageInput('note-image1');
@@ -814,6 +873,33 @@
 
                                         index++;
                                     }
+                                    // getting product sizes
+                                    index = 0;
+                                    while (true) {
+                                        var colorCode = $("[name='product_size" + "[" + index + "][SizeValue]']").val();
+
+                                        if (colorCode == null || colorCode == undefined) {
+                                            break;
+                                        }
+
+                                        var title = $("[name='product_size" + "[" + index + "][SizeName]']").val();
+                                        var link = $("[name='product_size" + "[" + index + "][SizeLink]']").val();
+
+                                        item = {
+                                            Title: title,
+                                            Link: link,
+                                            Additional: colorCode,
+                                            ObjectType: 3, // color code
+                                            Type: -1, // not important
+                                            AdditionalFeatureType: -1,
+                                            Volume: ""
+                                        }
+
+
+                                        data.push(item);
+
+                                        index++;
+                                    }
                                     // getting perfume volumes if perfume group is selected
                                     index = 0;
                                     if (selectedGroupId == perfumeGroupId) {
@@ -832,7 +918,7 @@
                                                 Title: "",
                                                 Link: link,
                                                 Additional: colorCode,
-                                                ObjectType: 3, // additional feature
+                                                ObjectType: 4, // additional feature
                                                 Type: -1, // not important
                                                 AdditionalFeatureType: 1,
                                                 Volume: volumeVal
@@ -1041,7 +1127,7 @@
 
         }
 
-        
+
 
         function setPerfumeVolumes(id) {
             if (selectedGroupId != perfumeGroupId) return;
@@ -1175,12 +1261,89 @@
 
         }
 
+
+        function setProductSizes(id) {
+            var productColorCodes = [];
+            $.ajax({
+                type: 'GET',
+                url: "/Products/GetProductSizes/" + id,
+                async: false,
+                success: function (data) {
+                    console.log("success");
+                    data.map(function (item) {
+                        productColorCodes.push(item);
+                    });
+
+
+                },
+                error: function (data) {
+                    console.log("error");
+                    console.log(data);
+                }
+            });
+
+            var productColorCodesContainer = $("[data-repeater-list=product_size]");
+            productColorCodes.map(function (item, index) {
+                item.map(function (productSize) {
+                    var featureDetail = "";
+                    var featureDetail = '<div data-repeater-item="" class="" style="">' +
+                        '<div class="form-group row" style="align-items: center">' +
+                        '<label class="col-md-7">حذف ویژگی</label>' +
+                        '<div class="col-md-2">' +
+                        '<a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-icon btn-circle btn-light-danger"><i class="la la-trash"></i></a>' +
+                        '</div>' +
+                        '</div>' +
+
+                        '<div class="form-group row">' +
+                        '<label for="" class="col-md-4">عنوان سایز: </label>' +
+                        '<div class="col-md-8">' +
+                        '<input type="text" name="product_size[' + index + '][SizeName]" id="SizeName" class="form-control" value="' + productSize.Title + '" placeholder="نام سایز" />' +
+                        '</div>' +
+                        '</div>' +
+
+                        '<div class="form-group row">' +
+                        '<label class="col-md-4 col-form-label text-left">سایز :</label>' +
+                        '<div class="col-lg-8">' +
+                        '<input type="text" name="product_size[' + index + '][SizeValue]" id="SizeValue" class="form-control" value="' + productSize.SizeValue + '" placeholder="XLarg" style="text-align:left; direction:ltr">' +
+                        '</div>' +
+                        '</div>' +
+
+                        //'<div class="form-group row">' +
+                        //'<label for="" class="col-md-4">لینک: </label>' +
+                        //'<div class="col-md-8">' +
+                        //'<input type="text" name="product_size[' + index + '][ColorLink]" id="ColorLink" class="form-control" value="' + productSize.Link + '" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />' +
+                        //'</div>' +
+                        //'</div>' +
+
+                        //'<div class="form-group row">' +
+                        //'<label for="" class="col-md-4">تصویر: </label>' +
+                        //'<div class="col-md-12">' +
+                        //'<input type="file" name="product_size[' + index + '][ColorCodeImage]" id="ColorImage" class="form-control"  accept="image/*" />' +
+                        //'<a href="/Files/ProductColors/Images/' + productColor.Image + '" target="_blank">تصویر کنونی</a>' +
+                        //'</div>' +
+                        //'</div>' +
+
+
+
+                        '</div>';
+
+                    console.log(featureDetail);
+                    productColorCodesContainer.append(featureDetail);
+                });
+
+            });
+
+        }
+
+
+
         function InitializeFields() {
             var currentBrandId = @Model.BrandId;
             getProductGroupBrands(@Model.ProductGroupId, currentBrandId);
             getProductGroupFeatures(@Model.ProductGroupId);
             setProductFeatures(@Model.Id);
             setProductColorCodes(@Model.Id);
+            setProductSizes(@Model.Id);
             setPerfumeNotes(@Model.Id);
             setPerfumeVolumes(@Model.Id);
         }

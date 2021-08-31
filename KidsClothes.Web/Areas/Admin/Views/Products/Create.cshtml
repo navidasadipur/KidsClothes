@@ -327,7 +327,7 @@
                 <div class="form-group perfume-notes-section-wrapper" style="display:block">
 
                     <div class="perfume-notes-section">
-                        <label class="perfume-notes-title expandable edeactive">کدهای رنگ محصول</label>
+                        <label class="perfume-notes-title expandable edeactive">سایزهای محصول</label>
 
                         <div id="product_size_repeater">
                             <div class="form-group row" id="product_size_repeater">
@@ -335,7 +335,7 @@
                                     <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-success mr-2" data-repeater-create="">
                                         <i class="la la-plus"></i>
                                     </a>
-                                    کد رنگ :
+                                    سایز :
                                 </label>
                                 <div data-repeater-list="product_size" class="col-lg-10">
                                     <div data-repeater-item="" class="" style="">
@@ -347,25 +347,25 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-4 col-form-label text-left">کد رنگی :</label>
+                                            <label for="" class="col-md-4">عنوان سایز: </label>
+                                            <div class="col-md-8">
+                                                <input type="text" name="SizeName" id="SizeName" class="form-control" placeholder="نام سایز" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label text-left">سایز :</label>
                                             <div class="col-lg-8">
-                                                <input type="text" name="SizeValue" id="SizeValue" class="form-control" placeholder="#FFFFFF" style="text-align:left; direction:ltr">
+                                                <input type="text" name="SizeValue" id="SizeValue" class="form-control" placeholder="XLarg" style="text-align:left; direction:ltr">
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
-                                            <label for="" class="col-md-4">عنوان: </label>
-                                            <div class="col-md-8">
-                                                <input type="text" name="SizeName" id="SizeName" class="form-control" placeholder="نام کد رنگ" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="" class="col-md-4">لینک: </label>
-                                            <div class="col-md-8">
-                                                <input type="text" name="SizeLink" id="SizeLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
-                                            </div>
-                                        </div>
+                                        @*<div class="form-group row">
+            <label for="" class="col-md-4">لینک: </label>
+            <div class="col-md-8">
+                <input type="text" name="SizeLink" id="SizeLink" class="form-control" placeholder="http://www.test.com" style="text-align:left; direction:ltr" />
+            </div>
+        </div>*@
 
                                     </div>
                                 </div>
@@ -514,13 +514,13 @@
                 getProductGroupFeatures(productGroupId);
                 getProductGroupBrands(productGroupId);
 
-                selectedGroupId = parseInt(selectedGroupArr[1]);
-                if (parseInt(selectedGroupArr[1]) == perfumeGroupId) { // group code for perfumes
-                    $(".perfume-notes-section-wrapper").css({ "display": "block" });
-                }
-                else {
-                    $(".perfume-notes-section-wrapper").css({ "display": "none" });
-                }
+                //selectedGroupId = parseInt(selectedGroupArr[1]);
+                //if (parseInt(selectedGroupArr[1]) == perfumeGroupId) { // group code for perfumes
+                //    $(".perfume-notes-section-wrapper").css({ "display": "block" });
+                //}
+                //else {
+                //    $(".perfume-notes-section-wrapper").css({ "display": "none" });
+                //}
             });
         new KTImageInput('product-image');
         new KTImageInput('note-image1');
@@ -850,7 +850,7 @@
                                             Title: title,
                                             Link: link,
                                             Additional: colorCode,
-                                            ObjectType: 2, // color code
+                                            ObjectType: 3, // color code
                                             Type: -1 // not important
                                         }
 
@@ -877,7 +877,7 @@
                                                 Title: "",
                                                 Link: link,
                                                 Additional: colorCode,
-                                                ObjectType: 3, // additional feature
+                                                ObjectType: 4, // additional feature
                                                 Type: -1, // not important
                                                 AdditionalFeatureType: 1,
                                                 Volume: volumeVal
@@ -930,7 +930,7 @@
         function TestSubmit() {
             // submitting perfume notes and color codes and sizes
             var formData = new FormData();
-            var id = 3;
+            var id = 4;
             var data = [];
             if (selectedGroupId == perfumeGroupId) {
                 item = {
@@ -1018,7 +1018,7 @@
                     Title: title,
                     Link: link,
                     Additional: colorCode,
-                    ObjectType: 2, // color code
+                    ObjectType: 3, // color code
                     Type: -1 // not important
                 }
 
