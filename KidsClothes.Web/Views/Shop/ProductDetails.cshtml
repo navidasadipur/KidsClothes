@@ -943,13 +943,13 @@
                                                 }
                                                 if (!string.IsNullOrEmpty(item.Image))
                                                 {
-                                                    <a href="#" class="@className">
+                                                    <a href="javascript:void(0)" class="@className">
                                                         <img src="/Files/ProductColors/Images/@item.Image" alt="@item.Title">
                                                     </a>
                                                 }
                                                 else
                                                 {
-                                                    <a href="#" class="@className" style="background:@item.ColorCode">
+                                                    <a href="javascript:void(0)" class="@className" style="background:@item.ColorCode">
                                                         <img src="/Files/ProductColors/Images/@item.Image" alt="@item.Title">
                                                     </a>
                                                 }
@@ -1349,15 +1349,12 @@
             //    zoomPosition: 'left'
             //});
 
-            // Get the container element
-            var btnContainer = document.getElementById("product-main-btn");
-
-            // Get all buttons with class="btn" inside the container
-            var btns = btnContainer.getElementsByClassName("test1");
+            //Get all buts Of main features
+            var allMainFearueBtn = $("#product-main-btn a");
 
             // Loop through the buttons and add the active class to the current/clicked button
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].addEventListener("click", function () {
+            for (var i = 0; i < allMainFearueBtn.length; i++) {
+                allMainFearueBtn[i].addEventListener("click", function () {
                     var current = $(".main-feature-active");
 
                     current.removeClass("main-feature-active");
@@ -1366,7 +1363,7 @@
                 });
             }
 
-            //Get all buts Of colors
+            
             var allColorBtns = $("#product-color a")
 
             // Loop through the buttons and add the active-color class to the current/clicked button
