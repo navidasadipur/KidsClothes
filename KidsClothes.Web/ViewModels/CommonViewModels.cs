@@ -96,7 +96,10 @@ namespace KidsClothes.Web.ViewModels
                     Image = (string)item["Image"],
                     Price = Convert.ToInt64(item["Price"]),
                     MainFeatureId = Convert.ToInt32(item["MainFeatureId"]),
-                    Quantity = Convert.ToInt32(item["Quantity"])
+                    Quantity = Convert.ToInt32(item["Quantity"]),
+                    ColorTitle = (string)item["ColorTitle"],
+                    ColorCode = (string)item["ColorCode"],
+                    ColorImage = (string)item["ColorImage"]
                 });
             }
 
@@ -114,6 +117,10 @@ namespace KidsClothes.Web.ViewModels
         public long Price { get; set; }
         public int Quantity { get; set; }
         public int MainFeatureId { get; set; }
+
+        public string ColorTitle { get; set; }
+        public string ColorCode { get; set; }
+        public string ColorImage { get; set; }
     }
     public class WishListModel
     {

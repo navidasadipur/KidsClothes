@@ -102,12 +102,12 @@ namespace KidsClothes.Infrastructure.Repositories
 
         public List<ProductSize> GetProductSizes(int productId)
         {
-            return _context.ProductSizes.Where(c => c.ProductId == productId).ToList();
+            return _context.ProductSizes.Where(s => s.ProductId == productId).ToList();
         }
 
         public void DeleteSizes(int productId)
         {
-            var list = _context.ProductSizes.Where(c => c.ProductId == productId).ToList();
+            var list = _context.ProductSizes.Where(s => s.ProductId == productId).ToList();
             foreach (var item in list)
                 _context.ProductSizes.Remove(item);
             _context.SaveChanges();

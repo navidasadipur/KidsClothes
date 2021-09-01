@@ -36,6 +36,8 @@ namespace KidsClothes.Web.Controllers
         private ShoppingRepository _shoppingRepo;
         private SMSLogRepository _smsLogRepo;
         private readonly DiscountsRepository _discountsRepo;
+        private readonly ProductColorsRepository _productColorsRepo;
+        private readonly ProductSizesRepository _productSizesRepo;
 
         public ShopController(ProductService productService,
             ProductGroupsRepository productGroupRepo,
@@ -52,7 +54,9 @@ namespace KidsClothes.Web.Controllers
             StaticContentDetailsRepository staticContentDetailsRepository,
             InvoicesRepository invoicesRepository,
             SMSLogRepository smsLogRepository,
-            DiscountsRepository discountsRepo
+            DiscountsRepository discountsRepo,
+            ProductColorsRepository productColorsRepo,
+            ProductSizesRepository productSizesRepo
             )
         {
             _productService = productService;
@@ -72,6 +76,8 @@ namespace KidsClothes.Web.Controllers
             _invoicesRepository = invoicesRepository;
             _smsLogRepo = smsLogRepository;
             _discountsRepo = discountsRepo;
+            _productColorsRepo = productColorsRepo;
+            _productSizesRepo = productSizesRepo;
         }
         // GET: Products
         [Route("Shop/")]
@@ -529,7 +535,7 @@ namespace KidsClothes.Web.Controllers
         }
 
         [HttpPost]
-        public string AddToCart(int productId, int? mainFeatureId, int count=1)
+        public string AddToCart(int productId, int? mainFeatureId, int? colorId, int? sizeId, int count=1)
         {
 
             CartResponse cartResponse = new CartResponse();
@@ -556,6 +562,27 @@ namespace KidsClothes.Web.Controllers
             {
                 mainFeatureId = _productMainFeaturesRepo.GetByProductId(productId).Id;
             }
+
+            var color = new ProductColor();
+            if (colorId == null)
+            {
+                color = _productColorsRepo.GetFirstColorByProductId(productId);
+            }
+            else
+            {
+                color = _productColorsRepo.GetProductColor(colorId.Value);
+            }
+
+            var size = new ProductSize();
+            if (sizeId == null)
+            {
+                size = _productSizesRepo.GetFirstSizeByProductId(productId);
+            }
+            else
+            {
+                size = _productSizesRepo.GetProductSize(sizeId.Value);
+            }
+
             product = _productService.CreateProductWithPriceDto(productId, mainFeatureId.Value);
             productStockCount = _productService.GetProductStockCount(productId, mainFeatureId.Value);
 
@@ -584,7 +611,8 @@ namespace KidsClothes.Web.Controllers
                             Price = product.PriceAfterDiscount,
                             Quantity = count,
                             MainFeatureId = mainFeatureId.Value,
-                            Image = product.Image
+                            Image = product.Image,
+
                         });
                         cartModel.TotalPrice += (product.PriceAfterDiscount * count);
                     }

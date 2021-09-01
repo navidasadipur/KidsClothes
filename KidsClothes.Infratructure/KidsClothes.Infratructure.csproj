@@ -136,6 +136,8 @@
     <Compile Include="Repositories\EmailSubscriptionRepository.cs" />
     <Compile Include="Repositories\EPaymentLogRepository.cs" />
     <Compile Include="Repositories\EPaymentRepository.cs" />
+    <Compile Include="Repositories\ProductSizesRepository.cs" />
+    <Compile Include="Repositories\ProductColorsRepository.cs" />
     <Compile Include="Repositories\FaqRepository.cs" />
     <Compile Include="Repositories\FeaturesRepository.cs" />
     <Compile Include="Repositories\GeoDivisionsRepository.cs" />
