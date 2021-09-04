@@ -52,7 +52,7 @@ namespace KidsClothes.Infratructure.Services
         public int GetProductSoldCount(Product product)
         {
             var amount = 0;
-            var invoices = _context.InvoiceItems.Where(i => i.ProductId == product.Id && i.IsDeleted == false ).ToList();
+            var invoices = _context.InvoiceItems.Where(i => i.ProductId == product.Id && i.IsDeleted == false).ToList();
             if (invoices.Any())
                 amount += invoices.Sum(i => i.Quantity);
             return amount;
@@ -66,7 +66,7 @@ namespace KidsClothes.Infratructure.Services
                 inStock += mainFeature.Quantity;
             return inStock;
         }
-        public int GetProductStockCount(int productId,int mainFeatureId)
+        public int GetProductStockCount(int productId, int mainFeatureId)
         {
             var inStock = 0;
             var mainFeature = _productMainFeatureRepo.Get(mainFeatureId);
@@ -97,10 +97,10 @@ namespace KidsClothes.Infratructure.Services
 
             return price;
         }
-        public long GetProductPrice(Product product,int mainFeatureId)
+        public long GetProductPrice(Product product, int mainFeatureId)
         {
             long price = 0;
-            var mainFeature = _productMainFeatureRepo.GetByProductId(product.Id,mainFeatureId);
+            var mainFeature = _productMainFeatureRepo.GetByProductId(product.Id, mainFeatureId);
             if (mainFeature != null && mainFeature.Quantity > 0)
             {
                 price = mainFeature.Price;
@@ -139,9 +139,9 @@ namespace KidsClothes.Infratructure.Services
 
             return priceAfterDiscount;
         }
-        public long GetProductPriceAfterDiscount(Product product,int mainFeatureId)
+        public long GetProductPriceAfterDiscount(Product product, int mainFeatureId)
         {
-            var productPrice = GetProductPrice(product,mainFeatureId);
+            var productPrice = GetProductPrice(product, mainFeatureId);
             var priceAfterDiscount = productPrice;
 
             // Checking For Product Discount
@@ -268,7 +268,7 @@ namespace KidsClothes.Infratructure.Services
             return productsDto;
         }
 
-        public List<ProductWithPriceDto> GetRelatedProducts(int productId,int take)
+        public List<ProductWithPriceDto> GetRelatedProducts(int productId, int take)
         {
             var productt = _productRepo.Get(productId);
             var relatedProducts = _context.Products
@@ -300,10 +300,10 @@ namespace KidsClothes.Infratructure.Services
         public List<ProductWithPriceDto> GetComplementaryProducts(int productId, int take)
         {
             List<Product> products = (from p in _context.Products
-                            join s in _context.SimilarProducts
-                            on p.Id equals s.SimilarProductId
-                            where s.ProductId==productId
-                            select p).ToList();
+                                      join s in _context.SimilarProducts
+                                      on p.Id equals s.SimilarProductId
+                                      where s.ProductId == productId
+                                      select p).ToList();
 
             var productsDto = new List<ProductWithPriceDto>();
 
@@ -375,10 +375,10 @@ namespace KidsClothes.Infratructure.Services
             };
             return productDto;
         }
-        public ProductWithPriceDto CreateProductWithPriceDto(int productId,int mainFeatureId)
+        public ProductWithPriceDto CreateProductWithPriceDto(int productId, int mainFeatureId)
         {
             var product = _productRepo.Get(productId);
-            var price = GetProductPrice(product,mainFeatureId);
+            var price = GetProductPrice(product, mainFeatureId);
             //var priceAfterDiscount = GetProductPriceAfterDiscount(product,mainFeatureId);
             var productDiscount = GetProductDiscount(product);
             var productDto = new ProductWithPriceDto()
@@ -446,7 +446,7 @@ namespace KidsClothes.Infratructure.Services
         }
         #region Get Products Grid
 
-        public List<Product> GetProductsGrid(List<int> groupIds = null, List<int> brandIds = null, List<int> subFeatureIds = null,long? fromPrice = null,long? toPrice = null,string searchString = null)
+        public List<Product> GetProductsGrid(List<int> groupIds = null, List<int> brandIds = null, List<int> subFeatureIds = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
         {
             var allProducts = new List<Product>();
             var allFilteredProducts = new List<Product>();
@@ -454,9 +454,9 @@ namespace KidsClothes.Infratructure.Services
             //if searched
             if (!string.IsNullOrEmpty(searchString))
             {
-                allFilteredProducts = _context.Products
-                    .Where(p => p.IsDeleted == false 
-                    && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) 
+                allProducts = _context.Products
+                    .Where(p => p.IsDeleted == false
+                    && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower())
                     || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())
                     || searchString.Trim().ToLower().Contains(p.ShortTitle.Trim().ToLower())
                     || searchString.Trim().ToLower().Contains(p.Title.Trim().ToLower())
@@ -466,6 +466,37 @@ namespace KidsClothes.Infratructure.Services
                     .Include(p => p.ProductFeatureValues)
                     .Include(p => p.ProductGroup)
                     .OrderByDescending(p => p.InsertDate).ToList();
+
+                var searchedProductsFilteredByGroup = new List<Product>();
+                var searchedProductsFilteredByBrand = new List<Product>();
+                var searchedProductsFilteredByFeature = new List<Product>();
+
+                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
+                {
+                    if (groupIds != null && groupIds.Any())
+                    {
+                        foreach (var group in groupIds)
+                            searchedProductsFilteredByGroup.AddRange(allProducts.Where(p => p.IsDeleted == false && p.ProductGroupId == group).OrderByDescending(p => p.InsertDate).ToList());
+                    }
+                    if (brandIds != null && brandIds.Any())
+                    {
+                        foreach (var brand in brandIds)
+                            searchedProductsFilteredByBrand.AddRange(allProducts.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate).ToList());
+                    }
+                    if (subFeatureIds != null && subFeatureIds.Any(f => f != 0))
+                    {
+                        foreach (var subFeature in subFeatureIds.Where(f => f != 0))
+                            searchedProductsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate).ToList());
+                    }
+
+                    allFilteredProducts.AddRange(searchedProductsFilteredByGroup);
+                    allFilteredProducts.AddRange(searchedProductsFilteredByBrand);
+                    allFilteredProducts.AddRange(searchedProductsFilteredByFeature);
+                }
+                else
+                {
+                    allFilteredProducts = allProducts;
+                }
             }
             else
             {
@@ -503,76 +534,76 @@ namespace KidsClothes.Infratructure.Services
                 }
             }
 
-            if (fromPrice != null)
-                allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) >= fromPrice).ToList();
+                if (fromPrice != null)
+                    allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) >= fromPrice).ToList();
 
-            if (toPrice != null)
-                allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) <= toPrice).ToList();
+                if (toPrice != null)
+                    allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) <= toPrice).ToList();
 
-            foreach (var product in allFilteredProducts)
-            {
-                product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                foreach (var product in allFilteredProducts)
+                {
+                    product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                }
+
+                return allFilteredProducts;
+
+                //    if (productGroupId == null || productGroupId == 0)
+                //{
+                //    if (string.IsNullOrEmpty(searchString))
+                //    {
+                //        products = _context.Products.Include(p => p.ProductMainFeatures).Include(p => p.ProductFeatureValues).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
+
+                //        foreach (var product in products)
+                //        {
+                //            product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                //        }
+                //    }
+                //    else
+                //    {
+                //        products = _context.Products.Include(p => p.ProductMainFeatures)
+                //            .Include(p => p.ProductFeatureValues)
+                //            .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
+                //            .OrderByDescending(p => p.InsertDate).ToList();
+
+                //        foreach (var product in products)
+                //        {
+                //            product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                //        }
+                //    }
+                //}
+                //else
+                //{
+                //    products = _context.Products.Include(p=>p.ProductMainFeatures).Include(p=>p.ProductFeatureValues).Where(p => p.IsDeleted == false && p.ProductGroupId == productGroupId).OrderByDescending(p => p.InsertDate).ToList();
+
+                //    foreach (var product in products)
+                //    {
+                //        product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                //    }
+
+                //    var allChildrenGroups = GetAllChildrenProductGroupIds(productGroupId.Value);
+                //    foreach (var groupId in allChildrenGroups)
+                //        products.AddRange(_context.Products.Where(p => p.IsDeleted == false && p.ProductGroupId == groupId).OrderByDescending(p => p.InsertDate).ToList());
+                //    if (string.IsNullOrEmpty(searchString) == false)
+                //    {
+                //        products = products
+                //            .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
+                //            .OrderByDescending(p => p.InsertDate).ToList();
+
+                //        foreach (var product in products)
+                //        {
+                //            product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
+                //        }
+                //    }
+                //}
             }
-
-            return allFilteredProducts;
-
-            //    if (productGroupId == null || productGroupId == 0)
-            //{
-            //    if (string.IsNullOrEmpty(searchString))
-            //    {
-            //        products = _context.Products.Include(p => p.ProductMainFeatures).Include(p => p.ProductFeatureValues).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
-
-            //        foreach (var product in products)
-            //        {
-            //            product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        products = _context.Products.Include(p => p.ProductMainFeatures)
-            //            .Include(p => p.ProductFeatureValues)
-            //            .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
-            //            .OrderByDescending(p => p.InsertDate).ToList();
-
-            //        foreach (var product in products)
-            //        {
-            //            product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    products = _context.Products.Include(p=>p.ProductMainFeatures).Include(p=>p.ProductFeatureValues).Where(p => p.IsDeleted == false && p.ProductGroupId == productGroupId).OrderByDescending(p => p.InsertDate).ToList();
-
-            //    foreach (var product in products)
-            //    {
-            //        product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-            //    }
-
-            //    var allChildrenGroups = GetAllChildrenProductGroupIds(productGroupId.Value);
-            //    foreach (var groupId in allChildrenGroups)
-            //        products.AddRange(_context.Products.Where(p => p.IsDeleted == false && p.ProductGroupId == groupId).OrderByDescending(p => p.InsertDate).ToList());
-            //    if (string.IsNullOrEmpty(searchString) == false)
-            //    {
-            //        products = products
-            //            .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
-            //            .OrderByDescending(p => p.InsertDate).ToList();
-
-            //        foreach (var product in products)
-            //        {
-            //            product.ProductMainFeatures = product.ProductMainFeatures.Where(f => f.IsDeleted == false).ToList();
-            //        }
-            //    }
-            //}
+            #endregion
         }
-        #endregion
-    }
 
 
-    public class DiscountInfo
-    {
-        public long DiscountAmount { get; set; }
-        public DiscountType DiscountType { get; set; }
-        public long DiscountValue { get; set; }
+        public class DiscountInfo
+        {
+            public long DiscountAmount { get; set; }
+            public DiscountType DiscountType { get; set; }
+            public long DiscountValue { get; set; }
+        }
     }
-}
