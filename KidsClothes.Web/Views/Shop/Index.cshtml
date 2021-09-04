@@ -556,13 +556,14 @@
                 // Update Price Range
                 priceSlider.noUiSlider.on('update', function (values, handle) {
                     $('#filter-price-range').text(values.join(' - '));
+                    GetGrid();
                 });
             }
 
-            // Update Price Range
-            $('#price-slider').mouseup(function () {
-                GetGrid();
-            });
+            //// Update Price Range
+            //$('#price-slider').change(function () {
+            //    GetGrid();
+            //});
 
             document.getElementById("reload").onclick = function() {reload()};
 
