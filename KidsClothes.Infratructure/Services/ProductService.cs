@@ -454,10 +454,17 @@ namespace KidsClothes.Infratructure.Services
             //if searched
             if (!string.IsNullOrEmpty(searchString))
             {
-                allProducts = _context.Products.Include(p => p.ProductMainFeatures)
+                allFilteredProducts = _context.Products
+                    .Where(p => p.IsDeleted == false 
+                    && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) 
+                    || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())
+                    || searchString.Trim().ToLower().Contains(p.ShortTitle.Trim().ToLower())
+                    || searchString.Trim().ToLower().Contains(p.Title.Trim().ToLower())
+                    )
+                    )
+                    .Include(p => p.ProductMainFeatures)
                     .Include(p => p.ProductFeatureValues)
                     .Include(p => p.ProductGroup)
-                    .Where(p => p.IsDeleted == false && (p.ShortTitle.Trim().ToLower().Contains(searchString.Trim().ToLower()) || p.Title.Trim().ToLower().Contains(searchString.Trim().ToLower())))
                     .OrderByDescending(p => p.InsertDate).ToList();
             }
             else
@@ -494,13 +501,13 @@ namespace KidsClothes.Infratructure.Services
                 {
                     allFilteredProducts = allProducts;
                 }
-
-                if (fromPrice != null)
-                    allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) >= fromPrice).ToList();
-
-                if (toPrice != null)
-                    allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) <= toPrice).ToList();
             }
+
+            if (fromPrice != null)
+                allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) >= fromPrice).ToList();
+
+            if (toPrice != null)
+                allFilteredProducts = allFilteredProducts.Where(p => GetProductPriceAfterDiscount(p) <= toPrice).ToList();
 
             foreach (var product in allFilteredProducts)
             {
