@@ -4,32 +4,30 @@
 }
 
 @*<!-- breadcrumb area start -->
-<section class="breadcrumb-area breadcrumb-bg extra">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-inner">
-                    <!-- breadcrumb inner -->
-                    <div class="left-content-area">
-                        <!-- left content area -->
-                        <h1 class="title">ورود</h1>
-                    </div><!-- //. left content area -->
-                    <div class="right-content-area">
-                        <ul>
-                            <li><a href="/">خانه</a></li>
-                            <li>ورود</li>
-                        </ul>
-                    </div>
-                </div><!-- //. breadcrumb inner -->
+    <section class="breadcrumb-area breadcrumb-bg extra">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <!-- breadcrumb inner -->
+                        <div class="left-content-area">
+                            <!-- left content area -->
+                            <h1 class="title">ورود</h1>
+                        </div><!-- //. left content area -->
+                        <div class="right-content-area">
+                            <ul>
+                                <li><a href="/">خانه</a></li>
+                                <li>ورود</li>
+                            </ul>
+                        </div>
+                    </div><!-- //. breadcrumb inner -->
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- breadcrumb area end -->*@
+    </section>
+    <!-- breadcrumb area end -->*@
 
-
-
-
+@Html.Action("SharedHeaderSection", "Home", new { area = "" })
 
 <main class="main">
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
@@ -43,7 +41,7 @@
     </nav><!-- End .breadcrumb-nav -->
 
     <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17"
-         style="background-image: url(/Content/client/pic/bgmedi2.jpg)">
+         style="background-image: url(/Content/client/assets/images/backgrounds/login-bg.jpg)">
         <div class="container">
             @if (!string.IsNullOrEmpty(ViewBag.LoginError))
             {
@@ -71,11 +69,28 @@
     </div><!-- End .login-page section-bg -->
 </main><!-- End .main -->
 
-<style>
+@*<style>
     .field-validation-error span {
         color: darkred;
     }
 </style>
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+    <script>
+        $("#form").validate({
+            errorClass: "my-error-class",
+            rules: {
+                UserName: "required",
+                Password: "required",
+            },
+            messages: {
+                UserName: "نام کاربری خود را وارد کنید",
+                Password: "پسورد خود را وارد کنید",
+            }
+        });
+    </script>
+
+    <script>
+        $.validator.unobtrusive.parse("#form");
+    </script>
+}*@
