@@ -124,101 +124,15 @@
                     </form>
                 </div><!-- End .header-search -->
 
-                <div class="dropdown compare-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" data-display="static" title="مقایسه محصولات"
-                       aria-label="Compare Products">
-                        <i class="icon-random"></i>
+                <div class="">
+                    <a href="/Shop/WishList/" class="wishlist-link" >
+                        <i class="icon-heart-o"></i>
                     </a>
-
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <ul class="compare-products">
-                            <li class="compare-product">
-                                <a href="#" class="btn-remove" title="حذف محصول"><i class="icon-close"></i></a>
-                                <h4 class="compare-product-title">
-                                    <a href="product.html">گوشی سامسونگ مدل S9</a>
-                                </h4>
-                            </li>
-                            <li class="compare-product">
-                                <a href="#" class="btn-remove" title="حذف محصول"><i class="icon-close"></i></a>
-                                <h4 class="compare-product-title">
-                                    <a href="product.html">گوشی سامسونگ مدل S8</a>
-                                </h4>
-                            </li>
-                        </ul>
-
-                        <div class="compare-actions">
-                            <a href="#" class="action-link">حذف همه</a>
-                            <a href="compare.html" class="btn btn-outline-primary-2">
-                                <span>مقایسه</span><i class="icon-long-arrow-left"></i>
-                            </a>
-                        </div>
-                    </div><!-- End .dropdown-menu -->
                 </div><!-- End .compare-dropdown -->
 
                 <div class="dropdown cart-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" data-display="static">
-                        <i class="icon-shopping-cart"></i>
-                        <span class="cart-count">2</span>
-                    </a>
+                    @Html.Action("CartSection", "Home")
 
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-cart-products">
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">کتونی ورزشی مخصوص دویدن رنگ بژ</a>
-                                    </h4>
-
-                                    <span class="cart-product-info">
-                                        <span class="cart-product-qty">1 x </span>
-                                        84,000 تومان
-                                    </span>
-                                </div><!-- End .product-cart-details -->
-
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="assets/images/products/cart/product-1.jpg" alt="product">
-                                    </a>
-                                </figure>
-                                <a href="#" class="btn-remove" title="حذف محصول"><i class="icon-close"></i></a>
-                            </div><!-- End .product -->
-
-                            <div class="product">
-                                <div class="product-cart-details">
-                                    <h4 class="product-title">
-                                        <a href="product.html">لباس زنانه آبی</a>
-                                    </h4>
-
-                                    <span class="cart-product-info">
-                                        <span class="cart-product-qty">1 x </span>
-                                        76,000 تومان
-                                    </span>
-                                </div><!-- End .product-cart-details -->
-
-                                <figure class="product-image-container">
-                                    <a href="product.html" class="product-image">
-                                        <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                    </a>
-                                </figure>
-                                <a href="#" class="btn-remove" title="حذف محصول"><i class="icon-close"></i></a>
-                            </div><!-- End .product -->
-                        </div><!-- End .cart-product -->
-
-                        <div class="dropdown-cart-total">
-                            <span>مجموع</span>
-
-                            <span class="cart-total-price">160,000 تومان</span>
-                        </div><!-- End .dropdown-cart-total -->
-
-                        <div class="dropdown-cart-action">
-                            <a href="cart.html" class="btn btn-primary">مشاهده سبد خرید</a>
-                            <a href="checkout.html" class="btn btn-outline-primary-2">
-                                <span>پرداخت</span><i class="icon-long-arrow-left"></i>
-                            </a>
-                        </div><!-- End .dropdown-cart-total -->
-                    </div><!-- End .dropdown-menu -->
                 </div><!-- End .cart-dropdown -->
             </div><!-- End .header-right -->
         </div><!-- End .container -->
