@@ -137,6 +137,8 @@ namespace KidsClothes.Web.Controllers
             //    banner = "/Files/StaticContentImages/Image/" + banner;
             //}
 
+            vm.Sizes = _productSizesRepo.GetAll();
+
             ViewBag.MinPrice = _productMainFeaturesRepo.GetMinPrice();
             ViewBag.MaxPrice = _productMainFeaturesRepo.GetMaxPrice();
 
@@ -188,14 +190,23 @@ namespace KidsClothes.Web.Controllers
                 brandsArr.ForEach(b => brandsIntArr.Add(Convert.ToInt32(b)));
             }
 
+            var sizesIntArr = new List<int>();
+
+            if (string.IsNullOrEmpty(grid.sizes) == false)
+            {
+                var sizesArr = grid.sizes.Split('-').ToList();
+                sizesArr.ForEach(b => sizesIntArr.Add(Convert.ToInt32(b)));
+            }
+
             var subFeaturesIntArr = new List<int>();
+
             if (string.IsNullOrEmpty(grid.subFeatures) == false)
             {
                 var subFeaturesArr = grid.subFeatures.Split('-').ToList();
                 subFeaturesArr.ForEach(b => subFeaturesIntArr.Add(Convert.ToInt32(b)));
             }
 
-            products = _productService.GetProductsGrid(groupsIntArr, brandsIntArr, subFeaturesIntArr, grid.priceFrom, grid.priceTo, grid.searchString);
+            products = _productService.GetProductsGrid(groupsIntArr, brandsIntArr, sizesIntArr, subFeaturesIntArr, grid.priceFrom, grid.priceTo, grid.searchString);
 
             #region Get Products Base on Group, Brand and Products of "offer"
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KidsClothes.Infrastructure.Repositories
 {
-    public class ProductSizesRepository : BaseRepository<ProductColor, MyDbContext>
+    public class ProductSizesRepository : BaseRepository<ProductSize, MyDbContext>
     {
         private readonly MyDbContext _context;
         private readonly LogsRepository _logger;
@@ -26,5 +26,12 @@ namespace KidsClothes.Infrastructure.Repositories
         {
             return _context.ProductSizes.FirstOrDefault(c => c.IsDeleted == false && c.ProductId == productId);
         }
+
+        //public List<Brand> GetAllProductSizes(int groupId)
+        //{
+        //    var pgBrands = _context.ProductGroupBrands.Where(f => f.ProductGroupId == groupId).ToList();
+        //    var brands = pgBrands.Select(item => _context.Brands.Find(item.BrandId)).ToList();
+        //    return brands;
+        //}
     }
 }

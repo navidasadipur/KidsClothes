@@ -19,13 +19,23 @@ namespace KidsClothes.Infratructure.Services
         private readonly ProductMainFeaturesRepository _productMainFeatureRepo;
         private readonly DiscountsRepository _discountRepo;
         private readonly MyDbContext _context;
-        public ProductService(ProductsRepository productRepo, InvoicesRepository invoiceRepo, ProductMainFeaturesRepository productMainFeatureRepo, DiscountsRepository discountRepo, MyDbContext context)
+        private readonly ProductSizesRepository _productSizesRepo;
+
+        public ProductService(
+            ProductsRepository productRepo
+            , InvoicesRepository invoiceRepo
+            , ProductMainFeaturesRepository productMainFeatureRepo
+            , DiscountsRepository discountRepo
+            , MyDbContext context
+            , ProductSizesRepository productSizesRepo
+            )
         {
             _productRepo = productRepo;
             _InvoiceRepo = invoiceRepo;
             _productMainFeatureRepo = productMainFeatureRepo;
             _discountRepo = discountRepo;
             _context = context;
+            this._productSizesRepo = productSizesRepo;
         }
 
         public List<Product> GetHighRatedProducts(int take)
@@ -446,10 +456,15 @@ namespace KidsClothes.Infratructure.Services
         }
         #region Get Products Grid
 
-        public List<Product> GetProductsGrid(List<int> groupIds = null, List<int> brandIds = null, List<int> subFeatureIds = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
+        public List<Product> GetProductsGrid(List<int> groupIds = null, List<int> brandIds = null, List<int> sizeIds = null , List<int> subFeatureIds = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
         {
             var allProducts = new List<Product>();
             var allFilteredProducts = new List<Product>();
+
+            var productsFilteredByGroup = new List<Product>();
+            var productsFilteredByBrand = new List<Product>();
+            var productsFilteredBySize = new List<Product>();
+            var productsFilteredByFeature = new List<Product>();
 
             //if searched
             if (!string.IsNullOrEmpty(searchString))
@@ -467,31 +482,37 @@ namespace KidsClothes.Infratructure.Services
                     .Include(p => p.ProductGroup)
                     .OrderByDescending(p => p.InsertDate).ToList();
 
-                var searchedProductsFilteredByGroup = new List<Product>();
-                var searchedProductsFilteredByBrand = new List<Product>();
-                var searchedProductsFilteredByFeature = new List<Product>();
-
-                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
+                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (sizeIds != null && sizeIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
                 {
                     if (groupIds != null && groupIds.Any())
                     {
-                        foreach (var group in groupIds)
-                            searchedProductsFilteredByGroup.AddRange(allProducts.Where(p => p.IsDeleted == false && p.ProductGroupId == group).OrderByDescending(p => p.InsertDate).ToList());
+                        foreach (var groupId in groupIds)
+                            productsFilteredByGroup.AddRange(allProducts.Where(p => p.IsDeleted == false && p.ProductGroupId == groupId).OrderByDescending(p => p.InsertDate));
                     }
                     if (brandIds != null && brandIds.Any())
                     {
-                        foreach (var brand in brandIds)
-                            searchedProductsFilteredByBrand.AddRange(allProducts.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate).ToList());
+                        foreach (var brandId in brandIds)
+                            productsFilteredByBrand.AddRange(allProducts.Where(p => p.IsDeleted == false && p.BrandId == brandId).OrderByDescending(p => p.InsertDate));
+                    }
+                    if (sizeIds != null && sizeIds.Any())
+                    {
+                        foreach (var sizeId in sizeIds)
+                        {
+                            var size = _productSizesRepo.GetProductSize(sizeId);
+                            productsFilteredBySize.AddRange(allProducts.Where(p => p.IsDeleted == false && p.Id == size.ProductId).OrderByDescending(p => p.InsertDate));
+                        }
                     }
                     if (subFeatureIds != null && subFeatureIds.Any(f => f != 0))
                     {
                         foreach (var subFeature in subFeatureIds.Where(f => f != 0))
-                            searchedProductsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate).ToList());
+                            productsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate).ToList());
                     }
 
-                    allFilteredProducts.AddRange(searchedProductsFilteredByGroup);
-                    allFilteredProducts.AddRange(searchedProductsFilteredByBrand);
-                    allFilteredProducts.AddRange(searchedProductsFilteredByFeature);
+                    allFilteredProducts = allFilteredProducts
+                        .Union(productsFilteredByGroup)
+                        .Union(productsFilteredByBrand)
+                        .Union(productsFilteredBySize)
+                        .Union(productsFilteredByFeature).ToList();
                 }
                 else
                 {
@@ -500,33 +521,44 @@ namespace KidsClothes.Infratructure.Services
             }
             else
             {
-                allProducts = _context.Products.Include(p => p.ProductMainFeatures).Include(p => p.ProductFeatureValues).Include(p => p.ProductGroup).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
+                allProducts = _context.Products
+                    .Include(p => p.ProductMainFeatures)
+                    .Include(p => p.ProductFeatureValues)
+                    .Include(p => p.ProductGroup)
+                    .Include(p => p.ProductSizes).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
 
-                var productsFilteredByGroup = new List<Product>();
-                var productsFilteredByBrand = new List<Product>();
-                var productsFilteredByFeature = new List<Product>();
 
-                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
+                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (sizeIds != null && sizeIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
                 {
                     if (groupIds != null && groupIds.Any())
                     {
                         foreach (var group in groupIds)
-                            productsFilteredByGroup.AddRange(allProducts.Where(p => p.IsDeleted == false && p.ProductGroupId == group).OrderByDescending(p => p.InsertDate).ToList());
+                            productsFilteredByGroup.AddRange(allProducts.Where(p => p.IsDeleted == false && p.ProductGroupId == group).OrderByDescending(p => p.InsertDate));
                     }
                     if (brandIds != null && brandIds.Any())
                     {
                         foreach (var brand in brandIds)
-                            productsFilteredByBrand.AddRange(allProducts.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate).ToList());
+                            productsFilteredByBrand.AddRange(allProducts.Where(p => p.IsDeleted == false && p.BrandId == brand).OrderByDescending(p => p.InsertDate));
+                    }
+                    if (sizeIds != null && sizeIds.Any())
+                    {
+                        foreach (var sizeId in sizeIds)
+                        {
+                            var size = _productSizesRepo.GetProductSize(sizeId);
+                            productsFilteredBySize.AddRange(allProducts.Where(p => p.IsDeleted == false && p.Id == size.ProductId).OrderByDescending(p => p.InsertDate));
+                        }
                     }
                     if (subFeatureIds != null && subFeatureIds.Any(f => f != 0))
                     {
                         foreach (var subFeature in subFeatureIds.Where(f => f != 0))
-                            productsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate).ToList());
+                            productsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate));
                     }
 
-                    allFilteredProducts.AddRange(productsFilteredByGroup);
-                    allFilteredProducts.AddRange(productsFilteredByBrand);
-                    allFilteredProducts.AddRange(productsFilteredByFeature);
+                    allFilteredProducts = allFilteredProducts
+                        .Union(productsFilteredByGroup)
+                        .Union(productsFilteredByBrand)
+                        .Union(productsFilteredBySize)
+                        .Union(productsFilteredByFeature).ToList();
                 }
                 else
                 {

@@ -95,6 +95,7 @@ namespace KidsClothes.Web.ViewModels
         public long? priceFrom { get; set; }
         public long? priceTo { get; set; }
         public string brands { get; set; }
+        public string sizes { get; set; }
         public string groups { get; set; }
         public string subFeatures { get; set; }
         public int pageNumber { get; set; }

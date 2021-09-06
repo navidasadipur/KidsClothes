@@ -271,12 +271,12 @@
                                                 @foreach (var item in Model.ProductGroups)
                                                 {
                                                     @*<a href="javascript:void(0)" onclick="GetGrid(null, @item.Id)">
-                                                        @item.Title
-                                                    </a>*@
+                            @item.Title
+                        </a>*@
                                                     <div class="filter-item">
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" 
-                                                                   id="cat-@item.Id" 
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                   id="cat-@item.Id"
                                                                    value="@item.Id"
                                                                    name="groups"
                                                                    onchange="GetGrid()">
@@ -297,53 +297,83 @@
 
                                                     if (item.Children.Count > 0)
                                                     {
-                                            <div class="collapse" id="category-@item.Id">
-                                                <div class="widget-body">
-                                                    <div class="filter-items filter-items-count">
-                                                        @foreach (var subItem in item.Children)
-                                                        {
-                                                            if (subItem.IsDeleted)
-                                                            {
-                                                                continue;
-                                                            }
+                                                        <div class="collapse" id="category-@item.Id">
+                                                            <div class="widget-body">
+                                                                <div class="filter-items filter-items-count">
+                                                                    @foreach (var subItem in item.Children)
+                                                                    {
+                                                                        if (subItem.IsDeleted)
+                                                                        {
+                                                                            continue;
+                                                                        }
+                                                                        <div class="filter-item">
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input"
+                                                                                       id="cat-@subItem.Id"
+                                                                                       value="@subItem.Id"
+                                                                                       name="groups"
+                                                                                       onchange="GetGrid()">
+                                                                                <label class="custom-control-label" for="cat-@subItem.Id">
+                                                                                    @subItem.Title
+                                                                                </label>
+                                                                            </div><!-- End .custom-checkbox -->
+                                                                        </div><!-- End .filter-item -->
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            @*<ul class="category-collaps">
+                                    @foreach (var subItem in item.Children)
+                                    {
+                                        if (subItem.IsDeleted)
+                                        {
+                                            continue;
+                                        }
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="cat-@subItem.Id" onchange="GetGrid()">
+                                                <label class="custom-control-label" for="cat-@subItem.Id">
+                                                    @subItem.Title
+                                                </label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </li>
+                                    }
+                                </ul>*@
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        </div><!-- End .widget -->
+                                    </div>
+
+                                    <div class="widget widget-collapsible">
+                                        <h3 class="widget-title">
+                                            <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true"
+                                               aria-controls="widget-2">
+                                                سایز
+                                            </a>
+                                        </h3><!-- End .widget-title -->
+
+                                        <div class="collapse show" id="widget-2">
+                                            <div class="widget-body">
+                                                <div class="filter-items">
+                                                    @foreach (var item in Model.Sizes)
+                                                    {
                                                         <div class="filter-item">
                                                             <div class="custom-control custom-checkbox">
                                                                 <input type="checkbox" class="custom-control-input" 
-                                                                       id="cat-@subItem.Id" 
-                                                                       value="@subItem.Id"
-                                                                       name="groups"
+                                                                       id="size-@item.Id" 
+                                                                       value="@item.Id"
+                                                                       name="sizes"
                                                                        onchange="GetGrid()">
-                                                                <label class="custom-control-label" for="cat-@subItem.Id">
-                                                                    @subItem.Title
-                                                                </label>
+                                                                <label class="custom-control-label" for="size-@item.Id">@item.SizeValue</label>
                                                             </div><!-- End .custom-checkbox -->
                                                         </div><!-- End .filter-item -->
-                                                        }
-                                                        </div>
-                                                    </div>
-                                                        @*<ul class="category-collaps">
-                                                            @foreach (var subItem in item.Children)
-                                                            {
-                                                                if (subItem.IsDeleted)
-                                                                {
-                                                                    continue;
-                                                                }
-                                                                <li>
-                                                                    <div class="custom-control custom-checkbox">
-                                                                        <input type="checkbox" class="custom-control-input" id="cat-@subItem.Id" onchange="GetGrid()">
-                                                                        <label class="custom-control-label" for="cat-@subItem.Id">
-                                                                            @subItem.Title
-                                                                        </label>
-                                                                    </div><!-- End .custom-checkbox -->
-                                                                </li>
-                                                            }
-                                                        </ul>*@
-                                                    </div>
                                                     }
-                                                    }
-                                                </div>
-                                            </div><!-- End .widget -->
-                                    </div>
+
+                                                </div><!-- End .filter-items -->
+                                            </div><!-- End .widget-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .widget -->
 
                                     <div class="widget widget-collapsible">
                                         <h3 class="widget-title">
@@ -458,8 +488,9 @@
             var categoryId = groupId !== undefined ? groupId : null;
             categoryId = categoryId === null ? selectedGroupId : categoryId;
             var searchString =  '@ViewBag.SearchString';
-            var brands = [];
             var groups = [];
+            var brands = [];
+            var sizes = []
             var priceFrom = null;
             var priceTo = null;
             var selectedPriceRange = $("span#filter-price-range").text().replaceAll("تومان", "");
@@ -476,15 +507,21 @@
                 }
             }
 
+            $("input[name='groups']").map(function () {
+                if ($(this).prop("checked") === true) {
+                    groups.push(parseInt($(this).val()));
+                }
+            });
+
             $("input[name='brands']").map(function() {
                 if ($(this).prop("checked") === true) {
                     brands.push(parseInt($(this).val()));
                 }
             });
 
-            $("input[name='groups']").map(function () {
+            $("input[name='sizes']").map(function () {
                 if ($(this).prop("checked") === true) {
-                    groups.push(parseInt($(this).val()));
+                    sizes.push(parseInt($(this).val()));
                 }
             });
 
@@ -499,8 +536,9 @@
                 searchString: searchString,
                 priceFrom: priceFrom,
                 priceTo: priceTo,
-                brands: brands.join('-'),
                 groups: groups.join('-'),
+                brands: brands.join('-'),
+                sizes: sizes.join('-'),
                 subFeatures: subFeatures.join('-'),
                 pageNumber: pageNumber,
                 take: take,

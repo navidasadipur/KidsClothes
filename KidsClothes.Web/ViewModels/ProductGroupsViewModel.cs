@@ -56,6 +56,7 @@ namespace KidsClothes.Web.ViewModels
             ProductGroups = new List<ProductGroup>();
             Features = new List<Feature>();
             Brands = new List<Brand>();
+            Sizes = new List<ProductSize>();
         }
 
         public int? SelectedGroupId { get; set; }
@@ -63,6 +64,6 @@ namespace KidsClothes.Web.ViewModels
         public List<ProductGroup> ProductGroups { get; set; }
         public List<Feature> Features { get; set; }
         public List<Brand> Brands { get; set; }
-
+        public List<ProductSize> Sizes { get; set; }
     }
 }
