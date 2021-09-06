@@ -35,224 +35,72 @@
                         }
                     }
                 }'>
-        <div class="product product-11 text-center">
-            <figure class="product-media">
-                <a href="product.html">
-                    <img src="/Content/client/my-img/16.png" alt="تصویر محصول"
-                         class="product-image">
-                    <img src="/Content/client/my-img/16-2.png" alt="تصویر محصول"
-                         class="product-image-hover">
-                </a>
-
-                <div class="product-action-vertical">
-                    <a href="#" class="btn-product-icon btn-wishlist">
-                        <span>
-                            افزودن به
-                            لیست علاقه مندی
-                        </span>
+        @foreach (var item in Model)
+        {
+            <div class="product product-11 text-center">
+                <figure class="product-media">
+                    @if (item.DiscountAmount > 0)
+                    {
+                        <span class="product-label label-sale">فروش ویژه</span>
+                    }
+                    @if (item.Price == 0)
+                    {
+                        <span class="product-label label-out">ناموجود</span>
+                    }
+                    <a href="/Shop/Product/@item.Id">
+                        <img src="/Files/ProductImages/Thumb/@item.Image" alt="@item.ShortTitle-تصویر محصول"
+                             class="product-image">
+                        <img src="/Files/ProductImages/Thumb/@item.Image" alt="@item.ShortTitle-تصویر محصول"
+                             class="product-image-hover">
                     </a>
-                </div><!-- End .product-action-vertical -->
-            </figure><!-- End .product-media -->
 
-            <div class="product-body">
-                <h3 class="product-title text-center">
-                    <a href="product.html">
-                        نردبان Butler Stool
-                    </a>
-                </h3>
-                <!-- End .product-title -->
-                <div class="product-price">
-                    251,000 تومان
-                </div><!-- End .product-price -->
-            </div><!-- End .product-body -->
-            <div class="product-action">
-                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
-            </div><!-- End .product-action -->
-        </div><!-- End .product -->
-        <div class="product product-11 text-center">
-            <figure class="product-media">
-                <a href="product.html">
-                    <img src="/Content/client/my-img/17.png" alt="تصویر محصول"
-                         class="product-image">
-                    <img src="/Content/client/my-img/17-2.png" alt="تصویر محصول"
-                         class="product-image-hover">
-                </a>
+                    <div class="product-action-vertical">
+                        <a href="javascript:void(0)" onclick="AddToWishList(@item.Id)" class="btn-product-icon btn-wishlist">
+                            <span>
+                                افزودن به
+                                لیست علاقه مندی
+                            </span>
+                        </a>
+                    </div><!-- End .product-action-vertical -->
+                </figure><!-- End .product-media -->
 
-                <div class="product-action-vertical">
-                    <a href="#" class="btn-product-icon btn-wishlist">
-                        <span>
-                            افزودن به
-                            لیست علاقه مندی
-                        </span>
-                    </a>
-                </div><!-- End .product-action-vertical -->
+                <div class="product-body">
+                    <h3 class="product-title text-center">
+                        <a href="/Shop/Product/@item.Id">
+                            @item.ShortTitle
+                        </a>
+                    </h3>
+                    <!-- End .product-title -->
+                    @if (item.PriceAfterDiscount < item.Price)
+                    {
+                        <span class="new-price">@item.PriceAfterDiscount.ToString("##,###") تومان</span>
+                        <div class="old-price" style="text-decoration: line-through;">
+                            @item.Price.ToString("##,###")
+                        </div><!-- End .product-price -->
 
-            </figure><!-- End .product-media -->
-
-            <div class="product-body">
-                <h3 class="product-title text-center">
-                    <a href="product.html">
-                        صندلی راحتی Elephant
-                    </a>
-                </h3>
-                <!-- End .product-title -->
-                <div class="product-price">
-                    457,000 تومان
-                </div><!-- End .product-price -->
-            </div><!-- End .product-body -->
-            <div class="product-action">
-                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
-            </div><!-- End .product-action -->
-        </div><!-- End .product -->
-        <div class="product product-11 text-center">
-            <figure class="product-media">
-                <a href="product.html">
-                    <img src="/Content/client/my-img/18.png" alt="تصویر محصول"
-                         class="product-image">
-                    <img src="/Content/client/my-img/18-2.png" alt="تصویر محصول"
-                         class="product-image-hover">
-                </a>
-
-                <div class="product-action-vertical">
-                    <a href="#" class="btn-product-icon btn-wishlist">
-                        <span>
-                            افزودن به
-                            لیست علاقه مندی
-                        </span>
-                    </a>
-                </div><!-- End .product-action-vertical -->
-
-            </figure><!-- End .product-media -->
-
-            <div class="product-body">
-                <h3 class="product-title text-center">
-                    <a href="product.html">
-                        صندلی راحتی Elephant
-                    </a>
-                </h3>
-                <!-- End .product-title -->
-                <div class="product-price">
-                    457,000 تومان
-                </div><!-- End .product-price -->
-            </div><!-- End .product-body -->
-            <div class="product-action">
-                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
-            </div><!-- End .product-action -->
-        </div><!-- End .product -->
-        <div class="product product-11 text-center">
-            <figure class="product-media">
-                <a href="product.html">
-                    <img src="/Content/client/my-img/20.jpg" alt="تصویر محصول"
-                         class="product-image">
-                    <img src="/Content/client/my-img/20-2.jpg" alt="تصویر محصول"
-                         class="product-image-hover">
-                </a>
-
-                <div class="product-action-vertical">
-                    <a href="#" class="btn-product-icon btn-wishlist">
-                        <span>
-                            افزودن به
-                            لیست علاقه مندی
-                        </span>
-                    </a>
-                </div><!-- End .product-action-vertical -->
-
-            </figure><!-- End .product-media -->
-
-            <div class="product-body">
-                <h3 class="product-title text-center">
-                    <a href="product.html">
-                        صندلی راحتی Elephant
-                    </a>
-                </h3>
-                <!-- End .product-title -->
-                <div class="product-price">
-                    457,000 تومان
-                </div><!-- End .product-price -->
-            </div><!-- End .product-body -->
-            <div class="product-action">
-                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
-            </div><!-- End .product-action -->
-        </div><!-- End .product -->
-        <div class="product product-11 text-center">
-            <figure class="product-media">
-                <a href="product.html">
-                    <img src="/Content/client/my-img/16.png" alt="تصویر محصول"
-                         class="product-image">
-                    <img src="/Content/client/my-img/16-2.png" alt="تصویر محصول"
-                         class="product-image-hover">
-                </a>
-
-                <div class="product-action-vertical">
-                    <a href="#" class="btn-product-icon btn-wishlist">
-                        <span>
-                            افزودن به
-                            لیست علاقه مندی
-                        </span>
-                    </a>
-                </div><!-- End .product-action-vertical -->
-
-            </figure><!-- End .product-media -->
-
-            <div class="product-body">
-                <h3 class="product-title text-center">
-                    <a href="product.html">
-                        صندلی راحتی Elephant
-                    </a>
-                </h3>
-                <!-- End .product-title -->
-                <div class="product-price">
-                    457,000 تومان
-                </div><!-- End .product-price -->
-            </div><!-- End .product-body -->
-            <div class="product-action">
-                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
-            </div><!-- End .product-action -->
-        </div><!-- End .product -->
-        <div class="product product-11 text-center">
-            <figure class="product-media">
-                <a href="product.html">
-                    <img src="/Content/client/my-img/17.png" alt="تصویر محصول"
-                         class="product-image">
-                    <img src="/Content/client/my-img/17-2.png" alt="تصویر محصول"
-                         class="product-image-hover">
-                </a>
-
-                <div class="product-action-vertical">
-                    <a href="#" class="btn-product-icon btn-wishlist">
-                        <span>
-                            افزودن به
-                            لیست علاقه مندی
-                        </span>
-                    </a>
-                </div><!-- End .product-action-vertical -->
-
-            </figure><!-- End .product-media -->
-
-            <div class="product-body">
-                <h3 class="product-title text-center">
-                    <a href="product.html">
-                        صندلی راحتی Elephant
-                    </a>
-                </h3>
-                <!-- End .product-title -->
-                <div class="product-price">
-                    457,000 تومان
-                </div><!-- End .product-price -->
-            </div><!-- End .product-body -->
-            <div class="product-action">
-                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
-            </div><!-- End .product-action -->
-        </div><!-- End .product -->
-    </div><!-- End .owl-carousel -->
+                    }
+                    else
+                    {
+                        <div class="new-price">
+                            @item.Price.ToString("##,###") تومان
+                        </div><!-- End .product-price -->
+                    }
+                </div><!-- End .product-body -->
+                <div class="product-action">
+                    <a href="javascript:void(0)" onclick="AddToCart(@item.Id)" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
+                </div><!-- End .product-action -->
+            </div><!-- End .product -->
+        }
+        </div><!-- End .owl-carousel -->
+       
 </div>
 
 
 
 
 
-
-@*<div class="container popular">
+@*
+<div class="container popular">
     <hr class="mb-5">
 
     <div class="section-title">
