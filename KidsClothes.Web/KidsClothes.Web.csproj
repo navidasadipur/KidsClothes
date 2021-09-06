@@ -11850,7 +11850,6 @@
     <Content Include="Views\Shop\ProductFeaturesSection.cshtml" />
     <Content Include="Views\Home\WishListSection.cshtml" />
     <Content Include="Views\Shared\SharedHeaderSection.cshtml" />
-    <Content Include="Views\Shared\MobileMenuSection.cshtml" />
     <Content Include="Views\Shared\NewsLetterPopupSection.cshtml" />
     <Content Include="Views\Home\AboutCustomerCounterSection.cshtml" />
     <Content Include="Views\Home\ContactOurStoresSection.cshtml" />

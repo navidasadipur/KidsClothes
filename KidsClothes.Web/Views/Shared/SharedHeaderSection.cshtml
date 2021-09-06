@@ -16,7 +16,7 @@
                             <li><a href="/about/">درباره ما</a></li>
                             <li><a href="/contactUs/">تماس با ما</a></li>
                             <li>
-                                <a href="/Customer/Auth/Login" ><i class="icon-user"></i>ورود</a>
+                                <a href="/Customer/Auth/Login"><i class="icon-user"></i>ورود</a>
                             </li>
                         </ul>
                     </li>
@@ -46,58 +46,49 @@
 
                             <div class="megamenu megamenu-md">
                                 <div class="row no-gutters">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="menu-col">
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">لباس دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="category.html">هودی</a></li>
-                                                        <li><a href="category.html">پیراهن</a></li>
-                                                        <li><a href="category.html">ست 3 تکه</a></li>
-                                                    </ul>
 
+                                                @if (Model != null)
+                                                {
+                                                    foreach (var group in Model)
+                                                    {
+                                                        <div class="col-md-3">
+                                                            <div class="menu-title"><a href="/Shop/ProductList/@group.Id">@group.Title</a></div>
+                                                            @if (group.Children != null)
+                                                            {
+                                                                <!-- End .menu-title -->
+                                                                <ul>
+                                                                    @foreach (var group2 in group.Children)
+                                                                    {
+                                                                        <li><a href="/Shop/ProductList/@group2.Id">@group2.Title</a></li>
+                                                                    }
 
-                                                </div><!-- End .col-md-6 -->
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">کفش دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
+                                                                </ul>
+                                                            }
+
+                                                        </div><!-- End .col-md-6 -->
+                                                    }
+                                                }
+                                                <!--<div class="col-md-3">
+                                                    <div class="menu-title">کفش دخترانه</div>-->
+                                                <!-- End .menu-title -->
+                                                <!--<ul>
                                                         <li><a href="category.html">کفش پیاده روی</a></li>
                                                         <li><a href="category.html">صندل</a></li>
                                                         <li><a href="category.html">کفش راحتی</a></li>
                                                     </ul>
 
 
-                                                </div><!-- End .col-md-6 -->
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">کیف دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="category.html">کیف دوشی</a></li>
-                                                        <li><a href="category.html">کوله پشتی</a></li>
-                                                        <li><a href="category.html">کیف دستی</a></li>
-                                                    </ul>
+                                                </div>-->
+                                                <!-- End .col-md-6 -->
 
-
-                                                </div><!-- End .col-md-6 -->
-                                                <div class="col-md-3">
-                                                    <div class="menu-title">اکسسوری دخترانه</div>
-                                                    <!-- End .menu-title -->
-                                                    <ul>
-                                                        <li><a href="category.html">گردنبند</a></li>
-                                                        <li><a href="category.html">دستبند</a></li>
-                                                        <li><a href="category.html">کش مو</a></li>
-                                                    </ul>
-
-
-                                                </div><!-- End .col-md-6 -->
                                             </div><!-- End .row -->
+
                                         </div><!-- End .menu-col -->
                                     </div><!-- End .col-md-8 -->
-
-                                    <div class="col-md-4">
+                                    <!--<div class="col-md-4">
                                         <div class="banner banner-overlay">
                                             <a href="category.html" class="banner banner-menu">
                                                 <img src="/Content/client/my-img/43.jpg" alt="Banner">
@@ -106,12 +97,13 @@
                                                     <div class="banner-title text-white">
                                                         آخرین
                                                         <br>شانس<br><span><strong>فروش</strong></span>
-                                                    </div>
-                                                    <!-- End .banner-title -->
-                                                </div><!-- End .banner-content -->
-                                            </a>
-                                        </div><!-- End .banner banner-overlay -->
-                                    </div><!-- End .col-md-4 -->
+                                                    </div>-->
+                                    <!-- End .banner-title -->
+                                    <!--</div>--><!-- End .banner-content -->
+                                    <!--</a>
+                                    </div>-->
+                                    <!-- End .banner banner-overlay -->
+                                    <!--</div>--><!-- End .col-md-4 -->
                                 </div><!-- End .row -->
                             </div><!-- End .megamenu megamenu-md -->
                         </li>
@@ -156,9 +148,6 @@
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
 </header><!-- End .header -->
-
-
-
 @*<header id="header">
         <div class="header-top-row">
             <div class="top-row-container position-r">
@@ -450,8 +439,8 @@
         </header>*@
 
 
-
-@*<header class="header header-7">
+@*\
+<header class="header header-7">
     <div class="sticky-wrapper">
         <div class="header-middle sticky-header">
             <div class="container">
