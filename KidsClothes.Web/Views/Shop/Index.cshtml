@@ -617,9 +617,8 @@
                 }
             });
 
-            $("a[name='colors']").map(function () {
-                if ($(this).hasClass("selected") === true) {
-
+            $("input[name='colors']").map(function () {
+                if ($(this).prop("checked") === true) {
                     colors.push(parseInt($(this).val()));
                 }
             });
@@ -639,6 +638,7 @@
                 groups: groups.join('-'),
                 brands: brands.join('-'),
                 sizes: sizes.join('-'),
+                colors: colors.join('-'),
                 subFeatures: subFeatures.join('-'),
                 pageNumber: pageNumber,
                 take: take,
