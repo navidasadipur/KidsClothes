@@ -119,6 +119,14 @@
     <Compile Include="Migrations\202108301249232_addProductSizeModel.Designer.cs">
       <DependentUpon>202108301249232_addProductSizeModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109070623343_removeProductIdInProductColors.cs" />
+    <Compile Include="Migrations\202109070623343_removeProductIdInProductColors.Designer.cs">
+      <DependentUpon>202109070623343_removeProductIdInProductColors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109070630576_addRelationOneToManyColorProduct.cs" />
+    <Compile Include="Migrations\202109070630576_addRelationOneToManyColorProduct.Designer.cs">
+      <DependentUpon>202109070630576_addRelationOneToManyColorProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +200,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108301249232_addProductSizeModel.resx">
       <DependentUpon>202108301249232_addProductSizeModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109070623343_removeProductIdInProductColors.resx">
+      <DependentUpon>202109070623343_removeProductIdInProductColors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109070630576_addRelationOneToManyColorProduct.resx">
+      <DependentUpon>202109070630576_addRelationOneToManyColorProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -83,7 +83,7 @@ namespace KidsClothes.Infrastructure.Repositories
         public void DeleteColorCodes(int productId)
         {
             var list = _context.ProductColors.Where(c => c.ProductId == productId).ToList();
-            foreach(var item in list)
+            foreach (var item in list)
                 _context.ProductColors.Remove(item);
             _context.SaveChanges();
         }

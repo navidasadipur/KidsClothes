@@ -20,6 +20,7 @@ namespace KidsClothes.Infratructure.Services
         private readonly DiscountsRepository _discountRepo;
         private readonly MyDbContext _context;
         private readonly ProductSizesRepository _productSizesRepo;
+        private readonly ProductColorsRepository _productColorsRepo;
 
         public ProductService(
             ProductsRepository productRepo
@@ -28,6 +29,7 @@ namespace KidsClothes.Infratructure.Services
             , DiscountsRepository discountRepo
             , MyDbContext context
             , ProductSizesRepository productSizesRepo
+            , ProductColorsRepository productColorsRepo
             )
         {
             _productRepo = productRepo;
@@ -35,7 +37,8 @@ namespace KidsClothes.Infratructure.Services
             _productMainFeatureRepo = productMainFeatureRepo;
             _discountRepo = discountRepo;
             _context = context;
-            this._productSizesRepo = productSizesRepo;
+            _productSizesRepo = productSizesRepo;
+            _productColorsRepo = productColorsRepo;
         }
 
         public List<Product> GetHighRatedProducts(int take)
@@ -456,7 +459,7 @@ namespace KidsClothes.Infratructure.Services
         }
         #region Get Products Grid
 
-        public List<Product> GetProductsGrid(List<int> groupIds = null, List<int> brandIds = null, List<int> sizeIds = null , List<int> subFeatureIds = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
+        public List<Product> GetProductsGrid(List<int> groupIds = null, List<int> brandIds = null, List<int> sizeIds = null, List<int> colorIds = null, List<int> subFeatureIds = null, long? fromPrice = null, long? toPrice = null, string searchString = null)
         {
             var allProducts = new List<Product>();
             var allFilteredProducts = new List<Product>();
@@ -464,6 +467,7 @@ namespace KidsClothes.Infratructure.Services
             var productsFilteredByGroup = new List<Product>();
             var productsFilteredByBrand = new List<Product>();
             var productsFilteredBySize = new List<Product>();
+            var productsFilteredByColor = new List<Product>();
             var productsFilteredByFeature = new List<Product>();
 
             //if searched
@@ -480,9 +484,15 @@ namespace KidsClothes.Infratructure.Services
                     .Include(p => p.ProductMainFeatures)
                     .Include(p => p.ProductFeatureValues)
                     .Include(p => p.ProductGroup)
+                    .Include(p => p.ProductSizes)
+                    .Include(p => p.ProductColors)
                     .OrderByDescending(p => p.InsertDate).ToList();
 
-                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (sizeIds != null && sizeIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
+                if ((groupIds != null && groupIds.Any())
+                    || (brandIds != null && brandIds.Any())
+                    || (sizeIds != null && sizeIds.Any())
+                    || (colorIds != null && colorIds.Any())
+                    || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
                 {
                     if (groupIds != null && groupIds.Any())
                     {
@@ -502,16 +512,27 @@ namespace KidsClothes.Infratructure.Services
                             productsFilteredBySize.AddRange(allProducts.Where(p => p.IsDeleted == false && p.Id == size.ProductId).OrderByDescending(p => p.InsertDate));
                         }
                     }
+                    if (colorIds != null && colorIds.Any())
+                    {
+                        foreach (var colorId in colorIds)
+                        {
+                            var color = _productColorsRepo.GetProductColor(colorId);
+                            productsFilteredByColor.AddRange(allProducts.Where(p => p.IsDeleted == false && p.Id == color.ProductId).OrderByDescending(p => p.InsertDate));
+                        }
+                    }
                     if (subFeatureIds != null && subFeatureIds.Any(f => f != 0))
                     {
                         foreach (var subFeature in subFeatureIds.Where(f => f != 0))
-                            productsFilteredByFeature.AddRange(allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature)).OrderByDescending(p => p.InsertDate).ToList());
+                            productsFilteredByFeature.AddRange(
+                                allProducts.Where(p => p.ProductFeatureValues.Any(pf => pf.SubFeatureId == subFeature) || p.ProductMainFeatures.Any(pf => pf.SubFeatureId == subFeature))
+                                .OrderByDescending(p => p.InsertDate).ToList());
                     }
 
                     allFilteredProducts = allFilteredProducts
                         .Union(productsFilteredByGroup)
                         .Union(productsFilteredByBrand)
                         .Union(productsFilteredBySize)
+                        .Union(productsFilteredByColor)
                         .Union(productsFilteredByFeature).ToList();
                 }
                 else
@@ -525,10 +546,16 @@ namespace KidsClothes.Infratructure.Services
                     .Include(p => p.ProductMainFeatures)
                     .Include(p => p.ProductFeatureValues)
                     .Include(p => p.ProductGroup)
-                    .Include(p => p.ProductSizes).Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
+                    .Include(p => p.ProductSizes)
+                    .Include(p => p.ProductColors)
+                    .Where(p => p.IsDeleted == false).OrderByDescending(p => p.InsertDate).ToList();
 
 
-                if ((groupIds != null && groupIds.Any()) || (brandIds != null && brandIds.Any()) || (sizeIds != null && sizeIds.Any()) || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
+                if ((groupIds != null && groupIds.Any())
+                    || (brandIds != null && brandIds.Any())
+                    || (sizeIds != null && sizeIds.Any())
+                    || (colorIds != null && colorIds.Any())
+                    || (subFeatureIds != null && subFeatureIds.Any(f => f != 0)))
                 {
                     if (groupIds != null && groupIds.Any())
                     {
@@ -548,6 +575,14 @@ namespace KidsClothes.Infratructure.Services
                             productsFilteredBySize.AddRange(allProducts.Where(p => p.IsDeleted == false && p.Id == size.ProductId).OrderByDescending(p => p.InsertDate));
                         }
                     }
+                    if (colorIds != null && colorIds.Any())
+                    {
+                        foreach (var colorId in colorIds)
+                        {
+                            var color = _productColorsRepo.GetProductColor(colorId);
+                            productsFilteredByColor.AddRange(allProducts.Where(p => p.IsDeleted == false && p.Id == color.ProductId).OrderByDescending(p => p.InsertDate));
+                        }
+                    }
                     if (subFeatureIds != null && subFeatureIds.Any(f => f != 0))
                     {
                         foreach (var subFeature in subFeatureIds.Where(f => f != 0))
@@ -558,6 +593,7 @@ namespace KidsClothes.Infratructure.Services
                         .Union(productsFilteredByGroup)
                         .Union(productsFilteredByBrand)
                         .Union(productsFilteredBySize)
+                        .Union(productsFilteredByColor)
                         .Union(productsFilteredByFeature).ToList();
                 }
                 else
