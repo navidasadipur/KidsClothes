@@ -12615,7 +12615,7 @@ a:focus {
 .product-nav-thumbs span {
   display: flex;
   align-items: center;
-  width: 4.4rem;
+  /*width: 4.4rem;*/
   height: 4.4rem;
   border-radius: .2rem;
   border: .2rem solid #fff;
