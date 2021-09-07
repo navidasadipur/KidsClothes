@@ -438,7 +438,7 @@ namespace KidsClothes.Web.Areas.Admin.Controllers
         public JsonResult GetProductColorCodes(int id)
         {
             var colorCodes = _repo.GetProductColors(id);
-            return Json(colorCodes.GroupBy(c=>c.Id), JsonRequestBehavior.AllowGet);
+            return Json(colorCodes.GroupBy(c => c.Id), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetProductSizes(int id)
