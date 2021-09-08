@@ -234,6 +234,10 @@
                         {
                             <h5>محصولات دسته <b style="color: #00B4A2;">@ViewBag.ProductGroupName</b> </h5>
                         }
+                        else if (ViewBag.SearchString != null)
+                        {
+                            <h5>جست و جو برای کلمه <b style="color: #00B4A2;">@ViewBag.SearchString</b> </h5>
+                        }
                     </div><!-- End .container -->
                 </div><!-- End .page-header -->
                 <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
@@ -294,15 +298,19 @@
                             <aside class="col-lg-3 order-lg-first">
                                 <div class="sidebar sidebar-shop">
                                     <div class="widget widget-clean">
-                                        <label>فیلترها : </label>
+                                        <label> پاک کردن همه فیلترها : </label>
                                         @if (@Request.Url.AbsoluteUri.ToString().EndsWith("hop") || @Request.Url.AbsoluteUri.ToString().EndsWith("hop#"))
                                         {
-                                            <a href='#' onclick='location.reload(true); return false;' class="sidebar-filter-clear">پاک کردن همه</a>
+                                            <a href='#' onclick='location.reload(true); return false;' class="sidebar-filter-clear">مشاهده همه محصولات</a>
                                         }
                                         else
                                         {
-                                            <a href="javascript:void(0)" class="sidebar-filter-clear" id="reload">پاک کردن همه</a>
+                                    <a href="javascript:void(0)" class="sidebar-filter-clear" id="reload">مشاهده همه محصولات</a>
                                         }
+                                    </div><!-- End .widget widget-clean -->
+                                    <div class="widget widget-clean" >
+                                        @*<label>اعمال فیلترها : </label>*@
+                                        <a href="javascript:void(0)" onclick="GetGrid(); return false;" class="btn btn-primary" style="margin: auto">اعمال فیلترها</a>
                                     </div><!-- End .widget widget-clean -->
 
                                     <div class="widget widget-collapsible">
@@ -320,15 +328,15 @@
                                                 @foreach (var item in Model.ProductGroups)
                                                 {
                                                     @*<a href="javascript:void(0)" onclick="GetGrid(null, @item.Id)">
-                                                            @item.Title
-                                                        </a>*@
+                            @item.Title
+                        </a>*@
                                                     <div class="filter-item">
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input"
                                                                    id="cat-@item.Id"
                                                                    value="@item.Id"
                                                                    name="groups"
-                                                                   onchange="GetGrid()">
+                                                                   @*onchange="GetGrid()"*@>
                                                             <label class="custom-control-label" for="cat-@item.Id">
                                                                 @item.Title
                                                             </label>
@@ -361,7 +369,7 @@
                                                                                        id="cat-@subItem.Id"
                                                                                        value="@subItem.Id"
                                                                                        name="groups"
-                                                                                       onchange="GetGrid()">
+                                                                                       @*onchange="GetGrid()"*@>
                                                                                 <label class="custom-control-label" for="cat-@subItem.Id">
                                                                                     @subItem.Title
                                                                                 </label>
@@ -370,23 +378,7 @@
                                                                     }
                                                                 </div>
                                                             </div>
-                                                            @*<ul class="category-collaps">
-                                                                    @foreach (var subItem in item.Children)
-                                                                    {
-                                                                        if (subItem.IsDeleted)
-                                                                        {
-                                                                            continue;
-                                                                        }
-                                                                        <li>
-                                                                            <div class="custom-control custom-checkbox">
-                                                                                <input type="checkbox" class="custom-control-input" id="cat-@subItem.Id" onchange="GetGrid()">
-                                                                                <label class="custom-control-label" for="cat-@subItem.Id">
-                                                                                    @subItem.Title
-                                                                                </label>
-                                                                            </div><!-- End .custom-checkbox -->
-                                                                        </li>
-                                                                    }
-                                                                </ul>*@
+
                                                         </div>
                                                     }
                                                 }
@@ -413,7 +405,7 @@
                                                                        id="size-@item.Id"
                                                                        value="@item.Id"
                                                                        name="sizes"
-                                                                       onchange="GetGrid()">
+                                                                       @*onchange="GetGrid()"*@>
                                                                 <label class="custom-control-label" for="size-@item.Id">@item.SizeValue</label>
                                                             </div><!-- End .custom-checkbox -->
                                                         </div><!-- End .filter-item -->
@@ -442,21 +434,20 @@
                                                            id="color-@item.Id"
                                                            style="background: @item.ColorCode;"
                                                            value="@item.Id"
-                                                           name="colors"
-                                                           onchange="GetGrid()">
+                                                           name="colors">
 
                                                             <span class="sr-only">
                                                                 Color
                                                                 Name
                                                             </span>
                                                         </a>
-                                                        <div class="filter-item" style="display: none">
+                                                        <div class="filter-item" @*style="display: none"*@>
                                                             <div class="custom-control custom-checkbox">
                                                                 <input type="checkbox" class="custom-control-input"
                                                                        id="color-@item.Id"
                                                                        value="@item.Id"
                                                                        name="colors"
-                                                                       onchange="GetGrid()">
+                                                                       @*onchange="GetGrid()"*@>
                                                                 <label class="custom-control-label" for="color-@item.Id">@item.Title</label>
                                                             </div><!-- End .custom-checkbox -->
                                                         </div><!-- End .filter-item -->
@@ -507,7 +498,7 @@
                                                             <div class="custom-control custom-checkbox">
                                                                 <input type="checkbox" class="custom-control-input"
                                                                        id="b_@brand.Id"
-                                                                       onchange="GetGrid()"
+                                                                       @*onchange="GetGrid()"*@
                                                                        value="@brand.Id"
                                                                        name="brands">
                                                                 <label class="custom-control-label" for="b_@brand.Id">@brand.Name</label>
@@ -685,23 +676,24 @@
                         checkBoxe.prop("checked", false);
                     else
                         checkBoxe.prop("checked", true);
-
-                    GetGrid()
                 });
             }
+
+
 
             // Loop through the a checkboxes buttons and add the selected class to the a tag buttons and checked uncisible checkbox
             for (var i = 0; i < allCheckBoxBtns.length; i++) {
 
                 var checkBoxeId = $(allCheckBoxBtns[i]).attr('id')
 
-                var colorInput = $('.filter-colors a#' + checkBoxeId);
+                var colorInput = $('.filter-colors #' + checkBoxeId);
 
-                if ($(allCheckBoxBtns[i]).prop("checked") == true)
+                if ($(allCheckBoxBtns[i]).prop("checked") == true) {
                     colorInput.toggleClass('selected');
+                }
             }
 
-            GetGrid();
+
 
             // Slider For category pages / filter price
             if (typeof noUiSlider === 'object') {
@@ -730,16 +722,44 @@
                 // Update Price Range
                 priceSlider.noUiSlider.on('update', function (values, handle) {
                     $('#filter-price-range').text(values.join(' - '));
-                    GetGrid();
                 });
             }
 
-            //// Update Price Range
-            //$('#price-slider').change(function () {
+            //var span = document.querySelector('#filter-price-range');
+
+            //// change
+            //var mutateObserver = new MutationObserver(function (records) {
+            //    console.log(records);
+            //});
+            //mutateObserver.observe(span, {
+            //    childList: true,                                 // capture child add/remove on target element.
+            //    characterData: true,                     // capture text changes on target element
+            //    subtree: true,                                   // capture childs changes too
+            //    characterDataOldValue: true  // keep of prev value
+            //});
+
+            //setTimeout(function () {
+            //    GetGrid();
+            //}, 2000);
+
+
+            //$('#filter-price-range').on('DOMSubtreeModified', this, function () {
             //    GetGrid();
             //});
 
-            document.getElementById("reload").onclick = function() {reload()};
+            //$('.filter-colors a').on('DOMSubtreeModified', this, function () {
+            //    GetGrid();
+            //});
+
+            //$("[type=checkbox]").change(function () {
+            //    GetGrid();
+            //});
+
+            
+
+            document.getElementById("reload").onclick = function () { reload() };
+
+            GetGrid();
 
         });
                 function reload() {
